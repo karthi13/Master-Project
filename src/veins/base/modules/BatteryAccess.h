@@ -8,9 +8,9 @@
 #ifndef BATTERYACCESS_H_
 #define BATTERYACCESS_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseModule.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseBattery.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/modules/BaseModule.h"
+#include "veins/base/modules/BaseBattery.h"
 
 /**
  * @brief Extends BaseModule by several methods which provide

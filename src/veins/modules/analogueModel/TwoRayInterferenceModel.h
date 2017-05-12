@@ -21,9 +21,9 @@
 #ifndef ANALOGUEMODEL_TWORAYINTERFERENCEMODEL_H
 #define ANALOGUEMODEL_TWORAYINTERFERENCEMODEL_H
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/AnalogueModel.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseWorldUtility.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/MappingBase.h"
+#include "veins/base/phyLayer/AnalogueModel.h"
+#include "veins/base/modules/BaseWorldUtility.h"
+#include "veins/base/phyLayer/MappingBase.h"
 
 using Veins::AirFrame;
 

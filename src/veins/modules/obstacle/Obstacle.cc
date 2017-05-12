@@ -18,7 +18,7 @@
 //
 
 #include <set>
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/obstacle/Obstacle.h"
+#include "veins/modules/obstacle/Obstacle.h"
 
 using Veins::Obstacle;
 

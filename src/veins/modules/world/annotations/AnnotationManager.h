@@ -24,8 +24,8 @@
 #include <list>
 
 #include <omnetpp.h>
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/FindModule.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/Coord.h"
+#include "veins/base/utils/FindModule.h"
+#include "veins/base/utils/Coord.h"
 
 /**
  * manages annotations on the OMNeT++ canvas.

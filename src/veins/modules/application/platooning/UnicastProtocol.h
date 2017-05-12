@@ -18,12 +18,12 @@
 #ifndef UNICASTPROTOCOL_H_
 #define UNICASTPROTOCOL_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/ieee80211p/BaseWaveApplLayer.h"
+#include "veins/modules/application/ieee80211p/BaseWaveApplLayer.h"
 
 #include <queue>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/messages/UnicastMessage_m.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.h"
+#include "veins/modules/application/platooning/messages/UnicastMessage_m.h"
+#include "veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.h"
 
 enum ControlMessageCommand
 {
@@ -137,7 +137,7 @@ class UnicastProtocol : public BaseWaveApplLayer
 		 * \param channel 0 for CCH, 1 for SCH
 		 * \param kind id of the application, for (de)multiplexing
 		 */
-		void sendMessageDown(int destination, cPacket *msg, int encapsulatedId, int priority, SimTime timestamp, t_channel channel, short kind);
+		void sendMessageDown(int destination, cPacket *msg, int encapsulatedId, int priority, SimTime timestamp, enum Channels::ChannelNumber channel, short kind);
 
 		/**
 		 * Sends an ack in response to an unicast message

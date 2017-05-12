@@ -18,9 +18,9 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIScreenRecorder.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIScenarioManager.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCICommandInterface.h"
+#include "veins/modules/mobility/traci/TraCIScreenRecorder.h"
+#include "veins/modules/mobility/traci/TraCIScenarioManager.h"
+#include "veins/modules/mobility/traci/TraCICommandInterface.h"
 
 #ifdef _WIN32
 #define realpath(N,R) _fullpath((R),(N),_MAX_PATH)

@@ -21,7 +21,7 @@
 #ifndef WORLD_TRACI_TRACISCREENRECORDER_H
 #define WORLD_TRACI_TRACISCREENRECORDER_H
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
+#include "veins/base/utils/MiXiMDefs.h"
 
 /**
  * @brief

@@ -3,10 +3,10 @@
 
 #include <omnetpp.h>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/Signal_.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/ChannelState.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/PhyUtils.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/phyLayer/Signal_.h"
+#include "veins/base/phyLayer/ChannelState.h"
+#include "veins/base/phyLayer/PhyUtils.h"
 
 
 /**

@@ -18,11 +18,11 @@
  * part of:     framework implementation developed by tkn
  **************************************************************************/
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseModule.h"
+#include "veins/base/modules/BaseModule.h"
 
 #include <cassert>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/FindModule.h"
+#include "veins/base/utils/FindModule.h"
 
 // Could not initialize simsignal_t it here!? I got the POST_MODEL_CHANGE id!?
 const simsignalwrap_t BaseModule::catHostStateSignal = simsignalwrap_t(MIXIM_SIGNAL_HOSTSTATE_NAME);

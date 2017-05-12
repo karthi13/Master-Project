@@ -26,9 +26,9 @@
 
 #include <omnetpp.h>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseApplLayer.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIMobility.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCICommandInterface.h"
+#include "veins/base/modules/BaseApplLayer.h"
+#include "veins/modules/mobility/traci/TraCIMobility.h"
+#include "veins/modules/mobility/traci/TraCICommandInterface.h"
 
 using Veins::TraCIMobility;
 using Veins::TraCICommandInterface;

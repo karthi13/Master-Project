@@ -18,9 +18,9 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIScenarioManagerLaunchd.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCICommandInterface.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIConstants.h"
+#include "veins/modules/mobility/traci/TraCIScenarioManagerLaunchd.h"
+#include "veins/modules/mobility/traci/TraCICommandInterface.h"
+#include "veins/modules/mobility/traci/TraCIConstants.h"
 #define CMD_FILE_SEND 0x75
 
 #include <sstream>
@@ -88,7 +88,11 @@ void TraCIScenarioManagerLaunchd::init_traci() {
 		}
 	}
 
+#if OMNETPP_VERSION <= 0x500
 	std::string contents = launchConfig->tostr(0);
+#else
+	std::string contents = launchConfig->getXML();
+#endif
 
 	TraCIBuffer buf;
 	buf << std::string("sumo-launchd.launch.xml") << contents;

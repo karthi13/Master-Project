@@ -15,9 +15,9 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 //
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/protocols/BaseProtocol.h"
+#include "veins/modules/application/platooning/protocols/BaseProtocol.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mac/ieee80211p/Mac1609_4.h"
+#include "veins/modules/mac/ieee80211p/Mac1609_4.h"
 
 Define_Module(BaseProtocol)
 
@@ -68,7 +68,7 @@ void BaseProtocol::initialize(int stage) {
 		packetSize = par("packetSize").longValue();
 		//priority of platooning message
 		priority = par("priority").longValue();
-		ASSERT2(priority >= 0 && priority <= 3, "priority value must be between 0 and 3");
+		ASSERT2(priority >= 0 && priority <= 7, "priority value must be between 0 and 7");
 
 		//use controller or real acceleration?
 		useControllerAcceleration = par("useControllerAcceleration").boolValue();
@@ -175,6 +175,7 @@ void BaseProtocol::sendPlatooningMessage(int destinationAddress) {
 	unicast = new UnicastMessage("", BEACON_TYPE);
 	unicast->setDestination(-1);
 	unicast->setPriority(priority);
+	unicast->setChannel(Channels::CCH);
 
 	//create platooning beacon with data about the car
 	pkt = new PlatooningBeacon();

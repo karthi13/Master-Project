@@ -169,7 +169,7 @@ WaveShortMessage::WaveShortMessage(const char *name, int kind) : ::omnetpp::cPac
     this->securityType = 0;
     this->channelNumber = 0;
     this->dataRate = 1;
-    this->priority = 3;
+    this->userPriority = 7;
     this->psid = 0;
     this->psc = "Service with some Data";
     this->wsmLength = 0;
@@ -203,7 +203,7 @@ void WaveShortMessage::copy(const WaveShortMessage& other)
     this->securityType = other.securityType;
     this->channelNumber = other.channelNumber;
     this->dataRate = other.dataRate;
-    this->priority = other.priority;
+    this->userPriority = other.userPriority;
     this->psid = other.psid;
     this->psc = other.psc;
     this->wsmLength = other.wsmLength;
@@ -211,7 +211,6 @@ void WaveShortMessage::copy(const WaveShortMessage& other)
     this->senderAddress = other.senderAddress;
     this->recipientAddress = other.recipientAddress;
     this->serial = other.serial;
-    this->senderPos = other.senderPos;
     this->timestamp = other.timestamp;
 }
 
@@ -222,7 +221,7 @@ void WaveShortMessage::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimPacking(b,this->securityType);
     doParsimPacking(b,this->channelNumber);
     doParsimPacking(b,this->dataRate);
-    doParsimPacking(b,this->priority);
+    doParsimPacking(b,this->userPriority);
     doParsimPacking(b,this->psid);
     doParsimPacking(b,this->psc);
     doParsimPacking(b,this->wsmLength);
@@ -230,7 +229,6 @@ void WaveShortMessage::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimPacking(b,this->senderAddress);
     doParsimPacking(b,this->recipientAddress);
     doParsimPacking(b,this->serial);
-    doParsimPacking(b,this->senderPos);
     doParsimPacking(b,this->timestamp);
 }
 
@@ -241,7 +239,7 @@ void WaveShortMessage::parsimUnpack(omnetpp::cCommBuffer *b)
     doParsimUnpacking(b,this->securityType);
     doParsimUnpacking(b,this->channelNumber);
     doParsimUnpacking(b,this->dataRate);
-    doParsimUnpacking(b,this->priority);
+    doParsimUnpacking(b,this->userPriority);
     doParsimUnpacking(b,this->psid);
     doParsimUnpacking(b,this->psc);
     doParsimUnpacking(b,this->wsmLength);
@@ -249,7 +247,6 @@ void WaveShortMessage::parsimUnpack(omnetpp::cCommBuffer *b)
     doParsimUnpacking(b,this->senderAddress);
     doParsimUnpacking(b,this->recipientAddress);
     doParsimUnpacking(b,this->serial);
-    doParsimUnpacking(b,this->senderPos);
     doParsimUnpacking(b,this->timestamp);
 }
 
@@ -293,14 +290,14 @@ void WaveShortMessage::setDataRate(int dataRate)
     this->dataRate = dataRate;
 }
 
-int WaveShortMessage::getPriority() const
+int WaveShortMessage::getUserPriority() const
 {
-    return this->priority;
+    return this->userPriority;
 }
 
-void WaveShortMessage::setPriority(int priority)
+void WaveShortMessage::setUserPriority(int userPriority)
 {
-    this->priority = priority;
+    this->userPriority = userPriority;
 }
 
 int WaveShortMessage::getPsid() const
@@ -371,16 +368,6 @@ int WaveShortMessage::getSerial() const
 void WaveShortMessage::setSerial(int serial)
 {
     this->serial = serial;
-}
-
-Coord& WaveShortMessage::getSenderPos()
-{
-    return this->senderPos;
-}
-
-void WaveShortMessage::setSenderPos(const Coord& senderPos)
-{
-    this->senderPos = senderPos;
 }
 
 ::omnetpp::simtime_t WaveShortMessage::getTimestamp() const
@@ -457,7 +444,7 @@ const char *WaveShortMessageDescriptor::getProperty(const char *propertyname) co
 int WaveShortMessageDescriptor::getFieldCount() const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? 14+basedesc->getFieldCount() : 14;
+    return basedesc ? 13+basedesc->getFieldCount() : 13;
 }
 
 unsigned int WaveShortMessageDescriptor::getFieldTypeFlags(int field) const
@@ -481,10 +468,9 @@ unsigned int WaveShortMessageDescriptor::getFieldTypeFlags(int field) const
         FD_ISEDITABLE,
         FD_ISEDITABLE,
         FD_ISEDITABLE,
-        FD_ISCOMPOUND,
         FD_ISEDITABLE,
     };
-    return (field>=0 && field<14) ? fieldTypeFlags[field] : 0;
+    return (field>=0 && field<13) ? fieldTypeFlags[field] : 0;
 }
 
 const char *WaveShortMessageDescriptor::getFieldName(int field) const
@@ -500,7 +486,7 @@ const char *WaveShortMessageDescriptor::getFieldName(int field) const
         "securityType",
         "channelNumber",
         "dataRate",
-        "priority",
+        "userPriority",
         "psid",
         "psc",
         "wsmLength",
@@ -508,10 +494,9 @@ const char *WaveShortMessageDescriptor::getFieldName(int field) const
         "senderAddress",
         "recipientAddress",
         "serial",
-        "senderPos",
         "timestamp",
     };
-    return (field>=0 && field<14) ? fieldNames[field] : nullptr;
+    return (field>=0 && field<13) ? fieldNames[field] : nullptr;
 }
 
 int WaveShortMessageDescriptor::findField(const char *fieldName) const
@@ -522,7 +507,7 @@ int WaveShortMessageDescriptor::findField(const char *fieldName) const
     if (fieldName[0]=='s' && strcmp(fieldName, "securityType")==0) return base+1;
     if (fieldName[0]=='c' && strcmp(fieldName, "channelNumber")==0) return base+2;
     if (fieldName[0]=='d' && strcmp(fieldName, "dataRate")==0) return base+3;
-    if (fieldName[0]=='p' && strcmp(fieldName, "priority")==0) return base+4;
+    if (fieldName[0]=='u' && strcmp(fieldName, "userPriority")==0) return base+4;
     if (fieldName[0]=='p' && strcmp(fieldName, "psid")==0) return base+5;
     if (fieldName[0]=='p' && strcmp(fieldName, "psc")==0) return base+6;
     if (fieldName[0]=='w' && strcmp(fieldName, "wsmLength")==0) return base+7;
@@ -530,8 +515,7 @@ int WaveShortMessageDescriptor::findField(const char *fieldName) const
     if (fieldName[0]=='s' && strcmp(fieldName, "senderAddress")==0) return base+9;
     if (fieldName[0]=='r' && strcmp(fieldName, "recipientAddress")==0) return base+10;
     if (fieldName[0]=='s' && strcmp(fieldName, "serial")==0) return base+11;
-    if (fieldName[0]=='s' && strcmp(fieldName, "senderPos")==0) return base+12;
-    if (fieldName[0]=='t' && strcmp(fieldName, "timestamp")==0) return base+13;
+    if (fieldName[0]=='t' && strcmp(fieldName, "timestamp")==0) return base+12;
     return basedesc ? basedesc->findField(fieldName) : -1;
 }
 
@@ -556,10 +540,9 @@ const char *WaveShortMessageDescriptor::getFieldTypeString(int field) const
         "int",
         "int",
         "int",
-        "Coord",
         "simtime_t",
     };
-    return (field>=0 && field<14) ? fieldTypeStrings[field] : nullptr;
+    return (field>=0 && field<13) ? fieldTypeStrings[field] : nullptr;
 }
 
 const char **WaveShortMessageDescriptor::getFieldPropertyNames(int field) const
@@ -616,7 +599,7 @@ std::string WaveShortMessageDescriptor::getFieldValueAsString(void *object, int 
         case 1: return long2string(pp->getSecurityType());
         case 2: return long2string(pp->getChannelNumber());
         case 3: return long2string(pp->getDataRate());
-        case 4: return long2string(pp->getPriority());
+        case 4: return long2string(pp->getUserPriority());
         case 5: return long2string(pp->getPsid());
         case 6: return oppstring2string(pp->getPsc());
         case 7: return long2string(pp->getWsmLength());
@@ -624,8 +607,7 @@ std::string WaveShortMessageDescriptor::getFieldValueAsString(void *object, int 
         case 9: return long2string(pp->getSenderAddress());
         case 10: return long2string(pp->getRecipientAddress());
         case 11: return long2string(pp->getSerial());
-        case 12: {std::stringstream out; out << pp->getSenderPos(); return out.str();}
-        case 13: return simtime2string(pp->getTimestamp());
+        case 12: return simtime2string(pp->getTimestamp());
         default: return "";
     }
 }
@@ -644,7 +626,7 @@ bool WaveShortMessageDescriptor::setFieldValueAsString(void *object, int field, 
         case 1: pp->setSecurityType(string2long(value)); return true;
         case 2: pp->setChannelNumber(string2long(value)); return true;
         case 3: pp->setDataRate(string2long(value)); return true;
-        case 4: pp->setPriority(string2long(value)); return true;
+        case 4: pp->setUserPriority(string2long(value)); return true;
         case 5: pp->setPsid(string2long(value)); return true;
         case 6: pp->setPsc((value)); return true;
         case 7: pp->setWsmLength(string2long(value)); return true;
@@ -652,7 +634,7 @@ bool WaveShortMessageDescriptor::setFieldValueAsString(void *object, int field, 
         case 9: pp->setSenderAddress(string2long(value)); return true;
         case 10: pp->setRecipientAddress(string2long(value)); return true;
         case 11: pp->setSerial(string2long(value)); return true;
-        case 13: pp->setTimestamp(string2simtime(value)); return true;
+        case 12: pp->setTimestamp(string2simtime(value)); return true;
         default: return false;
     }
 }
@@ -666,7 +648,6 @@ const char *WaveShortMessageDescriptor::getFieldStructName(int field) const
         field -= basedesc->getFieldCount();
     }
     switch (field) {
-        case 12: return omnetpp::opp_typename(typeid(Coord));
         default: return nullptr;
     };
 }
@@ -681,7 +662,6 @@ void *WaveShortMessageDescriptor::getFieldStructValuePointer(void *object, int f
     }
     WaveShortMessage *pp = (WaveShortMessage *)object; (void)pp;
     switch (field) {
-        case 12: return (void *)(&pp->getSenderPos()); break;
         default: return nullptr;
     }
 }

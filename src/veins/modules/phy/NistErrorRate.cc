@@ -18,7 +18,7 @@
  * Author: Gary Pei <guangyu.pei@boeing.com>
  */
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/phy/NistErrorRate.h"
+#include "veins/modules/phy/NistErrorRate.h"
 #include <omnetpp.h>
 
 NistErrorRate::NistErrorRate ()

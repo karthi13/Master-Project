@@ -22,7 +22,7 @@
 
 #include <omnetpp.h>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
+#include "veins/base/utils/MiXiMDefs.h"
 
 /** @brief Layer address handling helper function.
  *

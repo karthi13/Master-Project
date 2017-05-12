@@ -16,7 +16,7 @@
 
 #include <omnetpp.h>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
+#include "veins/base/utils/MiXiMDefs.h"
 
 /**
  * @brief HostState is published by the battery to announce host failure

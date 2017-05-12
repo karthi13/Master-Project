@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2006-2011 Christoph Sommer <christoph.sommer@uibk.ac.at>
+// Copyright (C) 2016 David Eckhoff <david.eckhoff@fau.de>
 //
 // Documentation for these modules is at http://veins.car2x.org/
 //
@@ -21,26 +21,15 @@
 #ifndef TraCIDemoRSU11p_H
 #define TraCIDemoRSU11p_H
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/ieee80211p/BaseWaveApplLayer.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/world/annotations/AnnotationManager.h"
-
-using Veins::AnnotationManager;
+#include "veins/modules/application/ieee80211p/BaseWaveApplLayer.h"
 
 /**
  * Small RSU Demo using 11p
  */
 class TraCIDemoRSU11p : public BaseWaveApplLayer {
-	public:
-		virtual void initialize(int stage);
 	protected:
-		AnnotationManager* annotations;
-		BaseMobility* mobi;
-		bool sentMessage;
-	protected:
-		virtual void onBeacon(WaveShortMessage* wsm);
-		virtual void onData(WaveShortMessage* wsm);
-		void sendMessage(std::string blockedRoadId);
-		virtual void sendWSM(WaveShortMessage* wsm);
+		virtual void onWSM(WaveShortMessage* wsm);
+		virtual void onWSA(WaveServiceAdvertisment* wsa);
 };
 
 #endif

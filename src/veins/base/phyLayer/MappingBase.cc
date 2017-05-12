@@ -1,4 +1,4 @@
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/MappingBase.h"
+#include "veins/base/phyLayer/MappingBase.h"
 #include <assert.h>
 //---Dimension implementation-----------------------------
 

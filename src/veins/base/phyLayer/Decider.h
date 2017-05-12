@@ -9,10 +9,10 @@
 
 #include <omnetpp.h>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/DeciderToPhyInterface.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/messages/ChannelSenseRequest_m.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/ChannelState.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/phyLayer/DeciderToPhyInterface.h"
+#include "veins/base/messages/ChannelSenseRequest_m.h"
+#include "veins/base/phyLayer/ChannelState.h"
 
 using Veins::AirFrame;
 

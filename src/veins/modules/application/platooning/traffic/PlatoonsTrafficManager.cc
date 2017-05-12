@@ -46,7 +46,6 @@ void PlatoonsTrafficManager::scenarioLoaded() {
 	automated.lane = -1;
 	automated.position = 0;
 	automated.speed = platoonInsertSpeed/3.6;
-
 }
 
 void PlatoonsTrafficManager::handleSelfMsg(cMessage *msg) {
@@ -61,7 +60,7 @@ void PlatoonsTrafficManager::handleSelfMsg(cMessage *msg) {
 
 void PlatoonsTrafficManager::insertPlatoons() {
 
-	//compute inter vehicle distance
+	//compute intervehicle distance
 	double distance = platoonInsertSpeed / 3.6 * platoonInsertHeadway + platoonInsertDistance;
 	//total number of platoons per lane
 	int nPlatoons = nCars / platoonSize / nLanes;

@@ -18,9 +18,9 @@
 #ifndef ACCELERATEANDBRAKESCENARIO_H_
 #define ACCELERATEANDBRAKESCENARIO_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/scenarios/BaseScenario.h"
+#include "veins/modules/application/platooning/scenarios/BaseScenario.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/apps/BaseApp.h"
+#include "veins/modules/application/platooning/apps/BaseApp.h"
 
 class AccelerateAndBrakeScenario : public BaseScenario
 {

@@ -15,13 +15,13 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 //
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/apps/SimplePlatooningApp.h"
+#include "veins/modules/application/platooning/apps/SimplePlatooningApp.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/messages/WaveShortMessage_m.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/messages/MacPkt_m.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mac/ieee80211p/Mac1609_4.h"
+#include "veins/modules/messages/WaveShortMessage_m.h"
+#include "veins/base/messages/MacPkt_m.h"
+#include "veins/modules/mac/ieee80211p/Mac1609_4.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/protocols/BaseProtocol.h"
+#include "veins/modules/application/platooning/protocols/BaseProtocol.h"
 
 Define_Module(SimplePlatooningApp);
 

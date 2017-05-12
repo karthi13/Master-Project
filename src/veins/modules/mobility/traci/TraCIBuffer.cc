@@ -1,6 +1,6 @@
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIBuffer.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIConstants.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCICoord.h"
+#include "veins/modules/mobility/traci/TraCIBuffer.h"
+#include "veins/modules/mobility/traci/TraCIConstants.h"
+#include "veins/modules/mobility/traci/TraCICoord.h"
 
 #include <iomanip>
 #include <sstream>

@@ -23,8 +23,8 @@
 
 #include <omnetpp.h>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIScenarioManager.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCILauncher.h"
+#include "veins/modules/mobility/traci/TraCIScenarioManager.h"
+#include "veins/modules/mobility/traci/TraCILauncher.h"
 
 /**
  * @brief

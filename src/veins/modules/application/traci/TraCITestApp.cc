@@ -20,10 +20,10 @@
 
 #include <algorithm>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/asserts.h"
+#include "veins/base/utils/asserts.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/traci/TraCITestApp.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIColor.h"
+#include "veins/modules/application/traci/TraCITestApp.h"
+#include "veins/modules/mobility/traci/TraCIColor.h"
 
 using Veins::TraCIMobility;
 using Veins::TraCIMobilityAccess;

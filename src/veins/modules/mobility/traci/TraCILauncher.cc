@@ -27,7 +27,7 @@ using namespace omnetpp;
 #include <sys/wait.h>
 #endif
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCILauncher.h"
+#include "veins/modules/mobility/traci/TraCILauncher.h"
 
 using Veins::TraCILauncher;
 

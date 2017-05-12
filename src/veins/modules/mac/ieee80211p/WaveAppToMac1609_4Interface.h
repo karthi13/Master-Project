@@ -18,8 +18,8 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/NetwToMacControlInfo.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/utility/Consts80211p.h"
+#include "veins/base/utils/NetwToMacControlInfo.h"
+#include "veins/modules/utility/Consts80211p.h"
 
 #ifndef ___WAVEAPPTOMAC1609_4INTERFACE_H_
 #define ___WAVEAPPTOMAC1609_4INTERFACE_H_
@@ -33,11 +33,17 @@
  * @ingroup macLayer
  */
 class WaveAppToMac1609_4Interface {
-	public:
+    public:
 
-		virtual void changeServiceChannel(int channelNumber) = 0;
+        virtual bool isChannelSwitchingActive() = 0;
 
-		virtual ~WaveAppToMac1609_4Interface() {} ;
+        virtual simtime_t getSwitchingInterval() =  0;
+
+        virtual bool isCurrentChannelCCH() = 0;
+
+        virtual void changeServiceChannel(int channelNumber) = 0;
+
+        virtual ~WaveAppToMac1609_4Interface() {} ;
 };
 
 #endif /* ___WAVEAPPTOMAC1609_4INTERFACE_H_ */

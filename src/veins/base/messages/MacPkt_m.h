@@ -16,7 +16,7 @@
 
 
 // cplusplus {{
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/SimpleAddress.h"
+#include "veins/base/utils/SimpleAddress.h"
 // }}
 
 /**

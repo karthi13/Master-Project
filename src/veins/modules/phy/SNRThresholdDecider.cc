@@ -1,9 +1,9 @@
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/phy/SNRThresholdDecider.h"
+#include "veins/modules/phy/SNRThresholdDecider.h"
 
 #include <cassert>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/messages/AirFrame_m.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/Mapping.h"
+#include "veins/base/messages/AirFrame_m.h"
+#include "veins/base/phyLayer/Mapping.h"
 
 using Veins::AirFrame;
 

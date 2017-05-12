@@ -1,4 +1,4 @@
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/ChannelState.h"
+#include "veins/base/phyLayer/ChannelState.h"
 
 bool ChannelState::isIdle() const {
 

@@ -1,13 +1,13 @@
 #ifndef SIMPLEOBSTACLEFADING_H_
 #define SIMPLEOBSTACLEFADING_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/AnalogueModel.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/Mapping.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseWorldUtility.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/obstacle/ObstacleControl.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/Move.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/Signal_.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/messages/AirFrame_m.h"
+#include "veins/base/phyLayer/AnalogueModel.h"
+#include "veins/base/phyLayer/Mapping.h"
+#include "veins/base/modules/BaseWorldUtility.h"
+#include "veins/modules/obstacle/ObstacleControl.h"
+#include "veins/base/utils/Move.h"
+#include "veins/base/phyLayer/Signal_.h"
+#include "veins/base/messages/AirFrame_m.h"
 
 using Veins::AirFrame;
 using Veins::ObstacleControl;

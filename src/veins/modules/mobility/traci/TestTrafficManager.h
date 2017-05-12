@@ -18,7 +18,7 @@
 #ifndef TESTTRAFFICMANAGER_H_
 #define TESTTRAFFICMANAGER_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIBaseTrafficManager.h"
+#include "veins/modules/mobility/traci/TraCIBaseTrafficManager.h"
 
 class TestTrafficManager : public TraCIBaseTrafficManager
 {

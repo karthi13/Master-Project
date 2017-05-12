@@ -20,9 +20,9 @@
 #include <sstream>
 #include <cmath>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/world/annotations/AnnotationManager.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIScenarioManager.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCICommandInterface.h"
+#include "veins/modules/world/annotations/AnnotationManager.h"
+#include "veins/modules/mobility/traci/TraCIScenarioManager.h"
+#include "veins/modules/mobility/traci/TraCICommandInterface.h"
 
 Define_Module(Veins::AnnotationManager);
 

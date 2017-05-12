@@ -20,8 +20,8 @@
  **************************************************************************/
 
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/connectionManager/NicEntryDirect.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/connectionManager/ChannelAccess.h"
+#include "veins/base/connectionManager/NicEntryDirect.h"
+#include "veins/base/connectionManager/ChannelAccess.h"
 
 #ifndef nicEV
 #define nicEV EV << "NicEntry: "

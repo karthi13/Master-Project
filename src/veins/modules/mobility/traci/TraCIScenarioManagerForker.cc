@@ -33,10 +33,10 @@
 #include <iostream>
 #include <fstream>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIScenarioManagerForker.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCICommandInterface.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIConstants.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCILauncher.h"
+#include "veins/modules/mobility/traci/TraCIScenarioManagerForker.h"
+#include "veins/modules/mobility/traci/TraCICommandInterface.h"
+#include "veins/modules/mobility/traci/TraCIConstants.h"
+#include "veins/modules/mobility/traci/TraCILauncher.h"
 
 #define MYDEBUG EV
 

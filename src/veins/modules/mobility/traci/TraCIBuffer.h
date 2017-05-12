@@ -4,7 +4,7 @@
 #include <cstddef>
 #include <string>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
+#include "veins/base/utils/MiXiMDefs.h"
 
 namespace Veins {
 

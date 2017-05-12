@@ -18,9 +18,9 @@
  *              provides world-required values
  **************************************************************************/
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseWorldUtility.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/FindModule.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/connectionManager/BaseConnectionManager.h"
+#include "veins/base/modules/BaseWorldUtility.h"
+#include "veins/base/utils/FindModule.h"
+#include "veins/base/connectionManager/BaseConnectionManager.h"
 
 Define_Module(BaseWorldUtility);
 

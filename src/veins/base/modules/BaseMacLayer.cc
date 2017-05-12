@@ -20,21 +20,21 @@
  **************************************************************************/
 
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseMacLayer.h"
+#include "veins/base/modules/BaseMacLayer.h"
 
 #include <cassert>
 #include <sstream>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/Mapping.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/Signal_.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/MacToPhyInterface.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MacToNetwControlInfo.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/NetwToMacControlInfo.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/MacToPhyControlInfo.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/AddressingInterface.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/connectionManager/ChannelAccess.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/FindModule.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/messages/MacPkt_m.h"
+#include "veins/base/phyLayer/Mapping.h"
+#include "veins/base/phyLayer/Signal_.h"
+#include "veins/base/phyLayer/MacToPhyInterface.h"
+#include "veins/base/utils/MacToNetwControlInfo.h"
+#include "veins/base/utils/NetwToMacControlInfo.h"
+#include "veins/base/phyLayer/MacToPhyControlInfo.h"
+#include "veins/base/modules/AddressingInterface.h"
+#include "veins/base/connectionManager/ChannelAccess.h"
+#include "veins/base/utils/FindModule.h"
+#include "veins/base/messages/MacPkt_m.h"
 
 using Veins::ChannelAccess;
 

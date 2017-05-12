@@ -14,18 +14,22 @@
 #endif
 
 // cplusplus {{
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/Signal_.h"
+#include "veins/base/phyLayer/Signal_.h"
+#include "veins/base/utils/POA.h"
 // }}
 
 
 namespace Veins {
 
 /**
- * Class generated from <tt>veins/base/messages/AirFrame.msg:33</tt> by nedtool.
+ * Class generated from <tt>veins/base/messages/AirFrame.msg:35</tt> by nedtool.
  * <pre>
  * packet AirFrame
  * {
  *     Signal signal;		// Contains the physical data of this AirFrame
+ * 
+ *     POA poa;			// contains a POA object with the position, orientation and antenna (pointer)
+ *     						// of the sender
  * 
  *     simtime_t duration;	// time the AirFrames takes to be transmited (without propagation delay)
  * 
@@ -49,6 +53,7 @@ class AirFrame : public ::omnetpp::cPacket
 {
   protected:
     Signal signal;
+    POA poa;
     ::omnetpp::simtime_t duration;
     int state;
     int type;
@@ -76,6 +81,9 @@ class AirFrame : public ::omnetpp::cPacket
     virtual Signal& getSignal();
     virtual const Signal& getSignal() const {return const_cast<AirFrame*>(this)->getSignal();}
     virtual void setSignal(const Signal& signal);
+    virtual POA& getPoa();
+    virtual const POA& getPoa() const {return const_cast<AirFrame*>(this)->getPoa();}
+    virtual void setPoa(const POA& poa);
     virtual ::omnetpp::simtime_t getDuration() const;
     virtual void setDuration(::omnetpp::simtime_t duration);
     virtual int getState() const;

@@ -18,7 +18,7 @@
 #ifndef PLATOONSTRAFFICMANAGER_H_
 #define PLATOONSTRAFFICMANAGER_H_
 
-#include </home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIBaseTrafficManager.h>
+#include <veins/modules/mobility/traci/TraCIBaseTrafficManager.h>
 
 class PlatoonsTrafficManager : public TraCIBaseTrafficManager
 {

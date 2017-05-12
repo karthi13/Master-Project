@@ -21,7 +21,7 @@
 #ifndef MAC80211PTOPHY11PINTERFACE_H_
 #define MAC80211PTOPHY11PINTERFACE_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/MacToPhyInterface.h"
+#include "veins/base/phyLayer/MacToPhyInterface.h"
 
 /**
  * @brief

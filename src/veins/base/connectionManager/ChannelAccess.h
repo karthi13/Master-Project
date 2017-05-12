@@ -27,11 +27,11 @@
 #include <omnetpp.h>
 #include <vector>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BatteryAccess.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/modules/BatteryAccess.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/FindModule.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseMobility.h"
+#include "veins/base/utils/FindModule.h"
+#include "veins/base/modules/BaseMobility.h"
 typedef AccessModuleWrap<BaseMobility>                ChannelMobilityAccessType;
 typedef ChannelMobilityAccessType::wrapType* ChannelMobilityPtrType;
 

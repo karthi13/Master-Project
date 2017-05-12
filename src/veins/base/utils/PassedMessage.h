@@ -5,7 +5,7 @@
 
 #include <omnetpp.h>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
+#include "veins/base/utils/MiXiMDefs.h"
 
 class MIXIM_API PassedMessage : public cObject {
  public:

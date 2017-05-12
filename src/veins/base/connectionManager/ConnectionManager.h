@@ -1,8 +1,8 @@
 #ifndef CONNECTIONMANAGER_H_
 #define CONNECTIONMANAGER_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/connectionManager/BaseConnectionManager.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/connectionManager/BaseConnectionManager.h"
 
 /**
  * @brief BaseConnectionManager implementation which only defines a
@@ -20,10 +20,6 @@ protected:
 
 	/**
 	 * @brief Calculate interference distance
-	 *
-	 * Calculation of the interference distance based on the transmitter
-	 * power, wavelength, pathloss coefficient and a threshold for the
-	 * minimal receive Power
 	 *
 	 * You may want to overwrite this function in order to do your own
 	 * interference calculation

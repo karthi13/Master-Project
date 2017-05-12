@@ -23,21 +23,21 @@
  * and modifications by Christopher Saloman
  */
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/phy/PhyLayer80211p.h"
+#include "veins/modules/phy/PhyLayer80211p.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/phy/Decider80211p.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/analogueModel/SimplePathlossModel.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/analogueModel/BreakpointPathlossModel.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/analogueModel/LogNormalShadowing.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/analogueModel/JakesFading.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/analogueModel/PERModel.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/analogueModel/SimpleObstacleShadowing.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/analogueModel/TwoRayInterferenceModel.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/analogueModel/NakagamiFading.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/connectionManager/BaseConnectionManager.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/utility/Consts80211p.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/messages/AirFrame11p_m.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/MacToPhyControlInfo.h"
+#include "veins/modules/phy/Decider80211p.h"
+#include "veins/modules/analogueModel/SimplePathlossModel.h"
+#include "veins/modules/analogueModel/BreakpointPathlossModel.h"
+#include "veins/modules/analogueModel/LogNormalShadowing.h"
+#include "veins/modules/analogueModel/JakesFading.h"
+#include "veins/modules/analogueModel/PERModel.h"
+#include "veins/modules/analogueModel/SimpleObstacleShadowing.h"
+#include "veins/modules/analogueModel/TwoRayInterferenceModel.h"
+#include "veins/modules/analogueModel/NakagamiFading.h"
+#include "veins/base/connectionManager/BaseConnectionManager.h"
+#include "veins/modules/utility/Consts80211p.h"
+#include "veins/modules/messages/AirFrame11p_m.h"
+#include "veins/base/phyLayer/MacToPhyControlInfo.h"
 
 using Veins::ObstacleControlAccess;
 

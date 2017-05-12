@@ -3,9 +3,9 @@
 
 #include <omnetpp.h>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseModule.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/HostState.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/modules/BaseModule.h"
+#include "veins/base/utils/HostState.h"
 
 /**
  * @brief Defines the amount of power drawn by a device from

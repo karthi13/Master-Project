@@ -1,8 +1,8 @@
 #ifndef MACTOPHYCONTROLINFO_H_
 #define MACTOPHYCONTROLINFO_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/Signal_.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/phyLayer/Signal_.h"
 
 /**
  * @brief Stores information which is needed by the physical layer

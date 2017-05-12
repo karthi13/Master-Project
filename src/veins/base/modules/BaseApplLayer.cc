@@ -20,8 +20,8 @@
  ***************************************************************************/
 
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseApplLayer.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/PassedMessage.h"
+#include "veins/base/modules/BaseApplLayer.h"
+#include "veins/base/utils/PassedMessage.h"
 
 /**
  * First we have to initialize the module from which we derived ours,

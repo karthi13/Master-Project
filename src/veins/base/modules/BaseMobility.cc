@@ -20,14 +20,14 @@
  **************************************************************************/
 
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseMobility.h"
+#include "veins/base/modules/BaseMobility.h"
 
 #include <sstream>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/Coord.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/messages/BorderMsg_m.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/FindModule.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseWorldUtility.h"
+#include "veins/base/utils/Coord.h"
+#include "veins/base/messages/BorderMsg_m.h"
+#include "veins/base/utils/FindModule.h"
+#include "veins/base/modules/BaseWorldUtility.h"
 
 Define_Module(BaseMobility);
 
@@ -103,6 +103,14 @@ void BaseMobility::initialize(int stage)
         if(x > -1) pos.x = x;
         if(y > -1) pos.y = y;
         if(!use2D && z > -1) pos.z = z;
+
+        if (!hasPar("xOrientation") || !hasPar("yOrientation")) {
+            throw cRuntimeError("Orientation coordinates in x and y direction have to specified (necessary for antenna gain calculation)");
+        } else {
+            double zOrient = hasPar("zOrientation") ? par("zOrientation").doubleValue() : 0;
+            Coord orient(par("xOrientation").doubleValue(), par("yOrientation").doubleValue(), zOrient);
+            move.setOrientationByVector(orient);
+        }
 
         // set start-position and start-time (i.e. current simulation-time) of the Move
         move.setStart(pos);

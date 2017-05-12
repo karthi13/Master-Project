@@ -2,9 +2,9 @@
 #define VEINS_MOBILITY_TRACI_TRACICONNECTION_H_
 
 #include <stdint.h>
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIBuffer.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCICoord.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/Coord.h"
+#include "veins/modules/mobility/traci/TraCIBuffer.h"
+#include "veins/modules/mobility/traci/TraCICoord.h"
+#include "veins/base/utils/Coord.h"
 
 namespace Veins {
 

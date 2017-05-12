@@ -3,10 +3,10 @@
 
 #include <cstdlib>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/AnalogueModel.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/Mapping.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseWorldUtility.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/phyLayer/AnalogueModel.h"
+#include "veins/base/phyLayer/Mapping.h"
+#include "veins/base/modules/BaseWorldUtility.h"
 
 using Veins::AirFrame;
 

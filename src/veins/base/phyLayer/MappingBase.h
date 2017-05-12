@@ -10,8 +10,8 @@
 #include <sstream>
 #include <iomanip>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/Interpolation.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/phyLayer/Interpolation.h"
 
 /**
  * @brief Specifies a dimension for mappings (like time, frequency, etc.)

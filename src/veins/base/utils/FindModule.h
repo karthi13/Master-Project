@@ -1,7 +1,7 @@
 #ifndef FIND_MODULE_H
 #define FIND_MODULE_H
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
+#include "veins/base/utils/MiXiMDefs.h"
 
 /**
  * @brief Provides method templates to find omnet modules.

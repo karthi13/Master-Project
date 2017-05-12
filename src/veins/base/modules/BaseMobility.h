@@ -23,11 +23,11 @@
 #ifndef BASE_MOBILITY_H
 #define BASE_MOBILITY_H
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BatteryAccess.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/Coord.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/Move.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseWorldUtility.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/modules/BatteryAccess.h"
+#include "veins/base/utils/Coord.h"
+#include "veins/base/utils/Move.h"
+#include "veins/base/modules/BaseWorldUtility.h"
 
 using Veins::BatteryAccess;
 
@@ -175,9 +175,17 @@ class MIXIM_API BaseMobility : public BatteryAccess
     	return move.getStartPos();
     }
 
+    virtual Coord getCurrentOrientation() const {
+        return move.getOrientation();
+    }
+
     /** @brief Returns the current speed at the current simulation time. */
     virtual Coord getCurrentSpeed() const {
     	return move.getDirection() * move.getSpeed();
+    }
+
+    virtual Coord getCurrentDirection() const {
+        return move.getDirection();
     }
   protected:
     /**

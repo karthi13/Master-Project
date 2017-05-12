@@ -18,14 +18,14 @@
 #ifndef BASEPROTOCOL_H_
 #define BASEPROTOCOL_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseApplLayer.h"
+#include "veins/base/modules/BaseApplLayer.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/UnicastProtocol.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/messages/PlatooningBeacon_m.h"
+#include "veins/modules/application/platooning/UnicastProtocol.h"
+#include "veins/modules/application/platooning/messages/PlatooningBeacon_m.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIMobility.h"
+#include "veins/modules/mobility/traci/TraCIMobility.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/utilities/BasePositionHelper.h"
+#include "veins/modules/application/platooning/utilities/BasePositionHelper.h"
 
 //maximum number of upper layer apps that can connect (see .ned file)
 #define MAX_GATES_COUNT 10

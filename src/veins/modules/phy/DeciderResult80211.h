@@ -10,8 +10,8 @@
 #ifndef DECIDERRESULT80211_H_
 #define DECIDERRESULT80211_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/Decider.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/phyLayer/Decider.h"
 
 /**
  * @brief Defines an extended DeciderResult for the 80211 protocol

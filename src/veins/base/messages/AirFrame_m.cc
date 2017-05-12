@@ -194,6 +194,7 @@ AirFrame& AirFrame::operator=(const AirFrame& other)
 void AirFrame::copy(const AirFrame& other)
 {
     this->signal = other.signal;
+    this->poa = other.poa;
     this->duration = other.duration;
     this->state = other.state;
     this->type = other.type;
@@ -206,6 +207,7 @@ void AirFrame::parsimPack(omnetpp::cCommBuffer *b) const
 {
     ::omnetpp::cPacket::parsimPack(b);
     doParsimPacking(b,this->signal);
+    doParsimPacking(b,this->poa);
     doParsimPacking(b,this->duration);
     doParsimPacking(b,this->state);
     doParsimPacking(b,this->type);
@@ -218,6 +220,7 @@ void AirFrame::parsimUnpack(omnetpp::cCommBuffer *b)
 {
     ::omnetpp::cPacket::parsimUnpack(b);
     doParsimUnpacking(b,this->signal);
+    doParsimUnpacking(b,this->poa);
     doParsimUnpacking(b,this->duration);
     doParsimUnpacking(b,this->state);
     doParsimUnpacking(b,this->type);
@@ -234,6 +237,16 @@ Signal& AirFrame::getSignal()
 void AirFrame::setSignal(const Signal& signal)
 {
     this->signal = signal;
+}
+
+POA& AirFrame::getPoa()
+{
+    return this->poa;
+}
+
+void AirFrame::setPoa(const POA& poa)
+{
+    this->poa = poa;
 }
 
 ::omnetpp::simtime_t AirFrame::getDuration() const
@@ -360,7 +373,7 @@ const char *AirFrameDescriptor::getProperty(const char *propertyname) const
 int AirFrameDescriptor::getFieldCount() const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? 7+basedesc->getFieldCount() : 7;
+    return basedesc ? 8+basedesc->getFieldCount() : 8;
 }
 
 unsigned int AirFrameDescriptor::getFieldTypeFlags(int field) const
@@ -373,6 +386,7 @@ unsigned int AirFrameDescriptor::getFieldTypeFlags(int field) const
     }
     static unsigned int fieldTypeFlags[] = {
         FD_ISCOMPOUND,
+        FD_ISCOMPOUND,
         FD_ISEDITABLE,
         FD_ISEDITABLE,
         FD_ISEDITABLE,
@@ -380,7 +394,7 @@ unsigned int AirFrameDescriptor::getFieldTypeFlags(int field) const
         FD_ISEDITABLE,
         FD_ISEDITABLE,
     };
-    return (field>=0 && field<7) ? fieldTypeFlags[field] : 0;
+    return (field>=0 && field<8) ? fieldTypeFlags[field] : 0;
 }
 
 const char *AirFrameDescriptor::getFieldName(int field) const
@@ -393,6 +407,7 @@ const char *AirFrameDescriptor::getFieldName(int field) const
     }
     static const char *fieldNames[] = {
         "signal",
+        "poa",
         "duration",
         "state",
         "type",
@@ -400,7 +415,7 @@ const char *AirFrameDescriptor::getFieldName(int field) const
         "protocolId",
         "channel",
     };
-    return (field>=0 && field<7) ? fieldNames[field] : nullptr;
+    return (field>=0 && field<8) ? fieldNames[field] : nullptr;
 }
 
 int AirFrameDescriptor::findField(const char *fieldName) const
@@ -408,12 +423,13 @@ int AirFrameDescriptor::findField(const char *fieldName) const
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
     int base = basedesc ? basedesc->getFieldCount() : 0;
     if (fieldName[0]=='s' && strcmp(fieldName, "signal")==0) return base+0;
-    if (fieldName[0]=='d' && strcmp(fieldName, "duration")==0) return base+1;
-    if (fieldName[0]=='s' && strcmp(fieldName, "state")==0) return base+2;
-    if (fieldName[0]=='t' && strcmp(fieldName, "type")==0) return base+3;
-    if (fieldName[0]=='i' && strcmp(fieldName, "id")==0) return base+4;
-    if (fieldName[0]=='p' && strcmp(fieldName, "protocolId")==0) return base+5;
-    if (fieldName[0]=='c' && strcmp(fieldName, "channel")==0) return base+6;
+    if (fieldName[0]=='p' && strcmp(fieldName, "poa")==0) return base+1;
+    if (fieldName[0]=='d' && strcmp(fieldName, "duration")==0) return base+2;
+    if (fieldName[0]=='s' && strcmp(fieldName, "state")==0) return base+3;
+    if (fieldName[0]=='t' && strcmp(fieldName, "type")==0) return base+4;
+    if (fieldName[0]=='i' && strcmp(fieldName, "id")==0) return base+5;
+    if (fieldName[0]=='p' && strcmp(fieldName, "protocolId")==0) return base+6;
+    if (fieldName[0]=='c' && strcmp(fieldName, "channel")==0) return base+7;
     return basedesc ? basedesc->findField(fieldName) : -1;
 }
 
@@ -427,6 +443,7 @@ const char *AirFrameDescriptor::getFieldTypeString(int field) const
     }
     static const char *fieldTypeStrings[] = {
         "Signal",
+        "POA",
         "simtime_t",
         "int",
         "int",
@@ -434,7 +451,7 @@ const char *AirFrameDescriptor::getFieldTypeString(int field) const
         "int",
         "int",
     };
-    return (field>=0 && field<7) ? fieldTypeStrings[field] : nullptr;
+    return (field>=0 && field<8) ? fieldTypeStrings[field] : nullptr;
 }
 
 const char **AirFrameDescriptor::getFieldPropertyNames(int field) const
@@ -488,12 +505,13 @@ std::string AirFrameDescriptor::getFieldValueAsString(void *object, int field, i
     AirFrame *pp = (AirFrame *)object; (void)pp;
     switch (field) {
         case 0: {std::stringstream out; out << pp->getSignal(); return out.str();}
-        case 1: return simtime2string(pp->getDuration());
-        case 2: return long2string(pp->getState());
-        case 3: return long2string(pp->getType());
-        case 4: return long2string(pp->getId());
-        case 5: return long2string(pp->getProtocolId());
-        case 6: return long2string(pp->getChannel());
+        case 1: {std::stringstream out; out << pp->getPoa(); return out.str();}
+        case 2: return simtime2string(pp->getDuration());
+        case 3: return long2string(pp->getState());
+        case 4: return long2string(pp->getType());
+        case 5: return long2string(pp->getId());
+        case 6: return long2string(pp->getProtocolId());
+        case 7: return long2string(pp->getChannel());
         default: return "";
     }
 }
@@ -508,12 +526,12 @@ bool AirFrameDescriptor::setFieldValueAsString(void *object, int field, int i, c
     }
     AirFrame *pp = (AirFrame *)object; (void)pp;
     switch (field) {
-        case 1: pp->setDuration(string2simtime(value)); return true;
-        case 2: pp->setState(string2long(value)); return true;
-        case 3: pp->setType(string2long(value)); return true;
-        case 4: pp->setId(string2long(value)); return true;
-        case 5: pp->setProtocolId(string2long(value)); return true;
-        case 6: pp->setChannel(string2long(value)); return true;
+        case 2: pp->setDuration(string2simtime(value)); return true;
+        case 3: pp->setState(string2long(value)); return true;
+        case 4: pp->setType(string2long(value)); return true;
+        case 5: pp->setId(string2long(value)); return true;
+        case 6: pp->setProtocolId(string2long(value)); return true;
+        case 7: pp->setChannel(string2long(value)); return true;
         default: return false;
     }
 }
@@ -528,6 +546,7 @@ const char *AirFrameDescriptor::getFieldStructName(int field) const
     }
     switch (field) {
         case 0: return omnetpp::opp_typename(typeid(Signal));
+        case 1: return omnetpp::opp_typename(typeid(POA));
         default: return nullptr;
     };
 }
@@ -543,6 +562,7 @@ void *AirFrameDescriptor::getFieldStructValuePointer(void *object, int field, in
     AirFrame *pp = (AirFrame *)object; (void)pp;
     switch (field) {
         case 0: return (void *)(&pp->getSignal()); break;
+        case 1: return (void *)(&pp->getPoa()); break;
         default: return nullptr;
     }
 }

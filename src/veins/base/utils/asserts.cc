@@ -1,4 +1,4 @@
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/asserts.h"
+#include "veins/base/utils/asserts.h"
 
 bool haltOnFails = false;
 bool displayPassed = true;

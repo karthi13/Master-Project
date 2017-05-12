@@ -15,7 +15,7 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 //
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/scenarios/BrakingScenario.h"
+#include "veins/modules/application/platooning/scenarios/BrakingScenario.h"
 
 Define_Module(BrakingScenario);
 

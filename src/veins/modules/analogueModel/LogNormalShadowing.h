@@ -16,8 +16,8 @@
 #ifndef LOGNORMALSHADOWING_H_
 #define LOGNORMALSHADOWING_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/AnalogueModel.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/phyLayer/AnalogueModel.h"
 
 using Veins::AirFrame;
 

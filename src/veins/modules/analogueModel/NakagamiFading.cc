@@ -19,7 +19,7 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/analogueModel/NakagamiFading.h"
+#include "veins/modules/analogueModel/NakagamiFading.h"
 
 #define M_CLOSE 1.5
 #define M_FAR 0.75

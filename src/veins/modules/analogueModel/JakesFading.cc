@@ -13,11 +13,11 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 //
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/analogueModel/JakesFading.h"
+#include "veins/modules/analogueModel/JakesFading.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseWorldUtility.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/messages/AirFrame_m.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/connectionManager/ChannelAccess.h"
+#include "veins/base/modules/BaseWorldUtility.h"
+#include "veins/base/messages/AirFrame_m.h"
+#include "veins/base/connectionManager/ChannelAccess.h"
 
 using Veins::AirFrame;
 using Veins::ChannelAccess;

@@ -24,13 +24,13 @@
  * and modifications by Christopher Saloman
  */
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/phy/Decider80211p.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/phy/DeciderResult80211.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/messages/Mac80211Pkt_m.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/Signal_.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/messages/AirFrame11p_m.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/phy/NistErrorRate.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/utility/ConstsPhy.h"
+#include "veins/modules/phy/Decider80211p.h"
+#include "veins/modules/phy/DeciderResult80211.h"
+#include "veins/modules/messages/Mac80211Pkt_m.h"
+#include "veins/base/phyLayer/Signal_.h"
+#include "veins/modules/messages/AirFrame11p_m.h"
+#include "veins/modules/phy/NistErrorRate.h"
+#include "veins/modules/utility/ConstsPhy.h"
 
 using Veins::AirFrame;
 using Veins::Radio;
@@ -409,8 +409,9 @@ bool Decider80211p::cca(simtime_t_cref time, AirFrame* exclude) {
 	min.setTime(time);
 	min.setArgValue(Dimension::frequency(), centerFrequency - 5e6);
 
-	DBG_D11P << MappingUtils::findMin(*resultMap, min, min) << " > " << ccaThreshold << " = " << (bool)(MappingUtils::findMin(*resultMap, min, min) > ccaThreshold) << std::endl;
-	bool isChannelIdle = MappingUtils::findMin(*resultMap, min, min) < ccaThreshold;
+	double minPower = MappingUtils::findMin(*resultMap, min, min, MappingUtils::cMaxNotFound());
+	DBG_D11P << minPower << " > " << ccaThreshold << " = " << (bool)(minPower > ccaThreshold) << std::endl;
+	bool isChannelIdle = minPower < ccaThreshold;
 	delete resultMap;
 	return isChannelIdle;
 }

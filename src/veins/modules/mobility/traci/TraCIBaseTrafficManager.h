@@ -20,8 +20,8 @@
 
 #include <omnetpp.h>
 #include <queue>
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIScenarioManager.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCICommandInterface.h"
+#include "veins/modules/mobility/traci/TraCIScenarioManager.h"
+#include "veins/modules/mobility/traci/TraCICommandInterface.h"
 
 class TraCIBaseTrafficManager : public cSimpleModule
 {

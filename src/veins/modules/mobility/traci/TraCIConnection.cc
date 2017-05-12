@@ -11,8 +11,8 @@
 #include <algorithm>
 #include <functional>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIConnection.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIConstants.h"
+#include "veins/modules/mobility/traci/TraCIConnection.h"
+#include "veins/modules/mobility/traci/TraCIConstants.h"
 
 #define MYDEBUG EV
 

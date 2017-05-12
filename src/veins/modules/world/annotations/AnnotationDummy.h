@@ -20,7 +20,7 @@
 #ifndef WORLD_ANNOTATION_ANNOTATIONDUMMY_H
 #define WORLD_ANNOTATION_ANNOTATIONDUMMY_H
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
+#include "veins/base/utils/MiXiMDefs.h"
 
 /**
  * AnnotationDummy is just a workaround to visualize annotations

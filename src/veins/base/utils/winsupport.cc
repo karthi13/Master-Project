@@ -5,7 +5,7 @@
  * @date 2007-08-14
  **/
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/winsupport.h"
+#include "veins/base/utils/winsupport.h"
 
 #ifdef _WIN32
 

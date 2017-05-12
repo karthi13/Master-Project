@@ -21,8 +21,8 @@
 #ifndef BASE_WORLD_UTIL_H
 #define BASE_WORLD_UTIL_H
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/Coord.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/utils/Coord.h"
 
 /**
  * @brief Provides information and utility methods for the whole simulation.

@@ -15,12 +15,8 @@
 
 
 
-// cplusplus {{
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/Coord.h"
-// }}
-
 /**
- * Class generated from <tt>veins/modules/messages/WaveShortMessage.msg:27</tt> by nedtool.
+ * Class generated from <tt>veins/modules/messages/WaveShortMessage.msg:21</tt> by nedtool.
  * <pre>
  * packet WaveShortMessage
  * {
@@ -32,8 +28,8 @@
  *     int channelNumber;
  *     //Data rate with which this packet was sent
  *     int dataRate = 1;
- *     //Power Level with which this packet was sent
- *     int priority = 3;
+ *     //User priority with which this packet was sent (note the AC mapping rules in Mac1609_4::mapUserPriority)
+ *     int userPriority = 7;
  *     //Unique number to identify the service
  *     int psid = 0;
  *     //Provider Service Context
@@ -46,7 +42,6 @@
  *     int senderAddress = 0;
  *     int recipientAddress = -1;
  *     int serial = 0;
- *     Coord senderPos;
  *     simtime_t timestamp = 0;
  * }
  * </pre>
@@ -58,7 +53,7 @@ class WaveShortMessage : public ::omnetpp::cPacket
     int securityType;
     int channelNumber;
     int dataRate;
-    int priority;
+    int userPriority;
     int psid;
     ::omnetpp::opp_string psc;
     int wsmLength;
@@ -66,7 +61,6 @@ class WaveShortMessage : public ::omnetpp::cPacket
     int senderAddress;
     int recipientAddress;
     int serial;
-    Coord senderPos;
     ::omnetpp::simtime_t timestamp;
 
   private:
@@ -94,8 +88,8 @@ class WaveShortMessage : public ::omnetpp::cPacket
     virtual void setChannelNumber(int channelNumber);
     virtual int getDataRate() const;
     virtual void setDataRate(int dataRate);
-    virtual int getPriority() const;
-    virtual void setPriority(int priority);
+    virtual int getUserPriority() const;
+    virtual void setUserPriority(int userPriority);
     virtual int getPsid() const;
     virtual void setPsid(int psid);
     virtual const char * getPsc() const;
@@ -110,9 +104,6 @@ class WaveShortMessage : public ::omnetpp::cPacket
     virtual void setRecipientAddress(int recipientAddress);
     virtual int getSerial() const;
     virtual void setSerial(int serial);
-    virtual Coord& getSenderPos();
-    virtual const Coord& getSenderPos() const {return const_cast<WaveShortMessage*>(this)->getSenderPos();}
-    virtual void setSenderPos(const Coord& senderPos);
     virtual ::omnetpp::simtime_t getTimestamp() const;
     virtual void setTimestamp(::omnetpp::simtime_t timestamp);
 };

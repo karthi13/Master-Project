@@ -2,7 +2,7 @@
 #define _CHANNELSTATE_H_
 
 #include <sstream>
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
+#include "veins/base/utils/MiXiMDefs.h"
 
 /**
  * @brief Provides information about the current state of the channel:

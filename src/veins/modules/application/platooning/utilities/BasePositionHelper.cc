@@ -15,7 +15,7 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 //
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/utilities/BasePositionHelper.h"
+#include "veins/modules/application/platooning/utilities/BasePositionHelper.h"
 
 Define_Module(BasePositionHelper);
 

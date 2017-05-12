@@ -22,7 +22,7 @@
 
 #include <stdint.h>
 #include <cmath>
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/utility/ConstsPhy.h"
+#include "veins/modules/utility/ConstsPhy.h"
 
 /**
  * Model the error rate for different modulations and coding schemes.

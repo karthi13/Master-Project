@@ -8,8 +8,8 @@
 #ifndef SIGNALINTERFACES_H_
 #define SIGNALINTERFACES_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/MappingBase.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/phyLayer/MappingBase.h"
 
 class FilledUpMapping;
 

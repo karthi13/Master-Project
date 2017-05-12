@@ -1,6 +1,6 @@
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/analogueModel/PERModel.h"
+#include "veins/modules/analogueModel/PERModel.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/messages/AirFrame_m.h"
+#include "veins/base/messages/AirFrame_m.h"
 
 using Veins::AirFrame;
 

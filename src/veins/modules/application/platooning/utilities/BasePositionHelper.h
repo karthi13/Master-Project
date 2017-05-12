@@ -19,8 +19,8 @@
 #define BASEPOSITIONHELPER_H_
 
 #include <string>
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseApplLayer.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIMobility.h"
+#include "veins/base/modules/BaseApplLayer.h"
+#include "veins/modules/mobility/traci/TraCIMobility.h"
 
 #define INVALID_PLATOON_ID -99
 

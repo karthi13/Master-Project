@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2006-2012 Christoph Sommer <christoph.sommer@uibk.ac.at>
+// Copyright (C) 2006-2017 Christoph Sommer <sommer@ccs-labs.org>
 //
 // Documentation for these modules is at http://veins.car2x.org/
 //
@@ -27,15 +27,15 @@
 
 #include <omnetpp.h>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/Coord.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseWorldUtility.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/connectionManager/BaseConnectionManager.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/FindModule.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/obstacle/ObstacleControl.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIBuffer.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIColor.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIConnection.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCICoord.h"
+#include "veins/base/utils/Coord.h"
+#include "veins/base/modules/BaseWorldUtility.h"
+#include "veins/base/connectionManager/BaseConnectionManager.h"
+#include "veins/base/utils/FindModule.h"
+#include "veins/modules/obstacle/ObstacleControl.h"
+#include "veins/modules/mobility/traci/TraCIBuffer.h"
+#include "veins/modules/mobility/traci/TraCIColor.h"
+#include "veins/modules/mobility/traci/TraCIConnection.h"
+#include "veins/modules/mobility/traci/TraCICoord.h"
 
 /**
  * @brief
@@ -176,7 +176,9 @@ class TraCIScenarioManager : public cSimpleModule
 
 		virtual void init_traci();
 
-		void addModule(std::string nodeId, std::string type, std::string name, std::string displayString, const Coord& position, std::string road_id = "", double speed = -1, double angle = -1);
+		virtual void preInitializeModule(cModule* mod, const std::string& nodeId, const Coord& position, const std::string& road_id, double speed, double angle, VehicleSignal signals);
+		virtual void updateModulePosition(cModule* mod, const Coord& p, const std::string& edge, double speed, double angle, VehicleSignal signals);
+		void addModule(std::string nodeId, std::string type, std::string name, std::string displayString, const Coord& position, std::string road_id = "", double speed = -1, double angle = -1, VehicleSignal signals = VehicleSignal::VEH_SIGNAL_UNDEF);
 		cModule* getManagedModule(std::string nodeId); /**< returns a pointer to the managed module named moduleName, or 0 if no module can be found */
 		void deleteManagedModule(std::string nodeId);
 

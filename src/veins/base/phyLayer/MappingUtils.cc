@@ -5,7 +5,7 @@
  *      Author: Karl Wessel
  */
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/MappingUtils.h"
+#include "veins/base/phyLayer/MappingUtils.h"
 
 
 FilledUpMappingIterator::FilledUpMappingIterator(FilledUpMapping& mapping):

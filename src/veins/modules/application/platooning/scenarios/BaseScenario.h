@@ -18,13 +18,13 @@
 #ifndef BASESCENARIO_H_
 #define BASESCENARIO_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseApplLayer.h"
+#include "veins/base/modules/BaseApplLayer.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIMobility.h"
+#include "veins/modules/mobility/traci/TraCIMobility.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/CC_Const.h"
+#include "veins/modules/application/platooning/CC_Const.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/utilities/BasePositionHelper.h"
+#include "veins/modules/application/platooning/utilities/BasePositionHelper.h"
 
 class BaseScenario : public BaseApplLayer
 {

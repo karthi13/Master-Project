@@ -13,7 +13,7 @@
  *              For further information see file COPYING
  *              in the top level directory
  ***************************************************************************/
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/NetwToMacControlInfo.h"
+#include "veins/base/utils/NetwToMacControlInfo.h"
 
 #include <cassert>
 typedef NetwToMacControlInfo  tNetwToMacControlInfoBase;

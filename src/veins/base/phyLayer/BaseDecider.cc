@@ -5,11 +5,11 @@
  *      Author: karl
  */
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/BaseDecider.h"
+#include "veins/base/phyLayer/BaseDecider.h"
 
 #include <cassert>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/messages/AirFrame_m.h"
+#include "veins/base/messages/AirFrame_m.h"
 
 using Veins::AirFrame;
 

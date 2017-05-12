@@ -18,8 +18,8 @@
 
 #include <omnetpp.h>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/SimpleAddress.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/utils/SimpleAddress.h"
 
 /**
  * @brief Stores control information from mac to upper layer.

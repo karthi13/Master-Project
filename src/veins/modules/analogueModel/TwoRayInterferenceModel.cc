@@ -18,8 +18,8 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/analogueModel/TwoRayInterferenceModel.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/messages/AirFrame_m.h"
+#include "veins/modules/analogueModel/TwoRayInterferenceModel.h"
+#include "veins/base/messages/AirFrame_m.h"
 
 using Veins::AirFrame;
 

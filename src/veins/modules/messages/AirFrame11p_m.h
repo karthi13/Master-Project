@@ -16,7 +16,7 @@
 
 
 // cplusplus {{
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/messages/AirFrame_m.h"
+#include "veins/base/messages/AirFrame_m.h"
 using Veins::AirFrame;
 // }}
 

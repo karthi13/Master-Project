@@ -23,9 +23,9 @@
 #ifndef BASE_LAYER_H
 #define BASE_LAYER_H
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BatteryAccess.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/PassedMessage.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/modules/BatteryAccess.h"
+#include "veins/base/utils/PassedMessage.h"
 
 using Veins::BatteryAccess;
 

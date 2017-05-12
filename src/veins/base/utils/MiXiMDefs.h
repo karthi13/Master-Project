@@ -23,7 +23,7 @@
 namespace omnetpp { }
 using namespace omnetpp;
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/miximkerneldefs.h"
+#include "veins/base/utils/miximkerneldefs.h"
 
 // OMNeT 5 compatibility
 // Around OMNeT++ 5.0 beta 2, the "ev" and "simulation" macros were eliminated, and replaced

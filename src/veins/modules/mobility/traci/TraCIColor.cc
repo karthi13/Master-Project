@@ -18,7 +18,7 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIColor.h"
+#include "veins/modules/mobility/traci/TraCIColor.h"
 
 using Veins::TraCIColor;
 

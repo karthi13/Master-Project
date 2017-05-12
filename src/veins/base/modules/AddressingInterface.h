@@ -10,8 +10,8 @@
 
 #include <omnetpp.h>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/SimpleAddress.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/utils/SimpleAddress.h"
 
 /**
  * @brief Interface for modules which assign L2 and L3 addresses for modules.

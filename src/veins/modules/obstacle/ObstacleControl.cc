@@ -21,7 +21,7 @@
 #include <map>
 #include <set>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/obstacle/ObstacleControl.h"
+#include "veins/modules/obstacle/ObstacleControl.h"
 
 using Veins::ObstacleControl;
 

@@ -1,13 +1,13 @@
 <routes>
-	<vType id="vtypeauto" accel="2.5" decel="6.0" sigma="0.5" width="2.6" height = "1.2" vClass="passenger" length="4" minGap="4" maxSpeed="41" color="1,0,0" probability="1" >
+	<vType id="vtypeauto" accel="2.5" decel="6.0" sigma="0.5" width="2.6" height = "1.2" vClass="passenger" length="4" minGap="0" maxSpeed="41" color="1,0,0" probability="1" >
 		<carFollowing-CC tauEngine="0.5" omegaN="0.2" xi="1" c1="0.5" decel="9" lanesCount="4" ccAccel="1.5"/>
 	</vType>
 	
-	<vType id="vtypeheter" accel="2.5" decel="6.0" sigma="0.5" width="3.7" height = "2.5" vClass="trailer" length="5" minGap="4" maxSpeed="41" color="1,0,1" probability="1" >
+	<vType id="vtypeheter" accel="2.5" decel="6.0" sigma="0.5" width="2.3" height = "2.5" vClass="trailer" length="5" minGap="0" maxSpeed="41" color="1,0,1" probability="1" >
 		<carFollowing-CC tauEngine="0.5" omegaN="0.2" xi="1" c1="0.5" decel="9" lanesCount="4" ccAccel="1.5"/>
 	</vType>
 	
-	<vType id="vtypebus" accel="2.5" decel="6.0" sigma="0.5" vClass="bus" length="6" height="2.7" minGap="4" maxSpeed="41" color="0,1,0" probability="1" >
+	<vType id="vtypebus" accel="2.5" decel="6.0" sigma="0.5" vClass="bus" length="6" height="2.7" minGap="0" maxSpeed="41" color="0,1,0" probability="1" >
 		<carFollowing-CC tauEngine="0.5" omegaN="0.2" xi="1" c1="0.5" decel="9" lanesCount="4" ccAccel="1.5"/>
 	</vType>
 	

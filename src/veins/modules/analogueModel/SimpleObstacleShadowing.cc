@@ -1,4 +1,4 @@
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/analogueModel/SimpleObstacleShadowing.h"
+#include "veins/modules/analogueModel/SimpleObstacleShadowing.h"
 
 using Veins::AirFrame;
 

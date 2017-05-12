@@ -25,8 +25,8 @@
 #include <omnetpp.h>
 #include <map>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/Coord.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/utils/Coord.h"
 
 namespace Veins {
 class ChannelAccess;

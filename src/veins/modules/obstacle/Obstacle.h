@@ -22,8 +22,8 @@
 #define OBSTACLE_OBSTACLE_H
 
 #include <vector>
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/Coord.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/world/annotations/AnnotationManager.h"
+#include "veins/base/utils/Coord.h"
+#include "veins/modules/world/annotations/AnnotationManager.h"
 
 /**
  * stores information about an Obstacle for ObstacleControl

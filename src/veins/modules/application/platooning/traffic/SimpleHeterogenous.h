@@ -43,7 +43,7 @@ protected:
     cMessage *insertPlatoonMessage;
 
     //void insertPlatoons();
-    void insertPlatoonsWithTruck();
+    void insertPlatoonsWithHeterogeneousVehicles();
 
     void convertStringToVector(std::string word);
 

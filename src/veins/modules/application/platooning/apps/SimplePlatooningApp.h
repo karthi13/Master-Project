@@ -18,7 +18,7 @@
 #ifndef SIMPLEPLATOONINGAPP_H_
 #define SIMPLEPLATOONINGAPP_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/apps/BaseApp.h"
+#include "veins/modules/application/platooning/apps/BaseApp.h"
 
 class SimplePlatooningApp : public BaseApp
 {

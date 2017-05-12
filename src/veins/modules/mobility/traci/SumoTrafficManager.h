@@ -18,7 +18,7 @@
 #ifndef SUMOTRAFFICMANAGER_H_
 #define SUMOTRAFFICMANAGER_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIBaseTrafficManager.h"
+#include "veins/modules/mobility/traci/TraCIBaseTrafficManager.h"
 
 /**
  * This traffic manager, set by default, does nothing. The idea

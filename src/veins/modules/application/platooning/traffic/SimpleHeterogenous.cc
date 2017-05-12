@@ -92,19 +92,19 @@ void SimpleHeterogenous::handleSelfMsg(cMessage *msg){
 
     if (msg == insertPlatoonMessage) {
         //insertPlatoons();
-        insertPlatoonsWithTruck();
+        insertPlatoonsWithHeterogeneousVehicles();
     }
 }
 
 /*This function gives us the ability to add a new vehicle type at a desired position in the platoon*/
-void SimpleHeterogenous::insertPlatoonsWithTruck(){
+void SimpleHeterogenous::insertPlatoonsWithHeterogeneousVehicles(){
 
     /*FOR NOW THESE PARAMETERS WILL BE SAME AS OF INSERTPLATOONS()*/
 
     //compute inter vehicle distance
     double distance = platoonInsertSpeed / 3.6 * platoonInsertHeadway + platoonInsertDistance;
     //total number of platoons per lane
-    int nPlatoons = nCars + nTrucks + nBus / platoonSize / nLanes;
+    int nPlatoons = (nCars + nTrucks + nBus) / platoonSize / nLanes;
     //length of 1 platoon
     double platoonLength = platoonSize * 4 + (platoonSize - 1) * distance;
     //inter-platoon distance

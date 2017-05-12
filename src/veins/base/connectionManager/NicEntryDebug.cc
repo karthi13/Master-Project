@@ -19,12 +19,12 @@
  *              ConnectionManager module
  **************************************************************************/
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/connectionManager/NicEntryDebug.h"
+#include "veins/base/connectionManager/NicEntryDebug.h"
 
 #include <cassert>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/connectionManager/ChannelAccess.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/FindModule.h"
+#include "veins/base/connectionManager/ChannelAccess.h"
+#include "veins/base/utils/FindModule.h"
 
 #ifndef nicEV
 #define nicEV EV << "NicEntry: "

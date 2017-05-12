@@ -15,10 +15,13 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 //
 
+
+/*File Modified by Karthikeyan*/
+
 #ifndef SINUSOIDALSCENARIO_H_
 #define SINUSOIDALSCENARIO_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/application/platooning/scenarios/BaseScenario.h"
+#include "veins/modules/application/platooning/scenarios/BaseScenario.h"
 
 class SinusoidalScenario : public BaseScenario
 {
@@ -36,34 +39,27 @@ class SinusoidalScenario : public BaseScenario
 		double oscillationAmplitude;
 		//leader average speed
 		double leaderSpeed;
-
 		//message used to tell the leader to continuously change its desired speed
 		cMessage *changeSpeed;
-
-		//message just to check if the getVehicleWidth() is working or not
-		cMessage *widthOfVeh;
-
-        //message just to check if the getVehicleWidth() is working or not
-        cMessage *heightOfVeh;
-
 		//start oscillation time
 		SimTime startOscillating;
-
+		//message used to tell the height of the vehicle
+		cMessage *heightOfVeh;
+		cMessage *widthOfVeh;
 	public:
 		SinusoidalScenario() {
 			leaderOscillationFrequency = 0;
 			oscillationAmplitude = 0;
 			leaderSpeed = 0;
 			changeSpeed = 0;
-			widthOfVeh = 0;
 			heightOfVeh = 0;
+			widthOfVeh = 0;
 			startOscillating = SimTime(0);
 		}
 
 	protected:
 
 		virtual void handleSelfMsg(cMessage *msg);
-
 };
 
 #endif

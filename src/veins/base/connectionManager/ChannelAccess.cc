@@ -26,13 +26,13 @@
  **************************************************************************/
 
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/connectionManager/ChannelAccess.h"
+#include "veins/base/connectionManager/ChannelAccess.h"
 
 #include <cassert>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/FindModule.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseWorldUtility.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/connectionManager/BaseConnectionManager.h"
+#include "veins/base/utils/FindModule.h"
+#include "veins/base/modules/BaseWorldUtility.h"
+#include "veins/base/connectionManager/BaseConnectionManager.h"
 
 using std::endl;
 

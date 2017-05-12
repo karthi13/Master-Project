@@ -5,8 +5,8 @@
 #include <string>
 #include <stdint.h>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIColor.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/Coord.h"
+#include "veins/modules/mobility/traci/TraCIColor.h"
+#include "veins/base/utils/Coord.h"
 
 namespace Veins {
 
@@ -201,18 +201,21 @@ class TraCICommandInterface
 				 */
 				std::string getVType();
 
-				/*
-				 * Implemented by Karthikeyan
-				 * Returns the width of the vehicles in (m)
-				 */
-				double getVehicleWidth();
-			    /*
-			     * Implemented by Karthikeyan
-			     * Returns the heigth of the vehicles in (m)
-			     */
-				double getVehicleHeight();
-
-
+                /*
+                 * Implemented by Karthikeyan
+                 * Returns the width of the vehicles in (m)
+                 */
+                double getVehicleWidth();
+                /*
+                 * Implemented by Karthikeyan
+                 * Returns the heigth of the vehicles in (m)
+                 */
+                double getVehicleHeight();
+                /*
+                 * Implemented by Karthikeyan
+                 * Returns the Length of the vehicles in (m)
+                 */
+                double getVehicleLength();
 			protected:
 				TraCICommandInterface* traci;
 				TraCIConnection* connection;

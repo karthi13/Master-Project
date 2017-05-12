@@ -23,8 +23,8 @@
 
 #include <omnetpp.h>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/MiXiMDefs.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/SimpleAddress.h"
+#include "veins/base/utils/MiXiMDefs.h"
+#include "veins/base/utils/SimpleAddress.h"
 
 /**
  * @brief Control info to pass next hop L2 addr from netw to MAC layer

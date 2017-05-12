@@ -24,7 +24,7 @@
  **************************************************************************/
 
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseLayer.h"
+#include "veins/base/modules/BaseLayer.h"
 
 #include <assert.h>
 

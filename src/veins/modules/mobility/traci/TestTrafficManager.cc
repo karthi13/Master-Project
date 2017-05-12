@@ -15,7 +15,7 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 //
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TestTrafficManager.h"
+#include "veins/modules/mobility/traci/TestTrafficManager.h"
 
 Define_Module(TestTrafficManager);
 

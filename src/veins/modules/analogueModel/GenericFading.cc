@@ -15,10 +15,10 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 //
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/analogueModel/GenericFading.h"
+#include "veins/modules/analogueModel/GenericFading.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/Signal_.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/messages/AirFrame_m.h"
+#include "veins/base/phyLayer/Signal_.h"
+#include "veins/base/messages/AirFrame_m.h"
 
 double GenericFadingMapping::getValue(const Argument& pos) const {
 	return attenuationFactor;

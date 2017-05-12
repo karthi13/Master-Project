@@ -5,9 +5,9 @@
  *      Author: Karl Wessel
  */
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BatteryAccess.h"
+#include "veins/base/modules/BatteryAccess.h"
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/FindModule.h"
+#include "veins/base/utils/FindModule.h"
 
 using Veins::BatteryAccess;
 

@@ -22,10 +22,10 @@
 #ifndef DECIDER80211p_H_
 #define DECIDER80211p_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/BaseDecider.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/utility/Consts80211p.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mac/ieee80211p/Mac80211pToPhy11pInterface.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/phy/Decider80211pToPhy80211pInterface.h"
+#include "veins/base/phyLayer/BaseDecider.h"
+#include "veins/modules/utility/Consts80211p.h"
+#include "veins/modules/mac/ieee80211p/Mac80211pToPhy11pInterface.h"
+#include "veins/modules/phy/Decider80211pToPhy80211pInterface.h"
 
 using Veins::AirFrame;
 

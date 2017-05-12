@@ -2,7 +2,7 @@
 # OMNeT++/OMNEST Makefile for libplexe-veins
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep --make-so -O out -Iplexe-veins/src/ -I/home/hh-ide/src/plexe-veins/src/veins -I/home/hh-ide/src/plexe-veins/src
+#  opp_makemake -f --deep --make-so -O out
 #
 
 # Name of target to be created (-o option)
@@ -10,9 +10,6 @@ TARGET = libplexe-veins$(SHARED_LIB_SUFFIX)
 
 # C++ include paths (with -I)
 INCLUDE_PATH = \
-    -Iplexe-veins/src/ \
-    -Iveins \
-    -I. \
     -I. \
     -Iscripts \
     -Iveins \
@@ -79,6 +76,7 @@ OBJS = \
     $O/veins/base/phyLayer/BasePhyLayer.o \
     $O/veins/base/phyLayer/ChannelState.o \
     $O/veins/base/phyLayer/PhyUtils.o \
+    $O/veins/base/phyLayer/Antenna.o \
     $O/veins/base/phyLayer/ChannelInfo.o \
     $O/veins/base/phyLayer/Signal.o \
     $O/veins/base/phyLayer/MappingUtils.o \
@@ -100,20 +98,25 @@ OBJS = \
     $O/veins/modules/application/platooning/UnicastProtocol.o \
     $O/veins/modules/application/platooning/apps/BaseApp.o \
     $O/veins/modules/application/platooning/apps/SimplePlatooningApp.o \
+    $O/veins/modules/application/platooning/protocols/SlottedBeaconing.o \
     $O/veins/modules/application/platooning/protocols/BaseProtocol.o \
+    $O/veins/modules/application/platooning/protocols/HumanInterferingProtocol.o \
     $O/veins/modules/application/platooning/protocols/SimplePlatooningBeaconing.o \
     $O/veins/modules/application/platooning/scenarios/SinusoidalScenario.o \
     $O/veins/modules/application/platooning/scenarios/BaseScenario.o \
     $O/veins/modules/application/platooning/scenarios/BrakingScenario.o \
     $O/veins/modules/application/platooning/scenarios/AccelerateAndBrakeScenario.o \
+    $O/veins/modules/application/platooning/traffic/PlatoonsPlusHumanTraffic.o \
     $O/veins/modules/application/platooning/traffic/PlatoonsTrafficManager.o \
     $O/veins/modules/application/platooning/traffic/SimpleHeterogenous.o \
     $O/veins/modules/application/platooning/utilities/PositionHelper.o \
     $O/veins/modules/application/platooning/utilities/BasePositionHelper.o \
+    $O/veins/modules/application/traci/MyVeinsApp.o \
     $O/veins/modules/application/traci/TraCIDemoRSU11p.o \
     $O/veins/modules/application/traci/TraCITestApp.o \
     $O/veins/modules/application/traci/TraCIDemo11p.o \
     $O/veins/modules/mac/ieee80211p/Mac1609_4.o \
+    $O/veins/modules/mobility/LinearMobility.o \
     $O/veins/modules/mobility/traci/TraCILauncher.o \
     $O/veins/modules/mobility/traci/TraCIBaseTrafficManager.o \
     $O/veins/modules/mobility/traci/TraCIMobility.o \
@@ -125,11 +128,11 @@ OBJS = \
     $O/veins/modules/mobility/traci/TraCIBuffer.o \
     $O/veins/modules/mobility/traci/TraCICommandInterface.o \
     $O/veins/modules/mobility/traci/TraCIScenarioManager.o \
-    $O/veins/modules/mobility/traci/TraCIScenarioManagerInet.o \
     $O/veins/modules/mobility/traci/SumoTrafficManager.o \
     $O/veins/modules/mobility/traci/TraCIScenarioManagerLaunchd.o \
     $O/veins/modules/obstacle/ObstacleControl.o \
     $O/veins/modules/obstacle/Obstacle.o \
+    $O/veins/modules/phy/SampledAntenna1D.o \
     $O/veins/modules/phy/Decider80211p.o \
     $O/veins/modules/phy/SNRThresholdDecider.o \
     $O/veins/modules/phy/PhyLayer80211p.o \
@@ -142,10 +145,13 @@ OBJS = \
     $O/veins/base/messages/ChannelSenseRequest_m.o \
     $O/veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.o \
     $O/veins/modules/application/platooning/messages/PlatooningBeacon_m.o \
+    $O/veins/modules/application/platooning/messages/InterferingBeacon_m.o \
     $O/veins/modules/application/platooning/messages/UnicastMessage_m.o \
+    $O/veins/modules/messages/WaveServiceAdvertisement_m.o \
     $O/veins/modules/messages/PhyControlMessage_m.o \
     $O/veins/modules/messages/WaveShortMessage_m.o \
     $O/veins/modules/messages/AirFrame11p_m.o \
+    $O/veins/modules/messages/BasicSafetyMessage_m.o \
     $O/veins/modules/messages/Mac80211Pkt_m.o
 
 # Message files
@@ -156,10 +162,13 @@ MSGFILES = \
     veins/base/messages/ChannelSenseRequest.msg \
     veins/modules/application/platooning/messages/UnicastProtocolControlMessage.msg \
     veins/modules/application/platooning/messages/PlatooningBeacon.msg \
+    veins/modules/application/platooning/messages/InterferingBeacon.msg \
     veins/modules/application/platooning/messages/UnicastMessage.msg \
+    veins/modules/messages/WaveServiceAdvertisement.msg \
     veins/modules/messages/PhyControlMessage.msg \
     veins/modules/messages/WaveShortMessage.msg \
     veins/modules/messages/AirFrame11p.msg \
+    veins/modules/messages/BasicSafetyMessage.msg \
     veins/modules/messages/Mac80211Pkt.msg
 
 # SM files
@@ -286,121 +295,1845 @@ depend:
 	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES) $(SM_CC_FILES)  ./*.cc scripts/*.cc veins/*.cc veins/base/*.cc veins/base/connectionManager/*.cc veins/base/messages/*.cc veins/base/modules/*.cc veins/base/phyLayer/*.cc veins/base/utils/*.cc veins/modules/*.cc veins/modules/analogueModel/*.cc veins/modules/application/*.cc veins/modules/application/ieee80211p/*.cc veins/modules/application/platooning/*.cc veins/modules/application/platooning/apps/*.cc veins/modules/application/platooning/messages/*.cc veins/modules/application/platooning/protocols/*.cc veins/modules/application/platooning/scenarios/*.cc veins/modules/application/platooning/traffic/*.cc veins/modules/application/platooning/utilities/*.cc veins/modules/application/traci/*.cc veins/modules/mac/*.cc veins/modules/mac/ieee80211p/*.cc veins/modules/messages/*.cc veins/modules/mobility/*.cc veins/modules/mobility/traci/*.cc veins/modules/nic/*.cc veins/modules/obstacle/*.cc veins/modules/phy/*.cc veins/modules/utility/*.cc veins/modules/world/*.cc veins/modules/world/annotations/*.cc veins/nodes/*.cc
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
-$O/veins/base/connectionManager/BaseConnectionManager.o: veins/base/connectionManager/BaseConnectionManager.cc
-$O/veins/base/connectionManager/ChannelAccess.o: veins/base/connectionManager/ChannelAccess.cc
-$O/veins/base/connectionManager/ConnectionManager.o: veins/base/connectionManager/ConnectionManager.cc
-$O/veins/base/connectionManager/NicEntryDebug.o: veins/base/connectionManager/NicEntryDebug.cc
-$O/veins/base/connectionManager/NicEntryDirect.o: veins/base/connectionManager/NicEntryDirect.cc
+$O/veins/base/connectionManager/BaseConnectionManager.o: veins/base/connectionManager/BaseConnectionManager.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/connectionManager/NicEntryDebug.h \
+	veins/base/connectionManager/NicEntryDirect.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/connectionManager/ChannelAccess.o: veins/base/connectionManager/ChannelAccess.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/connectionManager/ConnectionManager.o: veins/base/connectionManager/ConnectionManager.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/connectionManager/NicEntryDebug.o: veins/base/connectionManager/NicEntryDebug.cc \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/connectionManager/NicEntryDebug.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/connectionManager/NicEntryDirect.o: veins/base/connectionManager/NicEntryDirect.cc \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/connectionManager/NicEntryDirect.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/miximkerneldefs.h
 $O/veins/base/messages/AirFrame_m.o: veins/base/messages/AirFrame_m.cc \
 	veins/base/messages/AirFrame_m.h \
-	veins/base/phyLayer/Signal_.h
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h
 $O/veins/base/messages/BorderMsg_m.o: veins/base/messages/BorderMsg_m.cc \
 	veins/base/messages/BorderMsg_m.h \
 	veins/base/utils/Coord.h \
-	veins/base/utils/FWMath.h
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h
 $O/veins/base/messages/ChannelSenseRequest_m.o: veins/base/messages/ChannelSenseRequest_m.cc \
 	veins/base/messages/ChannelSenseRequest_m.h \
-	veins/base/phyLayer/ChannelState.h
+	veins/base/phyLayer/ChannelState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h
 $O/veins/base/messages/MacPkt_m.o: veins/base/messages/MacPkt_m.cc \
 	veins/base/messages/MacPkt_m.h \
-	veins/base/utils/SimpleAddress.h
-$O/veins/base/modules/BaseApplLayer.o: veins/base/modules/BaseApplLayer.cc
-$O/veins/base/modules/BaseBattery.o: veins/base/modules/BaseBattery.cc
-$O/veins/base/modules/BaseLayer.o: veins/base/modules/BaseLayer.cc
-$O/veins/base/modules/BaseMacLayer.o: veins/base/modules/BaseMacLayer.cc
-$O/veins/base/modules/BaseMobility.o: veins/base/modules/BaseMobility.cc
-$O/veins/base/modules/BaseModule.o: veins/base/modules/BaseModule.cc
-$O/veins/base/modules/BaseWorldUtility.o: veins/base/modules/BaseWorldUtility.cc
-$O/veins/base/modules/BatteryAccess.o: veins/base/modules/BatteryAccess.cc
-$O/veins/base/phyLayer/BaseDecider.o: veins/base/phyLayer/BaseDecider.cc
-$O/veins/base/phyLayer/BasePhyLayer.o: veins/base/phyLayer/BasePhyLayer.cc
-$O/veins/base/phyLayer/ChannelInfo.o: veins/base/phyLayer/ChannelInfo.cc
-$O/veins/base/phyLayer/ChannelState.o: veins/base/phyLayer/ChannelState.cc
-$O/veins/base/phyLayer/Decider.o: veins/base/phyLayer/Decider.cc
-$O/veins/base/phyLayer/MappingBase.o: veins/base/phyLayer/MappingBase.cc
-$O/veins/base/phyLayer/MappingUtils.o: veins/base/phyLayer/MappingUtils.cc
-$O/veins/base/phyLayer/PhyUtils.o: veins/base/phyLayer/PhyUtils.cc
-$O/veins/base/phyLayer/Signal.o: veins/base/phyLayer/Signal.cc
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/modules/BaseApplLayer.o: veins/base/modules/BaseApplLayer.cc \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/modules/BaseBattery.o: veins/base/modules/BaseBattery.cc \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/modules/BaseLayer.o: veins/base/modules/BaseLayer.cc \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/modules/BaseMacLayer.o: veins/base/modules/BaseMacLayer.cc \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/messages/MacPkt_m.h \
+	veins/base/modules/AddressingInterface.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMacLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/ChannelState.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/MacToPhyControlInfo.h \
+	veins/base/phyLayer/MacToPhyInterface.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/PhyUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MacToNetwControlInfo.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/modules/BaseMobility.o: veins/base/modules/BaseMobility.cc \
+	veins/base/messages/BorderMsg_m.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/modules/BaseModule.o: veins/base/modules/BaseModule.cc \
+	veins/base/modules/BaseModule.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/modules/BaseWorldUtility.o: veins/base/modules/BaseWorldUtility.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/modules/BatteryAccess.o: veins/base/modules/BatteryAccess.cc \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/phyLayer/Antenna.o: veins/base/phyLayer/Antenna.cc \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/phyLayer/BaseDecider.o: veins/base/phyLayer/BaseDecider.cc \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/messages/ChannelSenseRequest_m.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/BaseDecider.h \
+	veins/base/phyLayer/ChannelState.h \
+	veins/base/phyLayer/Decider.h \
+	veins/base/phyLayer/DeciderToPhyInterface.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/phyLayer/BasePhyLayer.o: veins/base/phyLayer/BasePhyLayer.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/messages/ChannelSenseRequest_m.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/BasePhyLayer.h \
+	veins/base/phyLayer/ChannelInfo.h \
+	veins/base/phyLayer/ChannelState.h \
+	veins/base/phyLayer/Decider.h \
+	veins/base/phyLayer/DeciderToPhyInterface.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/MacToPhyControlInfo.h \
+	veins/base/phyLayer/MacToPhyInterface.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/PhyToMacControlInfo.h \
+	veins/base/phyLayer/PhyUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/phy/SampledAntenna1D.h
+$O/veins/base/phyLayer/ChannelInfo.o: veins/base/phyLayer/ChannelInfo.cc \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/ChannelInfo.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/phyLayer/ChannelState.o: veins/base/phyLayer/ChannelState.cc \
+	veins/base/phyLayer/ChannelState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/phyLayer/Decider.o: veins/base/phyLayer/Decider.cc \
+	veins/base/messages/ChannelSenseRequest_m.h \
+	veins/base/phyLayer/ChannelState.h \
+	veins/base/phyLayer/Decider.h \
+	veins/base/phyLayer/DeciderToPhyInterface.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/phyLayer/MappingBase.o: veins/base/phyLayer/MappingBase.cc \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/phyLayer/MappingUtils.o: veins/base/phyLayer/MappingUtils.cc \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/phyLayer/PhyUtils.o: veins/base/phyLayer/PhyUtils.cc \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/PhyUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/phyLayer/Signal.o: veins/base/phyLayer/Signal.cc \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h
 $O/veins/base/utils/Coord.o: veins/base/utils/Coord.cc \
 	veins/base/utils/Coord.h \
-	veins/base/utils/FWMath.h
-$O/veins/base/utils/NetwToMacControlInfo.o: veins/base/utils/NetwToMacControlInfo.cc
-$O/veins/base/utils/SimpleAddress.o: veins/base/utils/SimpleAddress.cc
-$O/veins/base/utils/asserts.o: veins/base/utils/asserts.cc
-$O/veins/base/utils/winsupport.o: veins/base/utils/winsupport.cc
-$O/veins/modules/analogueModel/BreakpointPathlossModel.o: veins/modules/analogueModel/BreakpointPathlossModel.cc
-$O/veins/modules/analogueModel/GenericFading.o: veins/modules/analogueModel/GenericFading.cc
-$O/veins/modules/analogueModel/JakesFading.o: veins/modules/analogueModel/JakesFading.cc
-$O/veins/modules/analogueModel/LogNormalShadowing.o: veins/modules/analogueModel/LogNormalShadowing.cc
-$O/veins/modules/analogueModel/NakagamiFading.o: veins/modules/analogueModel/NakagamiFading.cc
-$O/veins/modules/analogueModel/PERModel.o: veins/modules/analogueModel/PERModel.cc
-$O/veins/modules/analogueModel/SimpleObstacleShadowing.o: veins/modules/analogueModel/SimpleObstacleShadowing.cc
-$O/veins/modules/analogueModel/SimplePathlossModel.o: veins/modules/analogueModel/SimplePathlossModel.cc
-$O/veins/modules/analogueModel/TwoRayInterferenceModel.o: veins/modules/analogueModel/TwoRayInterferenceModel.cc
-$O/veins/modules/application/ieee80211p/BaseWaveApplLayer.o: veins/modules/application/ieee80211p/BaseWaveApplLayer.cc
-$O/veins/modules/application/platooning/UnicastProtocol.o: veins/modules/application/platooning/UnicastProtocol.cc
-$O/veins/modules/application/platooning/apps/BaseApp.o: veins/modules/application/platooning/apps/BaseApp.cc
-$O/veins/modules/application/platooning/apps/SimplePlatooningApp.o: veins/modules/application/platooning/apps/SimplePlatooningApp.cc
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/utils/NetwToMacControlInfo.o: veins/base/utils/NetwToMacControlInfo.cc \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/utils/SimpleAddress.o: veins/base/utils/SimpleAddress.cc \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h
+$O/veins/base/utils/asserts.o: veins/base/utils/asserts.cc \
+	veins/base/utils/asserts.h
+$O/veins/base/utils/winsupport.o: veins/base/utils/winsupport.cc \
+	veins/base/utils/winsupport.h
+$O/veins/modules/analogueModel/BreakpointPathlossModel.o: veins/modules/analogueModel/BreakpointPathlossModel.cc \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/analogueModel/BreakpointPathlossModel.h
+$O/veins/modules/analogueModel/GenericFading.o: veins/modules/analogueModel/GenericFading.cc \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/analogueModel/GenericFading.h
+$O/veins/modules/analogueModel/JakesFading.o: veins/modules/analogueModel/JakesFading.cc \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/analogueModel/JakesFading.h
+$O/veins/modules/analogueModel/LogNormalShadowing.o: veins/modules/analogueModel/LogNormalShadowing.cc \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/analogueModel/LogNormalShadowing.h
+$O/veins/modules/analogueModel/NakagamiFading.o: veins/modules/analogueModel/NakagamiFading.cc \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/analogueModel/NakagamiFading.h
+$O/veins/modules/analogueModel/PERModel.o: veins/modules/analogueModel/PERModel.cc \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/analogueModel/PERModel.h
+$O/veins/modules/analogueModel/SimpleObstacleShadowing.o: veins/modules/analogueModel/SimpleObstacleShadowing.cc \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/analogueModel/SimpleObstacleShadowing.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/analogueModel/SimplePathlossModel.o: veins/modules/analogueModel/SimplePathlossModel.cc \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/analogueModel/SimplePathlossModel.h
+$O/veins/modules/analogueModel/TwoRayInterferenceModel.o: veins/modules/analogueModel/TwoRayInterferenceModel.cc \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/analogueModel/TwoRayInterferenceModel.h
+$O/veins/modules/application/ieee80211p/BaseWaveApplLayer.o: veins/modules/application/ieee80211p/BaseWaveApplLayer.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/ieee80211p/BaseWaveApplLayer.h \
+	veins/modules/mac/ieee80211p/WaveAppToMac1609_4Interface.h \
+	veins/modules/messages/BasicSafetyMessage_m.h \
+	veins/modules/messages/WaveServiceAdvertisement_m.h \
+	veins/modules/messages/WaveShortMessage_m.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/platooning/UnicastProtocol.o: veins/modules/application/platooning/UnicastProtocol.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/messages/ChannelSenseRequest_m.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/phyLayer/ChannelState.h \
+	veins/base/phyLayer/Decider.h \
+	veins/base/phyLayer/DeciderToPhyInterface.h \
+	veins/base/phyLayer/PhyToMacControlInfo.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/ieee80211p/BaseWaveApplLayer.h \
+	veins/modules/application/platooning/UnicastProtocol.h \
+	veins/modules/application/platooning/messages/UnicastMessage_m.h \
+	veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.h \
+	veins/modules/mac/ieee80211p/WaveAppToMac1609_4Interface.h \
+	veins/modules/messages/BasicSafetyMessage_m.h \
+	veins/modules/messages/WaveServiceAdvertisement_m.h \
+	veins/modules/messages/WaveShortMessage_m.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/phy/DeciderResult80211.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/platooning/apps/BaseApp.o: veins/modules/application/platooning/apps/BaseApp.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/messages/ChannelSenseRequest_m.h \
+	veins/base/messages/MacPkt_m.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMacLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/BaseDecider.h \
+	veins/base/phyLayer/BasePhyLayer.h \
+	veins/base/phyLayer/ChannelInfo.h \
+	veins/base/phyLayer/ChannelState.h \
+	veins/base/phyLayer/Decider.h \
+	veins/base/phyLayer/DeciderToPhyInterface.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/MacToPhyControlInfo.h \
+	veins/base/phyLayer/MacToPhyInterface.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/PhyUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/analogueModel/JakesFading.h \
+	veins/modules/analogueModel/LogNormalShadowing.h \
+	veins/modules/analogueModel/SimplePathlossModel.h \
+	veins/modules/application/ieee80211p/BaseWaveApplLayer.h \
+	veins/modules/application/platooning/CC_Const.h \
+	veins/modules/application/platooning/UnicastProtocol.h \
+	veins/modules/application/platooning/apps/BaseApp.h \
+	veins/modules/application/platooning/messages/PlatooningBeacon_m.h \
+	veins/modules/application/platooning/messages/UnicastMessage_m.h \
+	veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.h \
+	veins/modules/application/platooning/protocols/BaseProtocol.h \
+	veins/modules/application/platooning/utilities/BasePositionHelper.h \
+	veins/modules/mac/ieee80211p/Mac1609_4.h \
+	veins/modules/mac/ieee80211p/Mac80211pToPhy11pInterface.h \
+	veins/modules/mac/ieee80211p/WaveAppToMac1609_4Interface.h \
+	veins/modules/messages/BasicSafetyMessage_m.h \
+	veins/modules/messages/Mac80211Pkt_m.h \
+	veins/modules/messages/WaveServiceAdvertisement_m.h \
+	veins/modules/messages/WaveShortMessage_m.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/phy/Decider80211p.h \
+	veins/modules/phy/Decider80211pToPhy80211pInterface.h \
+	veins/modules/phy/PhyLayer80211p.h \
+	veins/modules/phy/SNRThresholdDecider.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/utility/ConstsPhy.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/platooning/apps/SimplePlatooningApp.o: veins/modules/application/platooning/apps/SimplePlatooningApp.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/messages/ChannelSenseRequest_m.h \
+	veins/base/messages/MacPkt_m.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMacLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/BaseDecider.h \
+	veins/base/phyLayer/BasePhyLayer.h \
+	veins/base/phyLayer/ChannelInfo.h \
+	veins/base/phyLayer/ChannelState.h \
+	veins/base/phyLayer/Decider.h \
+	veins/base/phyLayer/DeciderToPhyInterface.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/MacToPhyControlInfo.h \
+	veins/base/phyLayer/MacToPhyInterface.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/PhyUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/analogueModel/JakesFading.h \
+	veins/modules/analogueModel/LogNormalShadowing.h \
+	veins/modules/analogueModel/SimplePathlossModel.h \
+	veins/modules/application/ieee80211p/BaseWaveApplLayer.h \
+	veins/modules/application/platooning/CC_Const.h \
+	veins/modules/application/platooning/UnicastProtocol.h \
+	veins/modules/application/platooning/apps/BaseApp.h \
+	veins/modules/application/platooning/apps/SimplePlatooningApp.h \
+	veins/modules/application/platooning/messages/PlatooningBeacon_m.h \
+	veins/modules/application/platooning/messages/UnicastMessage_m.h \
+	veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.h \
+	veins/modules/application/platooning/protocols/BaseProtocol.h \
+	veins/modules/application/platooning/utilities/BasePositionHelper.h \
+	veins/modules/mac/ieee80211p/Mac1609_4.h \
+	veins/modules/mac/ieee80211p/Mac80211pToPhy11pInterface.h \
+	veins/modules/mac/ieee80211p/WaveAppToMac1609_4Interface.h \
+	veins/modules/messages/BasicSafetyMessage_m.h \
+	veins/modules/messages/Mac80211Pkt_m.h \
+	veins/modules/messages/WaveServiceAdvertisement_m.h \
+	veins/modules/messages/WaveShortMessage_m.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/phy/Decider80211p.h \
+	veins/modules/phy/Decider80211pToPhy80211pInterface.h \
+	veins/modules/phy/PhyLayer80211p.h \
+	veins/modules/phy/SNRThresholdDecider.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/utility/ConstsPhy.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/platooning/messages/InterferingBeacon_m.o: veins/modules/application/platooning/messages/InterferingBeacon_m.cc \
+	veins/modules/application/platooning/messages/InterferingBeacon_m.h
 $O/veins/modules/application/platooning/messages/PlatooningBeacon_m.o: veins/modules/application/platooning/messages/PlatooningBeacon_m.cc \
 	veins/modules/application/platooning/messages/PlatooningBeacon_m.h
 $O/veins/modules/application/platooning/messages/UnicastMessage_m.o: veins/modules/application/platooning/messages/UnicastMessage_m.cc \
 	veins/modules/application/platooning/messages/UnicastMessage_m.h
 $O/veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.o: veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.cc \
 	veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.h
-$O/veins/modules/application/platooning/protocols/BaseProtocol.o: veins/modules/application/platooning/protocols/BaseProtocol.cc
-$O/veins/modules/application/platooning/protocols/SimplePlatooningBeaconing.o: veins/modules/application/platooning/protocols/SimplePlatooningBeaconing.cc \
+$O/veins/modules/application/platooning/protocols/BaseProtocol.o: veins/modules/application/platooning/protocols/BaseProtocol.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/messages/ChannelSenseRequest_m.h \
+	veins/base/messages/MacPkt_m.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMacLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/BaseDecider.h \
+	veins/base/phyLayer/BasePhyLayer.h \
+	veins/base/phyLayer/ChannelInfo.h \
+	veins/base/phyLayer/ChannelState.h \
+	veins/base/phyLayer/Decider.h \
+	veins/base/phyLayer/DeciderToPhyInterface.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/MacToPhyControlInfo.h \
+	veins/base/phyLayer/MacToPhyInterface.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/PhyUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/analogueModel/JakesFading.h \
+	veins/modules/analogueModel/LogNormalShadowing.h \
+	veins/modules/analogueModel/SimplePathlossModel.h \
+	veins/modules/application/ieee80211p/BaseWaveApplLayer.h \
+	veins/modules/application/platooning/UnicastProtocol.h \
+	veins/modules/application/platooning/messages/PlatooningBeacon_m.h \
+	veins/modules/application/platooning/messages/UnicastMessage_m.h \
+	veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.h \
 	veins/modules/application/platooning/protocols/BaseProtocol.h \
-	veins/modules/application/platooning/protocols/SimplePlatooningBeaconing.h
-$O/veins/modules/application/platooning/scenarios/AccelerateAndBrakeScenario.o: veins/modules/application/platooning/scenarios/AccelerateAndBrakeScenario.cc
-$O/veins/modules/application/platooning/scenarios/BaseScenario.o: veins/modules/application/platooning/scenarios/BaseScenario.cc
-$O/veins/modules/application/platooning/scenarios/BrakingScenario.o: veins/modules/application/platooning/scenarios/BrakingScenario.cc
-$O/veins/modules/application/platooning/scenarios/SinusoidalScenario.o: veins/modules/application/platooning/scenarios/SinusoidalScenario.cc
+	veins/modules/application/platooning/utilities/BasePositionHelper.h \
+	veins/modules/mac/ieee80211p/Mac1609_4.h \
+	veins/modules/mac/ieee80211p/Mac80211pToPhy11pInterface.h \
+	veins/modules/mac/ieee80211p/WaveAppToMac1609_4Interface.h \
+	veins/modules/messages/BasicSafetyMessage_m.h \
+	veins/modules/messages/Mac80211Pkt_m.h \
+	veins/modules/messages/WaveServiceAdvertisement_m.h \
+	veins/modules/messages/WaveShortMessage_m.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/phy/Decider80211p.h \
+	veins/modules/phy/Decider80211pToPhy80211pInterface.h \
+	veins/modules/phy/PhyLayer80211p.h \
+	veins/modules/phy/SNRThresholdDecider.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/utility/ConstsPhy.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/platooning/protocols/HumanInterferingProtocol.o: veins/modules/application/platooning/protocols/HumanInterferingProtocol.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/messages/ChannelSenseRequest_m.h \
+	veins/base/messages/MacPkt_m.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMacLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/BaseDecider.h \
+	veins/base/phyLayer/BasePhyLayer.h \
+	veins/base/phyLayer/ChannelInfo.h \
+	veins/base/phyLayer/ChannelState.h \
+	veins/base/phyLayer/Decider.h \
+	veins/base/phyLayer/DeciderToPhyInterface.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/MacToPhyControlInfo.h \
+	veins/base/phyLayer/MacToPhyInterface.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/PhyUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/analogueModel/JakesFading.h \
+	veins/modules/analogueModel/LogNormalShadowing.h \
+	veins/modules/analogueModel/SimplePathlossModel.h \
+	veins/modules/application/ieee80211p/BaseWaveApplLayer.h \
+	veins/modules/application/platooning/UnicastProtocol.h \
+	veins/modules/application/platooning/messages/InterferingBeacon_m.h \
+	veins/modules/application/platooning/messages/PlatooningBeacon_m.h \
+	veins/modules/application/platooning/messages/UnicastMessage_m.h \
+	veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.h \
+	veins/modules/application/platooning/protocols/HumanInterferingProtocol.h \
+	veins/modules/application/platooning/utilities/BasePositionHelper.h \
+	veins/modules/mac/ieee80211p/Mac1609_4.h \
+	veins/modules/mac/ieee80211p/Mac80211pToPhy11pInterface.h \
+	veins/modules/mac/ieee80211p/WaveAppToMac1609_4Interface.h \
+	veins/modules/messages/BasicSafetyMessage_m.h \
+	veins/modules/messages/Mac80211Pkt_m.h \
+	veins/modules/messages/PhyControlMessage_m.h \
+	veins/modules/messages/WaveServiceAdvertisement_m.h \
+	veins/modules/messages/WaveShortMessage_m.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/phy/Decider80211p.h \
+	veins/modules/phy/Decider80211pToPhy80211pInterface.h \
+	veins/modules/phy/PhyLayer80211p.h \
+	veins/modules/phy/SNRThresholdDecider.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/utility/ConstsPhy.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/platooning/protocols/SimplePlatooningBeaconing.o: veins/modules/application/platooning/protocols/SimplePlatooningBeaconing.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/ieee80211p/BaseWaveApplLayer.h \
+	veins/modules/application/platooning/UnicastProtocol.h \
+	veins/modules/application/platooning/messages/PlatooningBeacon_m.h \
+	veins/modules/application/platooning/messages/UnicastMessage_m.h \
+	veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.h \
+	veins/modules/application/platooning/protocols/BaseProtocol.h \
+	veins/modules/application/platooning/protocols/SimplePlatooningBeaconing.h \
+	veins/modules/application/platooning/utilities/BasePositionHelper.h \
+	veins/modules/mac/ieee80211p/WaveAppToMac1609_4Interface.h \
+	veins/modules/messages/BasicSafetyMessage_m.h \
+	veins/modules/messages/WaveServiceAdvertisement_m.h \
+	veins/modules/messages/WaveShortMessage_m.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/platooning/protocols/SlottedBeaconing.o: veins/modules/application/platooning/protocols/SlottedBeaconing.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/ieee80211p/BaseWaveApplLayer.h \
+	veins/modules/application/platooning/UnicastProtocol.h \
+	veins/modules/application/platooning/messages/PlatooningBeacon_m.h \
+	veins/modules/application/platooning/messages/UnicastMessage_m.h \
+	veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.h \
+	veins/modules/application/platooning/protocols/BaseProtocol.h \
+	veins/modules/application/platooning/protocols/SlottedBeaconing.h \
+	veins/modules/application/platooning/utilities/BasePositionHelper.h \
+	veins/modules/mac/ieee80211p/WaveAppToMac1609_4Interface.h \
+	veins/modules/messages/BasicSafetyMessage_m.h \
+	veins/modules/messages/WaveServiceAdvertisement_m.h \
+	veins/modules/messages/WaveShortMessage_m.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/platooning/scenarios/AccelerateAndBrakeScenario.o: veins/modules/application/platooning/scenarios/AccelerateAndBrakeScenario.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/ieee80211p/BaseWaveApplLayer.h \
+	veins/modules/application/platooning/CC_Const.h \
+	veins/modules/application/platooning/UnicastProtocol.h \
+	veins/modules/application/platooning/apps/BaseApp.h \
+	veins/modules/application/platooning/messages/PlatooningBeacon_m.h \
+	veins/modules/application/platooning/messages/UnicastMessage_m.h \
+	veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.h \
+	veins/modules/application/platooning/scenarios/AccelerateAndBrakeScenario.h \
+	veins/modules/application/platooning/scenarios/BaseScenario.h \
+	veins/modules/application/platooning/utilities/BasePositionHelper.h \
+	veins/modules/mac/ieee80211p/WaveAppToMac1609_4Interface.h \
+	veins/modules/messages/BasicSafetyMessage_m.h \
+	veins/modules/messages/WaveServiceAdvertisement_m.h \
+	veins/modules/messages/WaveShortMessage_m.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/platooning/scenarios/BaseScenario.o: veins/modules/application/platooning/scenarios/BaseScenario.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/platooning/CC_Const.h \
+	veins/modules/application/platooning/scenarios/BaseScenario.h \
+	veins/modules/application/platooning/utilities/BasePositionHelper.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/platooning/scenarios/BrakingScenario.o: veins/modules/application/platooning/scenarios/BrakingScenario.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/ieee80211p/BaseWaveApplLayer.h \
+	veins/modules/application/platooning/CC_Const.h \
+	veins/modules/application/platooning/UnicastProtocol.h \
+	veins/modules/application/platooning/apps/BaseApp.h \
+	veins/modules/application/platooning/messages/PlatooningBeacon_m.h \
+	veins/modules/application/platooning/messages/UnicastMessage_m.h \
+	veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.h \
+	veins/modules/application/platooning/scenarios/BaseScenario.h \
+	veins/modules/application/platooning/scenarios/BrakingScenario.h \
+	veins/modules/application/platooning/utilities/BasePositionHelper.h \
+	veins/modules/mac/ieee80211p/WaveAppToMac1609_4Interface.h \
+	veins/modules/messages/BasicSafetyMessage_m.h \
+	veins/modules/messages/WaveServiceAdvertisement_m.h \
+	veins/modules/messages/WaveShortMessage_m.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/platooning/scenarios/SinusoidalScenario.o: veins/modules/application/platooning/scenarios/SinusoidalScenario.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/platooning/CC_Const.h \
+	veins/modules/application/platooning/scenarios/BaseScenario.h \
+	veins/modules/application/platooning/scenarios/SinusoidalScenario.h \
+	veins/modules/application/platooning/utilities/BasePositionHelper.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/platooning/traffic/PlatoonsPlusHumanTraffic.o: veins/modules/application/platooning/traffic/PlatoonsPlusHumanTraffic.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/platooning/traffic/PlatoonsPlusHumanTraffic.h \
+	veins/modules/mobility/traci/TraCIBaseTrafficManager.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
 $O/veins/modules/application/platooning/traffic/PlatoonsTrafficManager.o: veins/modules/application/platooning/traffic/PlatoonsTrafficManager.cc \
-	veins/modules/application/platooning/traffic/PlatoonsTrafficManager.h
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/platooning/traffic/PlatoonsTrafficManager.h \
+	veins/modules/mobility/traci/TraCIBaseTrafficManager.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
 $O/veins/modules/application/platooning/traffic/SimpleHeterogenous.o: veins/modules/application/platooning/traffic/SimpleHeterogenous.cc \
 	veins/modules/application/platooning/traffic/SimpleHeterogenous.h
-$O/veins/modules/application/platooning/utilities/BasePositionHelper.o: veins/modules/application/platooning/utilities/BasePositionHelper.cc
-$O/veins/modules/application/platooning/utilities/PositionHelper.o: veins/modules/application/platooning/utilities/PositionHelper.cc
-$O/veins/modules/application/traci/TraCIDemo11p.o: veins/modules/application/traci/TraCIDemo11p.cc
-$O/veins/modules/application/traci/TraCIDemoRSU11p.o: veins/modules/application/traci/TraCIDemoRSU11p.cc
-$O/veins/modules/application/traci/TraCITestApp.o: veins/modules/application/traci/TraCITestApp.cc
-$O/veins/modules/mac/ieee80211p/Mac1609_4.o: veins/modules/mac/ieee80211p/Mac1609_4.cc
+$O/veins/modules/application/platooning/utilities/BasePositionHelper.o: veins/modules/application/platooning/utilities/BasePositionHelper.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/platooning/utilities/BasePositionHelper.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/platooning/utilities/PositionHelper.o: veins/modules/application/platooning/utilities/PositionHelper.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/platooning/utilities/BasePositionHelper.h \
+	veins/modules/application/platooning/utilities/PositionHelper.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/traci/MyVeinsApp.o: veins/modules/application/traci/MyVeinsApp.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/ieee80211p/BaseWaveApplLayer.h \
+	veins/modules/application/traci/MyVeinsApp.h \
+	veins/modules/mac/ieee80211p/WaveAppToMac1609_4Interface.h \
+	veins/modules/messages/BasicSafetyMessage_m.h \
+	veins/modules/messages/WaveServiceAdvertisement_m.h \
+	veins/modules/messages/WaveShortMessage_m.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/traci/TraCIDemo11p.o: veins/modules/application/traci/TraCIDemo11p.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/ieee80211p/BaseWaveApplLayer.h \
+	veins/modules/application/traci/TraCIDemo11p.h \
+	veins/modules/mac/ieee80211p/WaveAppToMac1609_4Interface.h \
+	veins/modules/messages/BasicSafetyMessage_m.h \
+	veins/modules/messages/WaveServiceAdvertisement_m.h \
+	veins/modules/messages/WaveShortMessage_m.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/traci/TraCIDemoRSU11p.o: veins/modules/application/traci/TraCIDemoRSU11p.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/ieee80211p/BaseWaveApplLayer.h \
+	veins/modules/application/traci/TraCIDemoRSU11p.h \
+	veins/modules/mac/ieee80211p/WaveAppToMac1609_4Interface.h \
+	veins/modules/messages/BasicSafetyMessage_m.h \
+	veins/modules/messages/WaveServiceAdvertisement_m.h \
+	veins/modules/messages/WaveShortMessage_m.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/application/traci/TraCITestApp.o: veins/modules/application/traci/TraCITestApp.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseApplLayer.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/asserts.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/traci/TraCITestApp.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/mac/ieee80211p/Mac1609_4.o: veins/modules/mac/ieee80211p/Mac1609_4.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/messages/ChannelSenseRequest_m.h \
+	veins/base/messages/MacPkt_m.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseLayer.h \
+	veins/base/modules/BaseMacLayer.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/BaseDecider.h \
+	veins/base/phyLayer/BasePhyLayer.h \
+	veins/base/phyLayer/ChannelInfo.h \
+	veins/base/phyLayer/ChannelState.h \
+	veins/base/phyLayer/Decider.h \
+	veins/base/phyLayer/DeciderToPhyInterface.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/MacToPhyControlInfo.h \
+	veins/base/phyLayer/MacToPhyInterface.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/PhyToMacControlInfo.h \
+	veins/base/phyLayer/PhyUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/NetwToMacControlInfo.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/PassedMessage.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/analogueModel/JakesFading.h \
+	veins/modules/analogueModel/LogNormalShadowing.h \
+	veins/modules/analogueModel/SimplePathlossModel.h \
+	veins/modules/mac/ieee80211p/Mac1609_4.h \
+	veins/modules/mac/ieee80211p/Mac80211pToPhy11pInterface.h \
+	veins/modules/mac/ieee80211p/WaveAppToMac1609_4Interface.h \
+	veins/modules/messages/Mac80211Pkt_m.h \
+	veins/modules/messages/PhyControlMessage_m.h \
+	veins/modules/messages/WaveShortMessage_m.h \
+	veins/modules/phy/Decider80211p.h \
+	veins/modules/phy/Decider80211pToPhy80211pInterface.h \
+	veins/modules/phy/DeciderResult80211.h \
+	veins/modules/phy/PhyLayer80211p.h \
+	veins/modules/phy/SNRThresholdDecider.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/utility/ConstsPhy.h
 $O/veins/modules/messages/AirFrame11p_m.o: veins/modules/messages/AirFrame11p_m.cc \
 	veins/base/messages/AirFrame_m.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
 	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h \
 	veins/modules/messages/AirFrame11p_m.h
+$O/veins/modules/messages/BasicSafetyMessage_m.o: veins/modules/messages/BasicSafetyMessage_m.cc \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/messages/BasicSafetyMessage_m.h \
+	veins/modules/messages/WaveShortMessage_m.h
 $O/veins/modules/messages/Mac80211Pkt_m.o: veins/modules/messages/Mac80211Pkt_m.cc \
 	veins/base/messages/MacPkt_m.h \
+	veins/base/utils/MiXiMDefs.h \
 	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
 	veins/modules/messages/Mac80211Pkt_m.h
 $O/veins/modules/messages/PhyControlMessage_m.o: veins/modules/messages/PhyControlMessage_m.cc \
 	veins/modules/messages/PhyControlMessage_m.h
-$O/veins/modules/messages/WaveShortMessage_m.o: veins/modules/messages/WaveShortMessage_m.cc \
+$O/veins/modules/messages/WaveServiceAdvertisement_m.o: veins/modules/messages/WaveServiceAdvertisement_m.cc \
 	veins/base/utils/Coord.h \
 	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/messages/WaveServiceAdvertisement_m.h \
 	veins/modules/messages/WaveShortMessage_m.h
+$O/veins/modules/messages/WaveShortMessage_m.o: veins/modules/messages/WaveShortMessage_m.cc \
+	veins/modules/messages/WaveShortMessage_m.h
+$O/veins/modules/mobility/LinearMobility.o: veins/modules/mobility/LinearMobility.cc \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/mobility/LinearMobility.h
 $O/veins/modules/mobility/traci/SumoTrafficManager.o: veins/modules/mobility/traci/SumoTrafficManager.cc \
-	veins/modules/mobility/traci/SumoTrafficManager.h
-$O/veins/modules/mobility/traci/TestTrafficManager.o: veins/modules/mobility/traci/TestTrafficManager.cc
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/mobility/traci/SumoTrafficManager.h \
+	veins/modules/mobility/traci/TraCIBaseTrafficManager.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/mobility/traci/TestTrafficManager.o: veins/modules/mobility/traci/TestTrafficManager.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/mobility/traci/TestTrafficManager.h \
+	veins/modules/mobility/traci/TraCIBaseTrafficManager.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
 $O/veins/modules/mobility/traci/TraCIBaseTrafficManager.o: veins/modules/mobility/traci/TraCIBaseTrafficManager.cc \
-	veins/modules/mobility/traci/TraCIBaseTrafficManager.h
-$O/veins/modules/mobility/traci/TraCIBuffer.o: veins/modules/mobility/traci/TraCIBuffer.cc
-$O/veins/modules/mobility/traci/TraCIColor.o: veins/modules/mobility/traci/TraCIColor.cc
-$O/veins/modules/mobility/traci/TraCICommandInterface.o: veins/modules/mobility/traci/TraCICommandInterface.cc
-$O/veins/modules/mobility/traci/TraCIConnection.o: veins/modules/mobility/traci/TraCIConnection.cc
-$O/veins/modules/mobility/traci/TraCILauncher.o: veins/modules/mobility/traci/TraCILauncher.cc
-$O/veins/modules/mobility/traci/TraCIMobility.o: veins/modules/mobility/traci/TraCIMobility.cc
-$O/veins/modules/mobility/traci/TraCIScenarioManager.o: veins/modules/mobility/traci/TraCIScenarioManager.cc
-$O/veins/modules/mobility/traci/TraCIScenarioManagerForker.o: veins/modules/mobility/traci/TraCIScenarioManagerForker.cc
-$O/veins/modules/mobility/traci/TraCIScenarioManagerInet.o: veins/modules/mobility/traci/TraCIScenarioManagerInet.cc
-$O/veins/modules/mobility/traci/TraCIScenarioManagerLaunchd.o: veins/modules/mobility/traci/TraCIScenarioManagerLaunchd.cc
-$O/veins/modules/mobility/traci/TraCIScreenRecorder.o: veins/modules/mobility/traci/TraCIScreenRecorder.cc
-$O/veins/modules/obstacle/Obstacle.o: veins/modules/obstacle/Obstacle.cc
-$O/veins/modules/obstacle/ObstacleControl.o: veins/modules/obstacle/ObstacleControl.cc
-$O/veins/modules/phy/Decider80211p.o: veins/modules/phy/Decider80211p.cc
-$O/veins/modules/phy/NistErrorRate.o: veins/modules/phy/NistErrorRate.cc
-$O/veins/modules/phy/PhyLayer80211p.o: veins/modules/phy/PhyLayer80211p.cc
-$O/veins/modules/phy/SNRThresholdDecider.o: veins/modules/phy/SNRThresholdDecider.cc
-$O/veins/modules/world/annotations/AnnotationDummy.o: veins/modules/world/annotations/AnnotationDummy.cc
-$O/veins/modules/world/annotations/AnnotationManager.o: veins/modules/world/annotations/AnnotationManager.cc
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/mobility/traci/TraCIBaseTrafficManager.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/mobility/traci/TraCIBuffer.o: veins/modules/mobility/traci/TraCIBuffer.cc \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIConstants.h \
+	veins/modules/mobility/traci/TraCICoord.h
+$O/veins/modules/mobility/traci/TraCIColor.o: veins/modules/mobility/traci/TraCIColor.cc \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/mobility/traci/TraCIColor.h
+$O/veins/modules/mobility/traci/TraCICommandInterface.o: veins/modules/mobility/traci/TraCICommandInterface.cc \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/platooning/CC_Const.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCIConstants.h \
+	veins/modules/mobility/traci/TraCICoord.h
+$O/veins/modules/mobility/traci/TraCIConnection.o: veins/modules/mobility/traci/TraCIConnection.cc \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCIConstants.h \
+	veins/modules/mobility/traci/TraCICoord.h
+$O/veins/modules/mobility/traci/TraCILauncher.o: veins/modules/mobility/traci/TraCILauncher.cc \
+	veins/modules/mobility/traci/TraCILauncher.h
+$O/veins/modules/mobility/traci/TraCIMobility.o: veins/modules/mobility/traci/TraCIMobility.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/mobility/traci/TraCIScenarioManager.o: veins/modules/mobility/traci/TraCIScenarioManager.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCIConstants.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIMobility.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/mobility/traci/TraCIScenarioManagerForker.o: veins/modules/mobility/traci/TraCIScenarioManagerForker.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCIConstants.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCILauncher.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/mobility/traci/TraCIScenarioManagerForker.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/mobility/traci/TraCIScenarioManagerLaunchd.o: veins/modules/mobility/traci/TraCIScenarioManagerLaunchd.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCIConstants.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/mobility/traci/TraCIScenarioManagerLaunchd.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/mobility/traci/TraCIScreenRecorder.o: veins/modules/mobility/traci/TraCIScreenRecorder.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/mobility/traci/TraCIScreenRecorder.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/obstacle/Obstacle.o: veins/modules/obstacle/Obstacle.cc \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/obstacle/ObstacleControl.o: veins/modules/obstacle/ObstacleControl.cc \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/phy/Decider80211p.o: veins/modules/phy/Decider80211p.cc \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/messages/ChannelSenseRequest_m.h \
+	veins/base/messages/MacPkt_m.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/BaseDecider.h \
+	veins/base/phyLayer/ChannelState.h \
+	veins/base/phyLayer/Decider.h \
+	veins/base/phyLayer/DeciderToPhyInterface.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/MacToPhyInterface.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/PhyUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/SimpleAddress.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/mac/ieee80211p/Mac80211pToPhy11pInterface.h \
+	veins/modules/messages/AirFrame11p_m.h \
+	veins/modules/messages/Mac80211Pkt_m.h \
+	veins/modules/phy/Decider80211p.h \
+	veins/modules/phy/Decider80211pToPhy80211pInterface.h \
+	veins/modules/phy/DeciderResult80211.h \
+	veins/modules/phy/NistErrorRate.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/utility/ConstsPhy.h
+$O/veins/modules/phy/NistErrorRate.o: veins/modules/phy/NistErrorRate.cc \
+	veins/modules/phy/NistErrorRate.h \
+	veins/modules/utility/ConstsPhy.h
+$O/veins/modules/phy/PhyLayer80211p.o: veins/modules/phy/PhyLayer80211p.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/ChannelAccess.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/messages/ChannelSenseRequest_m.h \
+	veins/base/modules/BaseBattery.h \
+	veins/base/modules/BaseMobility.h \
+	veins/base/modules/BaseModule.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/modules/BatteryAccess.h \
+	veins/base/phyLayer/AnalogueModel.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/BaseDecider.h \
+	veins/base/phyLayer/BasePhyLayer.h \
+	veins/base/phyLayer/ChannelInfo.h \
+	veins/base/phyLayer/ChannelState.h \
+	veins/base/phyLayer/Decider.h \
+	veins/base/phyLayer/DeciderToPhyInterface.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/MacToPhyControlInfo.h \
+	veins/base/phyLayer/MacToPhyInterface.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/PhyUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/HostState.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/Move.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/analogueModel/BreakpointPathlossModel.h \
+	veins/modules/analogueModel/JakesFading.h \
+	veins/modules/analogueModel/LogNormalShadowing.h \
+	veins/modules/analogueModel/NakagamiFading.h \
+	veins/modules/analogueModel/PERModel.h \
+	veins/modules/analogueModel/SimpleObstacleShadowing.h \
+	veins/modules/analogueModel/SimplePathlossModel.h \
+	veins/modules/analogueModel/TwoRayInterferenceModel.h \
+	veins/modules/mac/ieee80211p/Mac80211pToPhy11pInterface.h \
+	veins/modules/messages/AirFrame11p_m.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/phy/Decider80211p.h \
+	veins/modules/phy/Decider80211pToPhy80211pInterface.h \
+	veins/modules/phy/PhyLayer80211p.h \
+	veins/modules/phy/SNRThresholdDecider.h \
+	veins/modules/utility/Consts80211p.h \
+	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/phy/SNRThresholdDecider.o: veins/modules/phy/SNRThresholdDecider.cc \
+	veins/base/messages/AirFrame_m.h \
+	veins/base/messages/ChannelSenseRequest_m.h \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/BaseDecider.h \
+	veins/base/phyLayer/ChannelState.h \
+	veins/base/phyLayer/Decider.h \
+	veins/base/phyLayer/DeciderToPhyInterface.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/Mapping.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/phyLayer/Signal_.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/POA.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/phy/SNRThresholdDecider.h
+$O/veins/modules/phy/SampledAntenna1D.o: veins/modules/phy/SampledAntenna1D.cc \
+	veins/base/phyLayer/Antenna.h \
+	veins/base/phyLayer/Interpolation.h \
+	veins/base/phyLayer/MappingBase.h \
+	veins/base/phyLayer/MappingUtils.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/phy/SampledAntenna1D.h
+$O/veins/modules/world/annotations/AnnotationDummy.o: veins/modules/world/annotations/AnnotationDummy.cc \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/world/annotations/AnnotationDummy.h
+$O/veins/modules/world/annotations/AnnotationManager.o: veins/modules/world/annotations/AnnotationManager.cc \
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
 

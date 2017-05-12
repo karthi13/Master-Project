@@ -22,10 +22,10 @@
 #ifndef ANALOGUEMODEL_NAKAGAMIFADING_H
 #define ANALOGUEMODEL_NAKAGAMIFADING_H
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/AnalogueModel.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseWorldUtility.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/MappingBase.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/messages/AirFrame_m.h"
+#include "veins/base/phyLayer/AnalogueModel.h"
+#include "veins/base/modules/BaseWorldUtility.h"
+#include "veins/base/phyLayer/MappingBase.h"
+#include "veins/base/messages/AirFrame_m.h"
 
 /**
  * @brief

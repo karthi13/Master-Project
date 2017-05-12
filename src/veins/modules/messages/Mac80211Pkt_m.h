@@ -16,7 +16,7 @@
 
 
 // cplusplus {{
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/messages/MacPkt_m.h"
+#include "veins/base/messages/MacPkt_m.h"
 // }}
 
 /**

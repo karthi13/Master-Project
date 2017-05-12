@@ -1,11 +1,11 @@
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/connectionManager/BaseConnectionManager.h"
+#include "veins/base/connectionManager/BaseConnectionManager.h"
 
 #include <cassert>
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/connectionManager/NicEntryDebug.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/connectionManager/NicEntryDirect.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseWorldUtility.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/FindModule.h"
+#include "veins/base/connectionManager/NicEntryDebug.h"
+#include "veins/base/connectionManager/NicEntryDirect.h"
+#include "veins/base/modules/BaseWorldUtility.h"
+#include "veins/base/utils/FindModule.h"
 
 #ifndef ccEV
 #define ccEV EV << getName() << ": "
