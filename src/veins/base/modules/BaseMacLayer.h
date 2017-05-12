@@ -27,6 +27,7 @@
 #include "/home/hh-ide/src/plexe-veins/src/veins/base/modules/BaseLayer.h"
 #include "/home/hh-ide/src/plexe-veins/src/veins/base/utils/SimpleAddress.h"
 #include "/home/hh-ide/src/plexe-veins/src/veins/base/phyLayer/MappingBase.h"
+#include "/home/hh-ide/src/plexe-veins/src/veins/base/messages/MacPkt_m.h"
 
 class BaseConnectionManager;
 class MacPkt;

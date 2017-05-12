@@ -36,8 +36,16 @@ class SinusoidalScenario : public BaseScenario
 		double oscillationAmplitude;
 		//leader average speed
 		double leaderSpeed;
+
 		//message used to tell the leader to continuously change its desired speed
 		cMessage *changeSpeed;
+
+		//message just to check if the getVehicleWidth() is working or not
+		cMessage *widthOfVeh;
+
+        //message just to check if the getVehicleWidth() is working or not
+        cMessage *heightOfVeh;
+
 		//start oscillation time
 		SimTime startOscillating;
 
@@ -47,6 +55,8 @@ class SinusoidalScenario : public BaseScenario
 			oscillationAmplitude = 0;
 			leaderSpeed = 0;
 			changeSpeed = 0;
+			widthOfVeh = 0;
+			heightOfVeh = 0;
 			startOscillating = SimTime(0);
 		}
 

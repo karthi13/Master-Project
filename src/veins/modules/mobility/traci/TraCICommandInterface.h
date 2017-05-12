@@ -201,6 +201,18 @@ class TraCICommandInterface
 				 */
 				std::string getVType();
 
+				/*
+				 * Implemented by Karthikeyan
+				 * Returns the width of the vehicles in (m)
+				 */
+				double getVehicleWidth();
+			    /*
+			     * Implemented by Karthikeyan
+			     * Returns the heigth of the vehicles in (m)
+			     */
+				double getVehicleHeight();
+
+
 			protected:
 				TraCICommandInterface* traci;
 				TraCIConnection* connection;

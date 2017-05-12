@@ -36,7 +36,8 @@ simple SimpleHeterogenous like TraCIBaseTrafficManager {
         string platooningVType;
         string platooningVTypeTruck; 
         string platooningVTypeBus;
-        
+        //vector vehicleTypeInPlatoon;
+        string vehicleTypeInPlatoon;
         //insert distance and headway. distance is computed as:
         //dist = insertHeadway * insertSpeed + insertDistance
         double platoonInsertDistance @unit("m") = default(5m);

@@ -19,6 +19,7 @@
 
 Define_Module(SinusoidalScenario);
 
+/*Modified by Karthikeyan*/
 void SinusoidalScenario::initialize(int stage) {
 
 	BaseScenario::initialize(stage);
@@ -32,16 +33,22 @@ void SinusoidalScenario::initialize(int stage) {
 		leaderSpeed = par("leaderSpeed").doubleValue() / 3.6;
 		//start oscillation time
 		startOscillating = SimTime(par("startOscillating").doubleValue());
+		widthOfVeh = new cMessage("widthOfVeh");
+		heightOfVeh = new cMessage("heightOfVeh");
 
 		if (positionHelper->getId() < positionHelper->getLanesCount()) {
 			//setup oscillation message, only if i'm part of the first leaders
 			changeSpeed = new cMessage("changeSpeed");
+
 			if (simTime() > startOscillating) {
 				startOscillating = simTime();
 				scheduleAt(simTime(), changeSpeed);
+
 			}
 			else {
 				scheduleAt(startOscillating, changeSpeed);
+				scheduleAt(startOscillating, widthOfVeh);
+				scheduleAt(startOscillating, heightOfVeh);
 			}
 			//set base cruising speed
 			traciVehicle->setCruiseControlDesiredSpeed(leaderSpeed);
@@ -50,6 +57,9 @@ void SinusoidalScenario::initialize(int stage) {
 			//let the follower set a higher desired speed to stay connected
 			//to the leader when it is accelerating
 			traciVehicle->setCruiseControlDesiredSpeed(leaderSpeed + 2 * oscillationAmplitude);
+			scheduleAt(simTime(), widthOfVeh);
+			scheduleAt(simTime(), heightOfVeh);
+
 		}
 
 	}
@@ -58,10 +68,12 @@ void SinusoidalScenario::initialize(int stage) {
 
 void SinusoidalScenario::finish() {
 	cancelAndDelete(changeSpeed);
+	cancelAndDelete(widthOfVeh);
 	changeSpeed = 0;
 	BaseScenario::finish();
 }
 
+/*Modified by Karthikeyan*/
 void SinusoidalScenario::handleSelfMsg(cMessage *msg) {
 	BaseScenario::handleSelfMsg(msg);
 	if (msg == changeSpeed) {
@@ -72,4 +84,13 @@ void SinusoidalScenario::handleSelfMsg(cMessage *msg) {
 		);
 		scheduleAt(simTime() + SimTime(0.1), changeSpeed);
 	}
+	else if(msg == widthOfVeh){
+	    double w = traciVehicle->getVehicleWidth();
+	    scheduleAt(simTime() + SimTime(0.1),widthOfVeh);
+	}
+    else if(msg == heightOfVeh){
+        double h = traciVehicle->getVehicleHeight();
+        scheduleAt(simTime() + SimTime(0.1),heightOfVeh);
+    }
+
 }

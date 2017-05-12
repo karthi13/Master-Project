@@ -2,14 +2,50 @@
 # OMNeT++/OMNEST Makefile for libplexe-veins
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep --make-so -O out --no-deep-includes -Iplexe-veins/src/ -I/home/hh-ide/src/plexe-veins/src/veins
+#  opp_makemake -f --deep --make-so -O out -Iplexe-veins/src/ -I/home/hh-ide/src/plexe-veins/src/veins -I/home/hh-ide/src/plexe-veins/src
 #
 
 # Name of target to be created (-o option)
 TARGET = libplexe-veins$(SHARED_LIB_SUFFIX)
 
 # C++ include paths (with -I)
-INCLUDE_PATH = -Iplexe-veins/src/ -Iveins
+INCLUDE_PATH = \
+    -Iplexe-veins/src/ \
+    -Iveins \
+    -I. \
+    -I. \
+    -Iscripts \
+    -Iveins \
+    -Iveins/base \
+    -Iveins/base/connectionManager \
+    -Iveins/base/messages \
+    -Iveins/base/modules \
+    -Iveins/base/phyLayer \
+    -Iveins/base/utils \
+    -Iveins/modules \
+    -Iveins/modules/analogueModel \
+    -Iveins/modules/application \
+    -Iveins/modules/application/ieee80211p \
+    -Iveins/modules/application/platooning \
+    -Iveins/modules/application/platooning/apps \
+    -Iveins/modules/application/platooning/messages \
+    -Iveins/modules/application/platooning/protocols \
+    -Iveins/modules/application/platooning/scenarios \
+    -Iveins/modules/application/platooning/traffic \
+    -Iveins/modules/application/platooning/utilities \
+    -Iveins/modules/application/traci \
+    -Iveins/modules/mac \
+    -Iveins/modules/mac/ieee80211p \
+    -Iveins/modules/messages \
+    -Iveins/modules/mobility \
+    -Iveins/modules/mobility/traci \
+    -Iveins/modules/nic \
+    -Iveins/modules/obstacle \
+    -Iveins/modules/phy \
+    -Iveins/modules/utility \
+    -Iveins/modules/world \
+    -Iveins/modules/world/annotations \
+    -Iveins/nodes
 
 # Additional object and library files to link with
 EXTRA_OBJS =

@@ -109,6 +109,15 @@ std::string TraCICommandInterface::Vehicle::getCurrentRoadOnRoute() {
 	return traci->genericGetString(CMD_GET_VEHICLE_VARIABLE, nodeId, LANE_EDGE_ID, RESPONSE_GET_VEHICLE_VARIABLE);
 }
 
+//Implemented by Karthikeyan
+double TraCICommandInterface::Vehicle::getVehicleWidth(){
+    return traci->genericGetDouble(CMD_GET_VEHICLE_VARIABLE, nodeId, VAR_WIDTH, RESPONSE_GET_VEHICLE_VARIABLE);
+}
+//Implemented by Karthikeyan
+double TraCICommandInterface::Vehicle::getVehicleHeight(){
+    return traci->genericGetDouble(CMD_GET_VEHICLE_VARIABLE, nodeId, VAR_LENGTH, RESPONSE_GET_VEHICLE_VARIABLE);
+}
+
 std::string TraCICommandInterface::Vehicle::getLaneId() {
 	return traci->genericGetString(CMD_GET_VEHICLE_VARIABLE, nodeId, VAR_LANE_ID, RESPONSE_GET_VEHICLE_VARIABLE);
 }
