@@ -1,8 +1,10 @@
 [General]
+
 cmdenv-express-mode = true
 cmdenv-autoflush = true
 cmdenv-status-frequency = 10s
 num-rngs = 6
+
 
 ned-path = .
 network = scenario
@@ -61,6 +63,8 @@ sim-time-limit = 1e6 s
 *.connectionManager.carrierFrequency = 5.890e9 Hz
 *.connectionManager.sendDirect = true
 
+*.connectionManager.maxInterfDist = 0
+
 *.**.nic.mac1609_4.useServiceChannel = false
 
 *.**.nic.mac1609_4.txPower = 100mW
@@ -70,8 +74,8 @@ sim-time-limit = 1e6 s
 *.**.nic.phy80211p.maxTXPower = 100mW
 *.**.nic.phy80211p.useThermalNoise = true
 *.**.nic.phy80211p.thermalNoise = -95dBm
-*.**.nic.phy80211p.decider = xmldoc("config.xml")
-*.**.nic.phy80211p.analogueModels = xmldoc("config.xml")
+*.**.nic.phy80211p.decider = xmldoc("/home/hh-ide/src/plexe-veins/examples/platooning/config.xml")
+*.**.nic.phy80211p.analogueModels = xmldoc("/home/hh-ide/src/plexe-veins/examples/platooning/config.xml")
 *.**.nic.phy80211p.usePropagationDelay = true
 
 ##########################################################
@@ -95,7 +99,7 @@ seed-set = ${repetition}
 **.traffic.rng-0 = 5
 
 #launch config. tells Veins which SUMO configuration to run
-*.manager.configFile = "./sumocfg/freeway.sumo.cfg"
+*.manager.configFile = "/home/hh-ide/src/plexe-veins/examples/platooning/sumocfg/freeway.sumo.cfg"
 #launch command. change sumo-gui with sumo depending on what you want to launch
 *.manager.commandLine = "sumo-gui --remote-port $port --seed $seed --configuration-file $configFile"
 
@@ -108,6 +112,7 @@ seed-set = ${repetition}
 **.numberOfLanes = ${nLanes = 1}
 **.numberOfTrucks = ${nTrucks = 3}
 **.numberOfBus = ${nBus = 2}
+#**.lengthOfCar = ${carLength = 4}
 
 ##########################################################
 #                    Position helper                     #
@@ -119,6 +124,7 @@ seed-set = ${repetition}
 *.node[*].helper.nCars = ${nCars}
 *.node[*].helper.nTrucks = ${nTrucks}
 *.node[*].helper.nBus = ${nBus}
+
 
 ##########################################################
 #               Scenario common parameters               #
@@ -197,10 +203,16 @@ seed-set = ${repetition}
 **.traffic.platooningVType = "vtypeauto"
 **.traffic.platooningVTypeTruck = "vtypeheter"
 **.traffic.platooningVTypeBus = "vtypebus"
-**.traffic.vehicleTypeInPlatoon = ${1,2,1,3,2,2,1,3}
+
+#Length variable of the vehicles
+**.traffic.carLength = ${4}
+#**.traffic.truckLength = ${truckLength}
+#**.traffic.busLength = ${busLength}
+
+**.traffic.vehicleTypeInPlatoon = ${"2,3,2,3,2,1,1,1"}
 
 #insert vehicles already at steady-state. distance depends on controller
-**.traffic.platoonInsertDistance = ${2, 2, 5, 2, 15 ! controller}m
+**.traffic.platoonInsertDistance = ${2, 2, 15, 2, 15 ! controller}m
 **.traffic.platoonInsertHeadway = ${0.3, 1.2, 0, 0.5, 0.8 ! controller}s
 **.traffic.platoonLeaderHeadway = ${leaderHeadway}s
 

@@ -84,6 +84,11 @@ protected:
     std::string platooningVTypeTruck;
     std::string platooningVTypeBus;
 
+    //Length variable of the vehicles
+    int carLength;
+    int truckLength;
+    int busLength;
+
     std::vector<int> vehicleInOrder;
 
     virtual void scenarioLoaded();

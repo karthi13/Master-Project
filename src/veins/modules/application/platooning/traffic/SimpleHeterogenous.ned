@@ -28,6 +28,11 @@ simple SimpleHeterogenous like TraCIBaseTrafficManager {
         int nCars;
         int nTrucks;
         int nBus;
+        
+        int carLength;
+        int truckLength;
+        int busLength;
+        
         //platoon size
         int platoonSize;
         //number of lanes

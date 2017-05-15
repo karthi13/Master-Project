@@ -39,6 +39,9 @@ SimpleHeterogenous::SimpleHeterogenous() {
     nTrucks = 0;
     nBus = 0;
     nLanes = 0;
+    carLength = 0;
+    truckLength = 0;
+    busLength = 0;
 }
 
 SimpleHeterogenous::~SimpleHeterogenous() {
@@ -55,6 +58,9 @@ void SimpleHeterogenous::initialize(int stage){
         nBus = par("nBus").longValue();
         platoonSize = par("platoonSize").longValue();
         nLanes = par("nLanes").longValue();
+        carLength = par("carLength").longValue();
+        truckLength = par("truckLength").longValue();
+        busLength = par("busLength").longValue();
         platoonInsertTime = SimTime(par("platoonInsertTime").doubleValue());
         platoonInsertSpeed = par("platoonInsertSpeed").doubleValue();
         platoonInsertDistance = par("platoonInsertDistance").doubleValue();
@@ -102,11 +108,11 @@ void SimpleHeterogenous::insertPlatoonsWithHeterogeneousVehicles(){
     /*FOR NOW THESE PARAMETERS WILL BE SAME AS OF INSERTPLATOONS()*/
 
     //compute inter vehicle distance
-    double distance = platoonInsertSpeed / 3.6 * platoonInsertHeadway + platoonInsertDistance;
+    double distance = platoonInsertDistance; //platoonInsertSpeed / 3.6 * platoonInsertHeadway + platoonInsertDistance;
     //total number of platoons per lane
     int nPlatoons = (nCars + nTrucks + nBus) / platoonSize / nLanes;
     //length of 1 platoon
-    double platoonLength = (nCars * 4) + (nTrucks * 5) + (nBus * 6) + (platoonSize - 1) * distance;//platoonSize * 4 + (platoonSize - 1) * distance;
+    double platoonLength = (nCars * carLength) + (nTrucks * truckLength ) + (nBus * busLength) + (platoonSize - 1) * distance;//platoonSize * 4 + (platoonSize - 1) * distance;
     //inter-platoon distance
     double platoonDistance = platoonInsertSpeed / 3.6 * platoonLeaderHeadway;
     //total length for one lane
@@ -139,29 +145,32 @@ void SimpleHeterogenous::insertPlatoonsWithHeterogeneousVehicles(){
                         automated.position = currentPos + laneOffset[l];
                         automated.lane = l;
                         addVehicleToQueue(0, automated);
+                        currentPos -= (carLength + distance);
                         break;
                     case 2:
                         truck.position = currentPos + laneOffset[l];
                         truck.lane = l;
                         addVehicleToQueue(0, truck);
+                        currentPos -= (truckLength + distance);
                         break;
                     case 3:
                         bus.position = currentPos + laneOffset[l];
                         bus.lane = l;
                         addVehicleToQueue(0, bus);
+                        currentPos -= (busLength + distance);
                         break;
                     }
             }
             currentCar++;
-            if (currentCar == platoonSize) {
-                currentCar = 0;
-                //add inter platoon gap
-                currentPos -= (platoonDistance + 4);
-            }
-            else {
-                //add intra platoon gap
-                currentPos -= (5 + distance);
-            }
+//            if (currentCar == platoonSize) {
+//                currentCar = 0;
+//                //add inter platoon gap
+//                currentPos -= (platoonDistance + 5);
+//            }
+//            else {
+//                //add intra platoon gap
+//                currentPos -= (5 + distance);
+//            }
         }
 
         delete[] laneOffset;
@@ -186,8 +195,6 @@ double SimpleHeterogenous::getPlatoonLength(){
     double length = 0.0;
     std::vector<std::string>::iterator it;
     for(it=vehicleTypeIds.begin() ; it < vehicleTypeIds.end(); it++){
-
-
     }
     return length;
 }
