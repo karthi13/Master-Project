@@ -32,7 +32,9 @@ class SinusoidalScenario : public BaseScenario
 		virtual void finish();
 
 	protected:
-
+		Veins::TraCIMobility* mobility;
+		Veins::TraCICommandInterface::Vehicle *traciVehicle;
+		BasePositionHelper *positionHelper;
 		//frequency at which the leader speed is oscillating
 		double leaderOscillationFrequency;
 		//oscillation amplitude

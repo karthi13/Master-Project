@@ -40,26 +40,30 @@ void SinusoidalScenario::initialize(int stage) {
 		widthOfVeh = new cMessage("widthOfVeh");
 		typeOfVeh = new cMessage("typeOfVeh");
 
+		positionHelper = FindModule<BasePositionHelper*>::findSubModule(getParentModule());
+		mobility = Veins::TraCIMobilityAccess().get(getParentModule());
+		traciVehicle = mobility->getVehicleCommandInterface();
+
 		if (positionHelper->getId() < positionHelper->getLanesCount()) {
 			//setup oscillation message, only if i'm part of the first leaders
-			changeSpeed = new cMessage("changeSpeed");
-			if (simTime() > startOscillating) {
-				startOscillating = simTime();
+			    changeSpeed = new cMessage("changeSpeed");
+
 				scheduleAt(simTime(), changeSpeed);
-			}
-			else {
-				scheduleAt(startOscillating, changeSpeed);
-				scheduleAt(startOscillating, heightOfVeh);
-				scheduleAt(startOscillating, widthOfVeh);
-				scheduleAt(startOscillating, typeOfVeh);
-			}
+				scheduleAt(simTime(), heightOfVeh);
+				scheduleAt(simTime(), widthOfVeh);
+				scheduleAt(simTime(), typeOfVeh);
+
+
 			//set base cruising speed
 			traciVehicle->setCruiseControlDesiredSpeed(leaderSpeed);
 		}
 		else {
 			//let the follower set a higher desired speed to stay connected
 			//to the leader when it is accelerating
-			traciVehicle->setCruiseControlDesiredSpeed(leaderSpeed + 2 * oscillationAmplitude);
+//			traciVehicle->setCruiseControlDesiredSpeed(leaderSpeed + 2 * oscillationAmplitude);
+		    traciVehicle->setCruiseControlDesiredSpeed(leaderSpeed);
+			traciVehicle->setActiveController(2);
+
 			scheduleAt(simTime(), heightOfVeh);
 			scheduleAt(simTime(), widthOfVeh);
 			scheduleAt(simTime(), typeOfVeh);
@@ -84,23 +88,35 @@ void SinusoidalScenario::finish() {
 void SinusoidalScenario::handleSelfMsg(cMessage *msg) {
 	BaseScenario::handleSelfMsg(msg);
 	if (msg == changeSpeed) {
-		traciVehicle->setCruiseControlDesiredSpeed(
-		    leaderSpeed +
-		    oscillationAmplitude *
-		    sin(2 * M_PI * (simTime() - startOscillating).dbl() * leaderOscillationFrequency)
-		);
-		scheduleAt(simTime() + SimTime(0.1), changeSpeed);
+		traciVehicle->setCruiseControlDesiredSpeed(leaderSpeed);
+
+//		scheduleAt(simTime() + SimTime(0.1), changeSpeed);
 	}
 	if(msg == heightOfVeh){
 	    double h = traciVehicle->getVehicleHeight();
-	    scheduleAt(simTime() + SimTime(0.1), heightOfVeh);
+	    scheduleAt(simTime() + SimTime(10), heightOfVeh);
+	    int ID = positionHelper->getId();
+	    bool P = positionHelper->isInSamePlatoon(ID);
+	    int leadre_ID = positionHelper->getLeaderId();
+	    int pl_pos = positionHelper->getPosition();
+
+	    double distance, relSpeed, acceleration, speed, controllerAcceleration, posX, posY, time;
+	    traciVehicle->getRadarMeasurements(distance, relSpeed);
+	    traciVehicle->getVehicleData(speed, acceleration, controllerAcceleration, posX, posY, time);
+
+	    bool P2 = P;
 	}
     if(msg == widthOfVeh){
         double w = traciVehicle->getVehicleWidth();
-        scheduleAt(simTime() + SimTime(0.1), widthOfVeh);
+
+        int pos = positionHelper->getPosition();
+        double distance, relSpeed, acceleration, speed, controllerAcceleration, posX, posY, time;
+        traciVehicle->getRadarMeasurements(distance, relSpeed);
+        traciVehicle->getVehicleData(speed, acceleration, controllerAcceleration, posX, posY, time);
+        scheduleAt(simTime() + SimTime(10), widthOfVeh);
     }
     if(msg == typeOfVeh){
         std::string s1 = traciVehicle->getTypeId();
-        scheduleAt(simTime() + SimTime(0.1), typeOfVeh);
+        scheduleAt(simTime() + SimTime(10), typeOfVeh);
     }
 }
