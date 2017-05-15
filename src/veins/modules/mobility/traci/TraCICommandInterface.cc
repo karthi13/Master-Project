@@ -101,7 +101,7 @@ double TraCICommandInterface::Road::getCurrentTravelTime() {
 }
 
 /*Implemented by Karthikeyan*/
-double TraCICommandInterface::Vehicle::getVehicleLength(){
+double TraCICommandInterface::Vehicle::getVehicleLength(std::string nodeId){
     return traci->genericGetDouble(CMD_GET_VEHICLE_VARIABLE, nodeId, VAR_LENGTH, RESPONSE_GET_VEHICLE_VARIABLE);
 }
 /*Implemented by Karthikeyan*/

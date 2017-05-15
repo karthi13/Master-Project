@@ -26,6 +26,7 @@
 #define SRC_VEINS_MODULES_APPLICATION_PLATOONING_TRAFFIC_SIMPLEHETEROGENOUS_H_
 
 #include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIBaseTrafficManager.h"
+#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCICommandInterface.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -38,12 +39,15 @@ public:
 
     virtual void initialize(int stage);
     virtual void finish();
+
+    Veins::TraCICommandInterface::Vehicle *traciInterface;
 protected:
     //this is used to start traffic generation
     cMessage *insertPlatoonMessage;
 
     //void insertPlatoons();
     void insertPlatoonsWithHeterogeneousVehicles();
+    double getPlatoonLength();
 
     void convertStringToVector(std::string word);
 
@@ -60,7 +64,7 @@ protected:
     //total number of vehicles to be injected
     int nCars;
     int nTrucks;// newly added vehicle type truck(for instance)
-    int nBus;// newly added vehicle type truck(for instance)
+    int nBus;// newly added vehicle type Bus(for instance)
     //vehicles per platoon
     int platoonSize;
     //number of lanes
@@ -83,6 +87,7 @@ protected:
     std::vector<int> vehicleInOrder;
 
     virtual void scenarioLoaded();
+
 };
 
 #endif /* SRC_VEINS_MODULES_APPLICATION_PLATOONING_TRAFFIC_SIMPLEHETEROGENOUS_H_ */

@@ -46,6 +46,7 @@ class SinusoidalScenario : public BaseScenario
 		//message used to tell the height of the vehicle
 		cMessage *heightOfVeh;
 		cMessage *widthOfVeh;
+		cMessage *typeOfVeh;
 	public:
 		SinusoidalScenario() {
 			leaderOscillationFrequency = 0;
@@ -54,6 +55,7 @@ class SinusoidalScenario : public BaseScenario
 			changeSpeed = 0;
 			heightOfVeh = 0;
 			widthOfVeh = 0;
+			typeOfVeh = 0;
 			startOscillating = SimTime(0);
 		}
 

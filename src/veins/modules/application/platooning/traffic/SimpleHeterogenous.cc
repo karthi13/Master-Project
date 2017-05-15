@@ -106,7 +106,7 @@ void SimpleHeterogenous::insertPlatoonsWithHeterogeneousVehicles(){
     //total number of platoons per lane
     int nPlatoons = (nCars + nTrucks + nBus) / platoonSize / nLanes;
     //length of 1 platoon
-    double platoonLength = platoonSize * 4 + (platoonSize - 1) * distance;
+    double platoonLength = (nCars * 4) + (nTrucks * 5) + (nBus * 6) + (platoonSize - 1) * distance;//platoonSize * 4 + (platoonSize - 1) * distance;
     //inter-platoon distance
     double platoonDistance = platoonInsertSpeed / 3.6 * platoonLeaderHeadway;
     //total length for one lane
@@ -160,7 +160,7 @@ void SimpleHeterogenous::insertPlatoonsWithHeterogeneousVehicles(){
             }
             else {
                 //add intra platoon gap
-                currentPos -= (4 + distance);
+                currentPos -= (5 + distance);
             }
         }
 
@@ -179,6 +179,17 @@ void SimpleHeterogenous::convertStringToVector(std::string word){
         if (ss.peek() == ',')
             ss.ignore();
     }
+}
+
+double SimpleHeterogenous::getPlatoonLength(){
+
+    double length = 0.0;
+    std::vector<std::string>::iterator it;
+    for(it=vehicleTypeIds.begin() ; it < vehicleTypeIds.end(); it++){
+
+
+    }
+    return length;
 }
 
 void SimpleHeterogenous::finish(){

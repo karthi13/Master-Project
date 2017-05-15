@@ -215,7 +215,7 @@ class TraCICommandInterface
                  * Implemented by Karthikeyan
                  * Returns the Length of the vehicles in (m)
                  */
-                double getVehicleLength();
+                double getVehicleLength(std::string nodeId);
 			protected:
 				TraCICommandInterface* traci;
 				TraCIConnection* connection;

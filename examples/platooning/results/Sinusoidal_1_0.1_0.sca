@@ -1,9 +1,9 @@
 version 2
-run Sinusoidal-2-20170512-21:54:58-2677
+run Sinusoidal-2-20170515-10:42:29-2428
 attr beaconInterval 0.1
 attr configname Sinusoidal
 attr controller 1
-attr datetime 20170512-21:54:58
+attr datetime 20170515-10:42:29
 attr experiment Sinusoidal
 attr headway 0.1
 attr inifile examples/platooning/omnetpp.ini
@@ -21,7 +21,7 @@ attr packetSize 200
 attr platoonSize 8
 attr ploegH 0.5
 attr priority 2
-attr processid 2677
+attr processid 2428
 attr repetition 0
 attr replication #0
 attr resultdir results

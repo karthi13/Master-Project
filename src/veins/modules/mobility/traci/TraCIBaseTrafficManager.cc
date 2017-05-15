@@ -85,6 +85,7 @@ int TraCIBaseTrafficManager::findVehicleTypeIndex(std::string vehType) {
 	unsigned int i;
 
 	for (i = 0; i < vehicleTypeIds.size(); i++) {
+	    //std::string s = vehicleTypeIds[i];
 		if (vehicleTypeIds[i].compare(vehType) == 0) {
 			return i;
 		}

@@ -38,6 +38,8 @@ void SinusoidalScenario::initialize(int stage) {
 		startOscillating = SimTime(par("startOscillating").doubleValue());
 		heightOfVeh = new cMessage("heightOfVeh");
 		widthOfVeh = new cMessage("widthOfVeh");
+		typeOfVeh = new cMessage("typeOfVeh");
+
 		if (positionHelper->getId() < positionHelper->getLanesCount()) {
 			//setup oscillation message, only if i'm part of the first leaders
 			changeSpeed = new cMessage("changeSpeed");
@@ -49,6 +51,7 @@ void SinusoidalScenario::initialize(int stage) {
 				scheduleAt(startOscillating, changeSpeed);
 				scheduleAt(startOscillating, heightOfVeh);
 				scheduleAt(startOscillating, widthOfVeh);
+				scheduleAt(startOscillating, typeOfVeh);
 			}
 			//set base cruising speed
 			traciVehicle->setCruiseControlDesiredSpeed(leaderSpeed);
@@ -59,6 +62,7 @@ void SinusoidalScenario::initialize(int stage) {
 			traciVehicle->setCruiseControlDesiredSpeed(leaderSpeed + 2 * oscillationAmplitude);
 			scheduleAt(simTime(), heightOfVeh);
 			scheduleAt(simTime(), widthOfVeh);
+			scheduleAt(simTime(), typeOfVeh);
 		}
 
 	}
@@ -72,6 +76,8 @@ void SinusoidalScenario::finish() {
 	heightOfVeh = 0;
     cancelAndDelete(widthOfVeh);
     widthOfVeh = 0;
+    cancelAndDelete(typeOfVeh);
+    typeOfVeh = 0;
 	BaseScenario::finish();
 }
 
@@ -92,5 +98,9 @@ void SinusoidalScenario::handleSelfMsg(cMessage *msg) {
     if(msg == widthOfVeh){
         double w = traciVehicle->getVehicleWidth();
         scheduleAt(simTime() + SimTime(0.1), widthOfVeh);
+    }
+    if(msg == typeOfVeh){
+        std::string s1 = traciVehicle->getTypeId();
+        scheduleAt(simTime() + SimTime(0.1), typeOfVeh);
     }
 }
