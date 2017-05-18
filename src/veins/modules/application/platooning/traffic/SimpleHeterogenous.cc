@@ -190,6 +190,7 @@ void SimpleHeterogenous::convertStringToVector(std::string word){
     }
 }
 
+/*This function is not fully finished and used, but maybe useful*/
 double SimpleHeterogenous::getPlatoonLength(){
 
     double length = 0.0;

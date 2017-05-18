@@ -97,10 +97,18 @@ class PositionHelper : public BasePositionHelper
 		static bool isFrontVehicle(int vehicleId, int myId, int nLanes, int platoonSize);
 		static bool isInSamePlatoon(int vehicleId, int myId, int nLanes, int platoonSize);
 
+		//Modified By Karthikeyan
+		static int getIdFromExternalId2(std::string externalId);
+
 	public:
 		PositionHelper() : BasePositionHelper() {
 		}
-
+		//Modified By Karthikeyan
+		static std::vector<int> vehTypeInOrder;
+		void convertStringToVector(std::string word);
+		int nTrucks;
+		int nBus;
+		std::string vehicleTypeInPlatoon;
 };
 
 #endif

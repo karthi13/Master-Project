@@ -113,7 +113,7 @@ void SinusoidalScenario::handleSelfMsg(cMessage *msg) {
         double distance, relSpeed, acceleration, speed, controllerAcceleration, posX, posY, time;
         traciVehicle->getRadarMeasurements(distance, relSpeed);
         traciVehicle->getVehicleData(speed, acceleration, controllerAcceleration, posX, posY, time);
-        scheduleAt(simTime() + SimTime(10), widthOfVeh);
+         scheduleAt(simTime() + SimTime(10), widthOfVeh);
     }
     if(msg == typeOfVeh){
         std::string s1 = traciVehicle->getTypeId();

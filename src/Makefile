@@ -1461,7 +1461,25 @@ $O/veins/modules/application/platooning/traffic/PlatoonsTrafficManager.o: veins/
 	veins/modules/obstacle/ObstacleControl.h \
 	veins/modules/world/annotations/AnnotationManager.h
 $O/veins/modules/application/platooning/traffic/SimpleHeterogenous.o: veins/modules/application/platooning/traffic/SimpleHeterogenous.cc \
-	veins/modules/application/platooning/traffic/SimpleHeterogenous.h
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+	veins/modules/application/platooning/traffic/SimpleHeterogenous.h \
+	veins/modules/mobility/traci/TraCIBaseTrafficManager.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
 $O/veins/modules/application/platooning/utilities/BasePositionHelper.o: veins/modules/application/platooning/utilities/BasePositionHelper.cc \
 	veins/base/connectionManager/BaseConnectionManager.h \
 	veins/base/connectionManager/NicEntry.h \

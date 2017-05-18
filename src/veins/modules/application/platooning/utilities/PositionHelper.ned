@@ -29,6 +29,11 @@ simple PositionHelper like BasePositionHelper
         int platoonSize;
         //number of lanes
         int nLanes;
+        
+        //Additional variables added to help SimpleHeterogenous class
+        int nTrucks;
+        int nBus;
+        string vehicleTypeInPlatoon;
 
         int headerLength @unit("bit") = default(0bit);
 

@@ -25,6 +25,12 @@ void PositionHelper::initialize(int stage) {
 
 	if (stage == 0) {
 		nCars = par("nCars").longValue();
+		//Modified by Karthikeyan
+		nTrucks = par("nTrucks").longValue();
+		nBus = par("nBus").longValue();
+		vehicleTypeInPlatoon =  par("vehicleTypeInPlatoon").stdstringValue() ;
+
+
 		myId = getIdFromExternalId(getExternalId());
 		leaderId = getPlatoonLeader(myId, nLanes, platoonSize);
 		leader = myId == leaderId;
@@ -32,7 +38,11 @@ void PositionHelper::initialize(int stage) {
 		position = getPositionInPlatoon(myId, nLanes, platoonSize);
 		platoonId = getPlatoonNumber(myId, nLanes, platoonSize);
 		platoonLane = getPlatoonLane(myId, nLanes);
+
+		convertStringToVector(vehicleTypeInPlatoon);
 	}
+
+
 
 }
 
@@ -112,3 +122,76 @@ bool PositionHelper::isFrontVehicle(int vehicleId, int myId, int nLanes, int pla
 int PositionHelper::getPositionInPlatoon(int vehicleId, int nLanes, int platoonSize) {
 	return (vehicleId - getPlatoonLeader(vehicleId, nLanes, platoonSize)) / nLanes;
 }
+//Modified By Karthikeyan
+int PositionHelper::getIdFromExternalId2(std::string externalId) {
+
+    if(externalId.substr(5,4).compare("auto") == 0){
+        int dotIndex = externalId.find_last_of('.');
+        std::string strId = externalId.substr(dotIndex + 1);
+        int num = strtol(strId.c_str(), 0, 10);
+        int count=0;
+        int index=0;
+        std::vector<int>::iterator it = vehTypeInOrder.begin();
+        while(it != vehTypeInOrder.end()){
+            if(*it == 1){
+                if(count == num){
+                    return index;
+                }
+                count++;
+            }
+            index++;
+            it++;
+        }
+    }
+    else if(externalId.substr(5,3).compare("bus") == 0){
+        int dotIndex = externalId.find_last_of('.');
+        std::string strId = externalId.substr(dotIndex + 1);
+        int num = strtol(strId.c_str(), 0, 10);
+        int count=0;
+        int index=0;
+        std::vector<int>::iterator it = vehTypeInOrder.begin();
+        while(it != vehTypeInOrder.end()){
+            if(*it == 3){
+                if(count == num){
+                    return index;
+                }
+                count++;
+            }
+            index++;
+            it++;
+        }
+    }
+    else if(externalId.substr(5,5).compare("heter") == 0){
+        int dotIndex = externalId.find_last_of('.');
+        std::string strId = externalId.substr(dotIndex + 1);
+        int num = strtol(strId.c_str(), 0, 10);
+        int count=0;
+        int index=0;
+        std::vector<int>::iterator it = vehTypeInOrder.begin();
+        while(it != vehTypeInOrder.end()){
+            if(*it == 2){
+                if(count == num){
+                    return index;
+                }
+                count++;
+            }
+            index++;
+            it++;
+        }
+    }
+    return -1;
+}
+void PositionHelper::convertStringToVector(std::string word){
+    std::stringstream ss;
+    ss << word;
+
+    int value;
+    while (ss >> value)
+    {
+        vehTypeInOrder.push_back(value);
+
+        if (ss.peek() == ',')
+            ss.ignore();
+    }
+}
+

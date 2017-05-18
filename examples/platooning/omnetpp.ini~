@@ -211,7 +211,7 @@ seed-set = ${repetition}
 **.traffic.truckLength = ${truckLength}
 **.traffic.busLength = ${busLength}
 
-**.traffic.vehicleTypeInPlatoon = ${"1,3,2,1,2,1,2,1"}
+**.traffic.vehicleTypeInPlatoon = ${"1,3,2,3,2,1,2,1"}
 
 #insert vehicles already at steady-state. distance depends on controller
 **.traffic.platoonInsertDistance = ${2, 2, 15, 2, 15 ! controller}m

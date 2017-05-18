@@ -196,6 +196,7 @@ void TraCIBaseTrafficManager::insertVehicles() {
 
 				//try to insert into desired lane
 				EV << "trying to add " << veh.str() << " with " << route << " vehicle type " << type << std::endl;
+
 				suc = commandInterface->addVehicle(veh.str(), type, route, -Veins::TraCICommandInterface::DEPART_NOW, v.position, v.speed, v.lane);
 
 				if (suc) {

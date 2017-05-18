@@ -25,8 +25,8 @@
 #ifndef SRC_VEINS_MODULES_APPLICATION_PLATOONING_TRAFFIC_SIMPLEHETEROGENOUS_H_
 #define SRC_VEINS_MODULES_APPLICATION_PLATOONING_TRAFFIC_SIMPLEHETEROGENOUS_H_
 
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCIBaseTrafficManager.h"
-#include "/home/hh-ide/src/plexe-veins/src/veins/modules/mobility/traci/TraCICommandInterface.h"
+#include "veins/modules/mobility/traci/TraCIBaseTrafficManager.h"
+#include "veins/modules/mobility/traci/TraCICommandInterface.h"
 #include <iostream>
 #include <string>
 #include <vector>
