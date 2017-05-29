@@ -26,6 +26,12 @@
 //   (at your option) any later version.
 //
 /****************************************************************************/
+<<<<<<< HEAD
+=======
+
+/*Added the VAR_HEIGHT Macro to the file*/
+
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 #ifndef TRACICONSTANTS_H
 #define TRACICONSTANTS_H
 
@@ -513,7 +519,11 @@
 // width (get: vehicle types, lanes)
 #define VAR_WIDTH 0x4d
 
+<<<<<<< HEAD
 //height (get: vehicle types, lanes)
+=======
+// height (get: vehicle types, lanes)
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 #define VAR_HEIGHT 0xbc
 
 // shape (get: polygons)

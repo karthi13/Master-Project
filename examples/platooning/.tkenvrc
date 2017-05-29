@@ -1,4 +1,9 @@
 # Partial OMNeT++/Tkenv config file -- see $HOME/.tkenvrc as well
+<<<<<<< HEAD
 config default-configname	{}
 config default-runnumber	{}
+=======
+config default-configname	{Sinusoidal}
+config default-runnumber	{0}
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 

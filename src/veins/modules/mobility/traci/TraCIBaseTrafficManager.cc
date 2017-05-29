@@ -85,6 +85,10 @@ int TraCIBaseTrafficManager::findVehicleTypeIndex(std::string vehType) {
 	unsigned int i;
 
 	for (i = 0; i < vehicleTypeIds.size(); i++) {
+<<<<<<< HEAD
+=======
+	    //std::string s = vehicleTypeIds[i];
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 		if (vehicleTypeIds[i].compare(vehType) == 0) {
 			return i;
 		}
@@ -195,6 +199,10 @@ void TraCIBaseTrafficManager::insertVehicles() {
 
 				//try to insert into desired lane
 				EV << "trying to add " << veh.str() << " with " << route << " vehicle type " << type << std::endl;
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 				suc = commandInterface->addVehicle(veh.str(), type, route, -Veins::TraCICommandInterface::DEPART_NOW, v.position, v.speed, v.lane);
 
 				if (suc) {

@@ -25,12 +25,22 @@ void PositionHelper::initialize(int stage) {
 
 	if (stage == 0) {
 		nCars = par("nCars").longValue();
+<<<<<<< HEAD
 		nTruck = par("nTruck").longValue();
 		nBus = par("nBus").longValue();
 
 		vehicleType = par("vehicleType").stdstringValue();
 		stringToVector(vehicleType);
 		myId = getIdOfDifferentVehicles(getExternalId());
+=======
+		//Modified by Karthikeyan
+		nTrucks = par("nTrucks").longValue();
+		nBus = par("nBus").longValue();
+		vehicleTypeInPlatoon =  par("vehicleTypeInPlatoon").stdstringValue() ;
+
+
+		myId = getIdFromExternalId(getExternalId());
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 		leaderId = getPlatoonLeader(myId, nLanes, platoonSize);
 		leader = myId == leaderId;
 		frontId = getFrontVehicle(myId, nLanes, platoonSize);
@@ -38,9 +48,17 @@ void PositionHelper::initialize(int stage) {
 		platoonId = getPlatoonNumber(myId, nLanes, platoonSize);
 		platoonLane = getPlatoonLane(myId, nLanes);
 
+<<<<<<< HEAD
 
 	}
 
+=======
+		convertStringToVector(vehicleTypeInPlatoon);
+	}
+
+
+
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 }
 
 void PositionHelper::finish() {
@@ -119,10 +137,15 @@ bool PositionHelper::isFrontVehicle(int vehicleId, int myId, int nLanes, int pla
 int PositionHelper::getPositionInPlatoon(int vehicleId, int nLanes, int platoonSize) {
 	return (vehicleId - getPlatoonLeader(vehicleId, nLanes, platoonSize)) / nLanes;
 }
+<<<<<<< HEAD
 
 //Implemented by karthikeyan
 int PositionHelper::getIdOfDifferentVehicles(std::string externalId) {
 
+=======
+//Modified By Karthikeyan
+int PositionHelper::getIdFromExternalId2(std::string externalId) {
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 
     if(externalId.substr(5,4).compare("auto") == 0){
         int dotIndex = externalId.find_last_of('.');
@@ -130,8 +153,13 @@ int PositionHelper::getIdOfDifferentVehicles(std::string externalId) {
         int num = strtol(strId.c_str(), 0, 10);
         int count=0;
         int index=0;
+<<<<<<< HEAD
         std::vector<int>::iterator it = vehInOrder.begin();
         while(it != vehInOrder.end()){
+=======
+        std::vector<int>::iterator it = vehTypeInOrder.begin();
+        while(it != vehTypeInOrder.end()){
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
             if(*it == 1){
                 if(count == num){
                     return index;
@@ -148,8 +176,13 @@ int PositionHelper::getIdOfDifferentVehicles(std::string externalId) {
         int num = strtol(strId.c_str(), 0, 10);
         int count=0;
         int index=0;
+<<<<<<< HEAD
         std::vector<int>::iterator it = vehInOrder.begin();
         while(it != vehInOrder.end()){
+=======
+        std::vector<int>::iterator it = vehTypeInOrder.begin();
+        while(it != vehTypeInOrder.end()){
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
             if(*it == 3){
                 if(count == num){
                     return index;
@@ -166,8 +199,13 @@ int PositionHelper::getIdOfDifferentVehicles(std::string externalId) {
         int num = strtol(strId.c_str(), 0, 10);
         int count=0;
         int index=0;
+<<<<<<< HEAD
         std::vector<int>::iterator it = vehInOrder.begin();
         while(it != vehInOrder.end()){
+=======
+        std::vector<int>::iterator it = vehTypeInOrder.begin();
+        while(it != vehTypeInOrder.end()){
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
             if(*it == 2){
                 if(count == num){
                     return index;
@@ -180,17 +218,25 @@ int PositionHelper::getIdOfDifferentVehicles(std::string externalId) {
     }
     return -1;
 }
+<<<<<<< HEAD
 
 //Implemented by karthikeyan
 void PositionHelper::stringToVector(std::string word){
 
+=======
+void PositionHelper::convertStringToVector(std::string word){
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
     std::stringstream ss;
     ss << word;
 
     int value;
     while (ss >> value)
     {
+<<<<<<< HEAD
         vehInOrder.push_back(value);
+=======
+        vehTypeInOrder.push_back(value);
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 
         if (ss.peek() == ',')
             ss.ignore();

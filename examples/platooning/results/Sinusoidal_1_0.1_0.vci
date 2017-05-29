@@ -1,11 +1,16 @@
                                                                 
 version 2
+<<<<<<< HEAD
 run Sinusoidal-2-20170529-20:25:12-8188
+=======
+run Sinusoidal-2-20170515-21:01:33-7685
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 attr beaconInterval 0.1
 attr busLength 6
 attr carLength 4
 attr configname Sinusoidal
 attr controller 1
+<<<<<<< HEAD
 attr datetime 20170529-20:25:12
 attr experiment Sinusoidal
 attr headway 0.1
@@ -19,12 +24,32 @@ attr nBus 2
 attr nCars 3
 attr nLanes 1
 attr nTruck 3
+=======
+attr datetime 20170515-21:01:33
+attr experiment Sinusoidal
+attr headway 0.1
+attr inifile examples/platooning/omnetpp.ini
+attr iterationvars "$nCars=3, $platoonSize=8, $nLanes=1, $nTrucks=3, $nBus=2, $carLength=4, $truckLength=5, $busLength=6, $ploegH=0.5, $controller=1, $sController=\"CACC\", $headway=0.1, $leaderHeadway=1.2, $leaderSpeed=100, $beaconInterval=0.1, $priority=2, $packetSize=200, $0=\"1,3,2,3,2,1,2,1\", $1=15, $2=0"
+attr iterationvars2 "$nCars=3, $platoonSize=8, $nLanes=1, $nTrucks=3, $nBus=2, $carLength=4, $truckLength=5, $busLength=6, $ploegH=0.5, $controller=1, $sController=\"CACC\", $headway=0.1, $leaderHeadway=1.2, $leaderSpeed=100, $beaconInterval=0.1, $priority=2, $packetSize=200, $0=\"1,3,2,3,2,1,2,1\", $1=15, $2=0, $repetition=0"
+attr leaderHeadway 1.2
+attr leaderSpeed 100
+attr measurement "$nCars=3, $platoonSize=8, $nLanes=1, $nTrucks=3, $nBus=2, $carLength=4, $truckLength=5, $busLength=6, $ploegH=0.5, $controller=1, $sController=\"CACC\", $headway=0.1, $leaderHeadway=1.2, $leaderSpeed=100, $beaconInterval=0.1, $priority=2, $packetSize=200, $0=\"1,3,2,3,2,1,2,1\", $1=15, $2=0"
+attr nBus 2
+attr nCars 3
+attr nLanes 1
+attr nTrucks 3
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 attr network scenario
 attr packetSize 200
 attr platoonSize 8
 attr ploegH 0.5
+<<<<<<< HEAD
 attr priority 4
 attr processid 8188
+=======
+attr priority 2
+attr processid 7685
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -42,7 +67,11 @@ param **.numberOfBus "${nBus = 2}"
 param **.numberOfCars "${nCars = 3}"
 param **.numberOfCarsPerPlatoon "${platoonSize = 8}"
 param **.numberOfLanes "${nLanes = 1}"
+<<<<<<< HEAD
 param **.numberOfTrucks "${nTruck = 3}"
+=======
+param **.numberOfTrucks "${nTrucks = 3}"
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 param **.numericController "${controller = 0, 0, 1, 2, 3}"
 param **.seed ${repetition}
 param **.traffic.busLength ${busLength}
@@ -50,8 +79,13 @@ param **.traffic.carLength ${carLength}
 param **.traffic.nBus ${nBus}
 param **.traffic.nCars ${nCars}
 param **.traffic.nLanes ${nLanes}
+<<<<<<< HEAD
 param **.traffic.nTruck ${nTruck}
 param **.traffic.platoonInsertDistance "${2, 2, 5, 2, 15 ! controller}m"
+=======
+param **.traffic.nTrucks ${nTrucks}
+param **.traffic.platoonInsertDistance "${2, 2, 15, 2, 15 ! controller}m"
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 param **.traffic.platoonInsertHeadway "${0.3, 1.2, 0, 0.5, 0.8 ! controller}s"
 param **.traffic.platoonInsertSpeed ${leaderSpeed}kmph
 param **.traffic.platoonInsertTime "1 s"
@@ -61,6 +95,7 @@ param **.traffic.platooningVType "\"vtypeauto\""
 param **.traffic.platooningVTypeBus "\"vtypebus\""
 param **.traffic.platooningVTypeTruck "\"vtypeheter\""
 param **.traffic.truckLength ${truckLength}
+<<<<<<< HEAD
 param **.traffic.vehicleTypeInPlatoon "\"1,2,3,1,2,3,1,2\""
 param **.traffic_type "\"Heterogenous\""
 param *.**.nic.mac1609_4.bitrate 6Mbps
@@ -68,18 +103,39 @@ param *.**.nic.mac1609_4.txPower 100mW
 param *.**.nic.mac1609_4.useServiceChannel false
 param *.**.nic.phy80211p.analogueModels "xmldoc(\"config.xml\")"
 param *.**.nic.phy80211p.decider "xmldoc(\"config.xml\")"
+=======
+param **.traffic.vehicleTypeInPlatoon "${\"1,3,2,3,2,1,2,1\"}"
+param **.traffic_type "\"SimpleHeterogenous\""
+param *.**.nic.mac1609_4.bitrate 6Mbps
+param *.**.nic.mac1609_4.txPower 100mW
+param *.**.nic.mac1609_4.useServiceChannel false
+param *.**.nic.phy80211p.analogueModels "xmldoc(\"/home/hh-ide/src/plexe-veins/examples/platooning/config.xml\")"
+param *.**.nic.phy80211p.decider "xmldoc(\"/home/hh-ide/src/plexe-veins/examples/platooning/config.xml\")"
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 param *.**.nic.phy80211p.maxTXPower 100mW
 param *.**.nic.phy80211p.sensitivity -94dBm
 param *.**.nic.phy80211p.thermalNoise -95dBm
 param *.**.nic.phy80211p.usePropagationDelay true
 param *.**.nic.phy80211p.useThermalNoise true
 param *.annotations.draw false
+<<<<<<< HEAD
 param *.connectionManager.drawMaxIntfDist false
 param *.connectionManager.maxInterfDist 2600m
 param *.connectionManager.sendDirect true
 param *.manager.autoShutdown true
 param *.manager.commandLine "\"sumo-gui --remote-port $port --seed $seed --configuration-file $configFile\""
 param *.manager.configFile "\"./sumocfg/freeway.sumo.cfg\""
+=======
+param *.connectionManager.alpha 2.0
+param *.connectionManager.carrierFrequency "5.890e9 Hz"
+param *.connectionManager.maxInterfDist 0
+param *.connectionManager.pMax 100mW
+param *.connectionManager.sat -94dBm
+param *.connectionManager.sendDirect true
+param *.manager.autoShutdown true
+param *.manager.commandLine "\"sumo-gui --remote-port $port --seed $seed --configuration-file $configFile\""
+param *.manager.configFile "\"/home/hh-ide/src/plexe-veins/examples/platooning/sumocfg/freeway.sumo.cfg\""
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 param *.manager.host "\"localhost\""
 param *.manager.margin 25
 param *.manager.moduleDisplayString "\"\""
@@ -91,16 +147,25 @@ param *.node[*].appl_type "\"SimplePlatooningApp\""
 param *.node[*].helper.nBus ${nBus}
 param *.node[*].helper.nCars ${nCars}
 param *.node[*].helper.nLanes ${nLanes}
+<<<<<<< HEAD
 param *.node[*].helper.nTruck ${nTruck}
 param *.node[*].helper.platoonSize ${platoonSize}
 param *.node[*].helper.vehicleType "\"1,2,3,1,2,3,1,2\""
+=======
+param *.node[*].helper.nTrucks ${nTrucks}
+param *.node[*].helper.platoonSize ${platoonSize}
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 param *.node[*].helper_type "\"PositionHelper\""
 param *.node[*].mobility.x 0
 param *.node[*].mobility.y 0
 param *.node[*].mobility.z 1.895
 param *.node[*].prot.beaconingInterval "${beaconInterval = 0.1}s"
 param *.node[*].prot.packetSize "${packetSize = 200}"
+<<<<<<< HEAD
 param *.node[*].prot.priority "${priority = 4}"
+=======
+param *.node[*].prot.priority "${priority = 2}"
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 param *.node[*].prot.useControllerAcceleration true
 param *.node[*].protocol_type "\"SimplePlatooningBeaconing\""
 param *.node[*].scenario.accHeadway ${headway}s
@@ -110,7 +175,11 @@ param *.node[*].scenario.caccXi 1
 param *.node[*].scenario.controller "${sController = \"ACC\", \"ACC\", \"CACC\", \"PLOEG\", \"CONSENSUS\" ! controller}"
 param *.node[*].scenario.engineTau "0.5 s"
 param *.node[*].scenario.leaderHeadway "${leaderHeadway = 1.2}s"
+<<<<<<< HEAD
 param *.node[*].scenario.leaderOscillationFrequency "0.2 Hz"
+=======
+param *.node[*].scenario.leaderOscillationFrequency "0 Hz"
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 param *.node[*].scenario.leaderSpeed "${leaderSpeed = 100}kmph"
 param *.node[*].scenario.oscillationAmplitude "10 kmph"
 param *.node[*].scenario.ploegH "${ploegH = 0.5}s"
@@ -168,6 +237,7 @@ vector 91  scenario.node[4].appl  speed  ETV
 vector 92  scenario.node[4].appl  posx  ETV
 vector 93  scenario.node[4].appl  posy  ETV
 vector 110  scenario.node[5].appl  distance  ETV
+<<<<<<< HEAD
 vector 111  scenario.node[5].appl  relativeSpeed  ETV
 vector 112  scenario.node[5].appl  nodeId  ETV
 vector 116  scenario.node[5].appl  acceleration  ETV
@@ -175,3 +245,6 @@ vector 117  scenario.node[5].appl  controllerAcceleration  ETV
 vector 113  scenario.node[5].appl  speed  ETV
 vector 114  scenario.node[5].appl  posx  ETV
 vector 115  scenario.node
+=======
+vector 111  scenari
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b

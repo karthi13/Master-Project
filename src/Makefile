@@ -57,6 +57,7 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc, .msg and .sm files
 OBJS = \
+<<<<<<< HEAD
     $O/veins/base/connectionManager/ChannelAccess.o \
     $O/veins/base/connectionManager/NicEntryDirect.o \
     $O/veins/base/connectionManager/ConnectionManager.o \
@@ -130,10 +131,86 @@ OBJS = \
     $O/veins/modules/mobility/traci/TraCIBuffer.o \
     $O/veins/modules/mobility/traci/TraCIBaseTrafficManager.o \
     $O/veins/modules/mobility/traci/TraCIMobility.o \
+=======
+    $O/veins/base/connectionManager/BaseConnectionManager.o \
+    $O/veins/base/connectionManager/NicEntryDirect.o \
+    $O/veins/base/connectionManager/ConnectionManager.o \
+    $O/veins/base/connectionManager/NicEntryDebug.o \
+    $O/veins/base/connectionManager/ChannelAccess.o \
+    $O/veins/base/modules/BatteryAccess.o \
+    $O/veins/base/modules/BaseMacLayer.o \
+    $O/veins/base/modules/BaseLayer.o \
+    $O/veins/base/modules/BaseWorldUtility.o \
+    $O/veins/base/modules/BaseMobility.o \
+    $O/veins/base/modules/BaseApplLayer.o \
+    $O/veins/base/modules/BaseBattery.o \
+    $O/veins/base/modules/BaseModule.o \
+    $O/veins/base/phyLayer/MappingBase.o \
+    $O/veins/base/phyLayer/Decider.o \
+    $O/veins/base/phyLayer/BaseDecider.o \
+    $O/veins/base/phyLayer/BasePhyLayer.o \
+    $O/veins/base/phyLayer/ChannelState.o \
+    $O/veins/base/phyLayer/PhyUtils.o \
+    $O/veins/base/phyLayer/Antenna.o \
+    $O/veins/base/phyLayer/ChannelInfo.o \
+    $O/veins/base/phyLayer/Signal.o \
+    $O/veins/base/phyLayer/MappingUtils.o \
+    $O/veins/base/utils/asserts.o \
+    $O/veins/base/utils/SimpleAddress.o \
+    $O/veins/base/utils/winsupport.o \
+    $O/veins/base/utils/NetwToMacControlInfo.o \
+    $O/veins/base/utils/Coord.o \
+    $O/veins/modules/analogueModel/SimplePathlossModel.o \
+    $O/veins/modules/analogueModel/PERModel.o \
+    $O/veins/modules/analogueModel/GenericFading.o \
+    $O/veins/modules/analogueModel/BreakpointPathlossModel.o \
+    $O/veins/modules/analogueModel/NakagamiFading.o \
+    $O/veins/modules/analogueModel/SimpleObstacleShadowing.o \
+    $O/veins/modules/analogueModel/LogNormalShadowing.o \
+    $O/veins/modules/analogueModel/TwoRayInterferenceModel.o \
+    $O/veins/modules/analogueModel/JakesFading.o \
+    $O/veins/modules/application/ieee80211p/BaseWaveApplLayer.o \
+    $O/veins/modules/application/platooning/UnicastProtocol.o \
+    $O/veins/modules/application/platooning/apps/BaseApp.o \
+    $O/veins/modules/application/platooning/apps/SimplePlatooningApp.o \
+    $O/veins/modules/application/platooning/protocols/SlottedBeaconing.o \
+    $O/veins/modules/application/platooning/protocols/BaseProtocol.o \
+    $O/veins/modules/application/platooning/protocols/HumanInterferingProtocol.o \
+    $O/veins/modules/application/platooning/protocols/SimplePlatooningBeaconing.o \
+    $O/veins/modules/application/platooning/scenarios/SinusoidalScenario.o \
+    $O/veins/modules/application/platooning/scenarios/BaseScenario.o \
+    $O/veins/modules/application/platooning/scenarios/BrakingScenario.o \
+    $O/veins/modules/application/platooning/scenarios/AccelerateAndBrakeScenario.o \
+    $O/veins/modules/application/platooning/traffic/PlatoonsPlusHumanTraffic.o \
+    $O/veins/modules/application/platooning/traffic/PlatoonsTrafficManager.o \
+    $O/veins/modules/application/platooning/traffic/SimpleHeterogenous.o \
+    $O/veins/modules/application/platooning/utilities/PositionHelper.o \
+    $O/veins/modules/application/platooning/utilities/BasePositionHelper.o \
+    $O/veins/modules/application/traci/MyVeinsApp.o \
+    $O/veins/modules/application/traci/TraCIDemoRSU11p.o \
+    $O/veins/modules/application/traci/TraCITestApp.o \
+    $O/veins/modules/application/traci/TraCIDemo11p.o \
+    $O/veins/modules/mac/ieee80211p/Mac1609_4.o \
+    $O/veins/modules/mobility/LinearMobility.o \
+    $O/veins/modules/mobility/traci/TraCILauncher.o \
+    $O/veins/modules/mobility/traci/TraCIBaseTrafficManager.o \
+    $O/veins/modules/mobility/traci/TraCIMobility.o \
+    $O/veins/modules/mobility/traci/TraCIColor.o \
+    $O/veins/modules/mobility/traci/TraCIConnection.o \
+    $O/veins/modules/mobility/traci/TraCIScenarioManagerForker.o \
+    $O/veins/modules/mobility/traci/TraCIScreenRecorder.o \
+    $O/veins/modules/mobility/traci/TestTrafficManager.o \
+    $O/veins/modules/mobility/traci/TraCIBuffer.o \
+    $O/veins/modules/mobility/traci/TraCICommandInterface.o \
+    $O/veins/modules/mobility/traci/TraCIScenarioManager.o \
+    $O/veins/modules/mobility/traci/SumoTrafficManager.o \
+    $O/veins/modules/mobility/traci/TraCIScenarioManagerLaunchd.o \
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
     $O/veins/modules/obstacle/ObstacleControl.o \
     $O/veins/modules/obstacle/Obstacle.o \
     $O/veins/modules/phy/SampledAntenna1D.o \
     $O/veins/modules/phy/Decider80211p.o \
+<<<<<<< HEAD
     $O/veins/modules/phy/NistErrorRate.o \
     $O/veins/modules/phy/SNRThresholdDecider.o \
     $O/veins/modules/phy/PhyLayer80211p.o \
@@ -170,6 +247,44 @@ MSGFILES = \
     veins/modules/messages/WaveServiceAdvertisement.msg \
     veins/modules/messages/BasicSafetyMessage.msg \
     veins/modules/messages/AirFrame11p.msg
+=======
+    $O/veins/modules/phy/SNRThresholdDecider.o \
+    $O/veins/modules/phy/PhyLayer80211p.o \
+    $O/veins/modules/phy/NistErrorRate.o \
+    $O/veins/modules/world/annotations/AnnotationDummy.o \
+    $O/veins/modules/world/annotations/AnnotationManager.o \
+    $O/veins/base/messages/MacPkt_m.o \
+    $O/veins/base/messages/BorderMsg_m.o \
+    $O/veins/base/messages/AirFrame_m.o \
+    $O/veins/base/messages/ChannelSenseRequest_m.o \
+    $O/veins/modules/application/platooning/messages/UnicastProtocolControlMessage_m.o \
+    $O/veins/modules/application/platooning/messages/PlatooningBeacon_m.o \
+    $O/veins/modules/application/platooning/messages/InterferingBeacon_m.o \
+    $O/veins/modules/application/platooning/messages/UnicastMessage_m.o \
+    $O/veins/modules/messages/WaveServiceAdvertisement_m.o \
+    $O/veins/modules/messages/PhyControlMessage_m.o \
+    $O/veins/modules/messages/WaveShortMessage_m.o \
+    $O/veins/modules/messages/AirFrame11p_m.o \
+    $O/veins/modules/messages/BasicSafetyMessage_m.o \
+    $O/veins/modules/messages/Mac80211Pkt_m.o
+
+# Message files
+MSGFILES = \
+    veins/base/messages/MacPkt.msg \
+    veins/base/messages/BorderMsg.msg \
+    veins/base/messages/AirFrame.msg \
+    veins/base/messages/ChannelSenseRequest.msg \
+    veins/modules/application/platooning/messages/UnicastProtocolControlMessage.msg \
+    veins/modules/application/platooning/messages/PlatooningBeacon.msg \
+    veins/modules/application/platooning/messages/InterferingBeacon.msg \
+    veins/modules/application/platooning/messages/UnicastMessage.msg \
+    veins/modules/messages/WaveServiceAdvertisement.msg \
+    veins/modules/messages/PhyControlMessage.msg \
+    veins/modules/messages/WaveShortMessage.msg \
+    veins/modules/messages/AirFrame11p.msg \
+    veins/modules/messages/BasicSafetyMessage.msg \
+    veins/modules/messages/Mac80211Pkt.msg
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 
 # SM files
 SMFILES =
@@ -1420,27 +1535,11 @@ $O/veins/modules/application/platooning/scenarios/SinusoidalScenario.o: veins/mo
 	veins/modules/obstacle/Obstacle.h \
 	veins/modules/obstacle/ObstacleControl.h \
 	veins/modules/world/annotations/AnnotationManager.h
+<<<<<<< HEAD
 $O/veins/modules/application/platooning/traffic/Heterogenous.o: veins/modules/application/platooning/traffic/Heterogenous.cc \
-	veins/base/connectionManager/BaseConnectionManager.h \
-	veins/base/connectionManager/NicEntry.h \
-	veins/base/modules/BaseWorldUtility.h \
-	veins/base/utils/Coord.h \
-	veins/base/utils/FWMath.h \
-	veins/base/utils/FindModule.h \
-	veins/base/utils/MiXiMDefs.h \
-	veins/base/utils/miximkerneldefs.h \
-	veins/modules/application/platooning/traffic/Heterogenous.h \
-	veins/modules/mobility/traci/TraCIBaseTrafficManager.h \
-	veins/modules/mobility/traci/TraCIBuffer.h \
-	veins/modules/mobility/traci/TraCIColor.h \
-	veins/modules/mobility/traci/TraCICommandInterface.h \
-	veins/modules/mobility/traci/TraCIConnection.h \
-	veins/modules/mobility/traci/TraCICoord.h \
-	veins/modules/mobility/traci/TraCIScenarioManager.h \
-	veins/modules/obstacle/Obstacle.h \
-	veins/modules/obstacle/ObstacleControl.h \
-	veins/modules/world/annotations/AnnotationManager.h
+=======
 $O/veins/modules/application/platooning/traffic/PlatoonsPlusHumanTraffic.o: veins/modules/application/platooning/traffic/PlatoonsPlusHumanTraffic.cc \
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 	veins/base/connectionManager/BaseConnectionManager.h \
 	veins/base/connectionManager/NicEntry.h \
 	veins/base/modules/BaseWorldUtility.h \
@@ -1449,7 +1548,11 @@ $O/veins/modules/application/platooning/traffic/PlatoonsPlusHumanTraffic.o: vein
 	veins/base/utils/FindModule.h \
 	veins/base/utils/MiXiMDefs.h \
 	veins/base/utils/miximkerneldefs.h \
+<<<<<<< HEAD
+	veins/modules/application/platooning/traffic/Heterogenous.h \
+=======
 	veins/modules/application/platooning/traffic/PlatoonsPlusHumanTraffic.h \
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 	veins/modules/mobility/traci/TraCIBaseTrafficManager.h \
 	veins/modules/mobility/traci/TraCIBuffer.h \
 	veins/modules/mobility/traci/TraCIColor.h \
@@ -1460,7 +1563,11 @@ $O/veins/modules/application/platooning/traffic/PlatoonsPlusHumanTraffic.o: vein
 	veins/modules/obstacle/Obstacle.h \
 	veins/modules/obstacle/ObstacleControl.h \
 	veins/modules/world/annotations/AnnotationManager.h
+<<<<<<< HEAD
+$O/veins/modules/application/platooning/traffic/PlatoonsPlusHumanTraffic.o: veins/modules/application/platooning/traffic/PlatoonsPlusHumanTraffic.cc \
+=======
 $O/veins/modules/application/platooning/traffic/PlatoonsTrafficManager.o: veins/modules/application/platooning/traffic/PlatoonsTrafficManager.cc \
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 	veins/base/connectionManager/BaseConnectionManager.h \
 	veins/base/connectionManager/NicEntry.h \
 	veins/base/modules/BaseWorldUtility.h \
@@ -1469,7 +1576,39 @@ $O/veins/modules/application/platooning/traffic/PlatoonsTrafficManager.o: veins/
 	veins/base/utils/FindModule.h \
 	veins/base/utils/MiXiMDefs.h \
 	veins/base/utils/miximkerneldefs.h \
+<<<<<<< HEAD
+	veins/modules/application/platooning/traffic/PlatoonsPlusHumanTraffic.h \
+=======
 	veins/modules/application/platooning/traffic/PlatoonsTrafficManager.h \
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
+	veins/modules/mobility/traci/TraCIBaseTrafficManager.h \
+	veins/modules/mobility/traci/TraCIBuffer.h \
+	veins/modules/mobility/traci/TraCIColor.h \
+	veins/modules/mobility/traci/TraCICommandInterface.h \
+	veins/modules/mobility/traci/TraCIConnection.h \
+	veins/modules/mobility/traci/TraCICoord.h \
+	veins/modules/mobility/traci/TraCIScenarioManager.h \
+	veins/modules/obstacle/Obstacle.h \
+	veins/modules/obstacle/ObstacleControl.h \
+	veins/modules/world/annotations/AnnotationManager.h
+<<<<<<< HEAD
+$O/veins/modules/application/platooning/traffic/PlatoonsTrafficManager.o: veins/modules/application/platooning/traffic/PlatoonsTrafficManager.cc \
+=======
+$O/veins/modules/application/platooning/traffic/SimpleHeterogenous.o: veins/modules/application/platooning/traffic/SimpleHeterogenous.cc \
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
+	veins/base/connectionManager/BaseConnectionManager.h \
+	veins/base/connectionManager/NicEntry.h \
+	veins/base/modules/BaseWorldUtility.h \
+	veins/base/utils/Coord.h \
+	veins/base/utils/FWMath.h \
+	veins/base/utils/FindModule.h \
+	veins/base/utils/MiXiMDefs.h \
+	veins/base/utils/miximkerneldefs.h \
+<<<<<<< HEAD
+	veins/modules/application/platooning/traffic/PlatoonsTrafficManager.h \
+=======
+	veins/modules/application/platooning/traffic/SimpleHeterogenous.h \
+>>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 	veins/modules/mobility/traci/TraCIBaseTrafficManager.h \
 	veins/modules/mobility/traci/TraCIBuffer.h \
 	veins/modules/mobility/traci/TraCIColor.h \
