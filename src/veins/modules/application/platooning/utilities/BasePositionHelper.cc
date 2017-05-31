@@ -137,3 +137,26 @@ void BasePositionHelper::setLanesCount(int lanes) {
 void BasePositionHelper::setPlatoonSize(int size) {
 	platoonSize = size;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

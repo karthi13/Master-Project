@@ -44,6 +44,8 @@ public:
     virtual void initialize(int stage);
     virtual void finish();
 
+    std::vector<std::string> vehicleTypeName;
+
 protected:
     //this is used to start traffic generation
     cMessage *insertPlatoonMessage;
@@ -62,9 +64,9 @@ protected:
     struct Vehicle bus;
 
     //total number of vehicles to be injected
-    int nCars;
-    int nTruck;
-    int nBus;
+    int nCars; // number of vehicles of car type
+    int nTruck; // number of vehicles of truck type
+    int nBus;  // number of vehicles of bus type
 
     //Length variable of the vehicles
     int carLength;
@@ -81,16 +83,18 @@ protected:
     double platoonInsertHeadway;
     //headway for leader vehicles
     double platoonLeaderHeadway;
+
     //sumo vehicle type of platooning cars
     std::string platooningVType;
     std::string platooningVTypeTruck;
     std::string platooningVTypeBus;
 
-    std::string vehicleTypeInPlatoon;
+
+    std::string vehicleTypeInPlatoon; // it is initialized in the .ini file about the order of the vehicles
     std::vector<int> vehicleInOrder;
 
     virtual void scenarioLoaded();
-
+    std::vector<std::string> getVector();
 };
 
 #endif /* SRC_VEINS_MODULES_APPLICATION_PLATOONING_TRAFFIC_HETEROGENOUS_H_ */

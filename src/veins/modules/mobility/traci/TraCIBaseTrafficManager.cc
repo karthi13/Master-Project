@@ -17,6 +17,7 @@
 
 #include "TraCIBaseTrafficManager.h"
 
+
 Define_Module(TraCIBaseTrafficManager);
 
 void TraCIBaseTrafficManager::initialize(int stage) {
@@ -34,6 +35,7 @@ void TraCIBaseTrafficManager::initialize(int stage) {
 		laneIdsOnEdge.clear();
 		routeStartLaneIds.clear();
 		vehicleInsertQueue.clear();
+		//vehicleTypeName.clear();
 
 		insertInOrder = true;
 
@@ -85,10 +87,6 @@ int TraCIBaseTrafficManager::findVehicleTypeIndex(std::string vehType) {
 	unsigned int i;
 
 	for (i = 0; i < vehicleTypeIds.size(); i++) {
-<<<<<<< HEAD
-=======
-	    //std::string s = vehicleTypeIds[i];
->>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 		if (vehicleTypeIds[i].compare(vehType) == 0) {
 			return i;
 		}
@@ -174,6 +172,13 @@ void TraCIBaseTrafficManager::insertVehicles() {
 			std::stringstream veh;
 			veh << type << "." << vehiclesCount[v.id];
 
+/*
+			std::string ss = veh.str();
+			setVector(ss);
+//			vehicleTypeName.push_back(ss);
+			//addVehicleExID(ss);
+*/
+
 			//do we need to put this vehicle on a particular lane, or can we put it on any?
 
 			if (v.lane == -1 && !insertInOrder) {
@@ -199,10 +204,6 @@ void TraCIBaseTrafficManager::insertVehicles() {
 
 				//try to insert into desired lane
 				EV << "trying to add " << veh.str() << " with " << route << " vehicle type " << type << std::endl;
-<<<<<<< HEAD
-=======
-
->>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 				suc = commandInterface->addVehicle(veh.str(), type, route, -Veins::TraCICommandInterface::DEPART_NOW, v.position, v.speed, v.lane);
 
 				if (suc) {
@@ -227,3 +228,13 @@ void TraCIBaseTrafficManager::insertVehicles() {
 void TraCIBaseTrafficManager::addVehicleToQueue(int routeId, struct Vehicle v) {
 	vehicleInsertQueue[routeId].push_back(v);
 }
+
+/*void TraCIBaseTrafficManager::setVector(std::string veh){
+    vehicleTypeName.push_back(veh);
+}*/
+
+/*
+std::vector<std::string> TraCIBaseTrafficManager::getVector(){
+    return vehicleTypeIds;
+}
+*/

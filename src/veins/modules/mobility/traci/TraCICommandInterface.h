@@ -200,38 +200,23 @@ class TraCICommandInterface
 				 * Returns the vehicle type of a vehicle
 				 */
 				std::string getVType();
-<<<<<<< HEAD
-=======
-
->>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
                 /*
                  * Implemented by Karthikeyan
                  * Returns the width of the vehicles in (m)
                  */
-<<<<<<< HEAD
                 double getVehicleWidth(std::string nodeId);
-=======
-                double getVehicleWidth();
->>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
                 /*
                  * Implemented by Karthikeyan
                  * Returns the heigth of the vehicles in (m)
                  */
-<<<<<<< HEAD
                 double getVehicleHeight(std::string nodeId);
-=======
-                double getVehicleHeight();
->>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
                 /*
                  * Implemented by Karthikeyan
                  * Returns the Length of the vehicles in (m)
                  */
                 double getVehicleLength(std::string nodeId);
-<<<<<<< HEAD
 
 
-=======
->>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 			protected:
 				TraCICommandInterface* traci;
 				TraCIConnection* connection;

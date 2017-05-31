@@ -167,11 +167,14 @@ class BasePositionHelper : public BaseApplLayer
 		 */
 		virtual void setPlatoonSize(int size);
 
+        Veins::TraCIMobility* mobility;
+        Veins::TraCICommandInterface *traci;
+        Veins::TraCICommandInterface::Vehicle *traciVehicle;
+
+
 	protected:
 
-		Veins::TraCIMobility* mobility;
-		Veins::TraCICommandInterface *traci;
-		Veins::TraCICommandInterface::Vehicle *traciVehicle;
+
 
 		//id of this vehicle
 		int myId;

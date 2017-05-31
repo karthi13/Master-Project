@@ -32,7 +32,10 @@ class TraCIBaseTrafficManager : public cSimpleModule
 		virtual void finish();
 
 		int findVehicleTypeIndex(std::string vehType);
-
+        /*Modified by Karthikeyan*/
+/*//        std::vector<std::string> vehicleTypeName;
+        void setVector(std::string veh);
+        std::vector<std::string> getVector();*/
 	public:
 		TraCIBaseTrafficManager() {
 			insertVehiclesTrigger = 0;
@@ -81,6 +84,8 @@ class TraCIBaseTrafficManager : public cSimpleModule
 			float		position;	//position on the first edge
 			float		speed;		//start speed (-1 for lane speed?)
 		};
+
+
 
 		//queue of vehicles to be inserted. maps the index of a route in routeIds to a list of indexes of vehicle
 		//types in vehicleTypeIds

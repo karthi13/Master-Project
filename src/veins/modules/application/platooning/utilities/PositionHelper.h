@@ -19,14 +19,12 @@
 #define POSITIONHELPER_H_
 
 #include "veins/modules/application/platooning/utilities/BasePositionHelper.h"
-<<<<<<< HEAD
 #include <iostream>
 #include <string>
 #include <vector>
 #include <sstream>
+#include    <list>
 
-=======
->>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 
 /**
  * Defines position utility functions for platoons organized in the following
@@ -105,13 +103,16 @@ class PositionHelper : public BasePositionHelper
 		static bool isFrontVehicle(int vehicleId, int myId, int nLanes, int platoonSize);
 		static bool isInSamePlatoon(int vehicleId, int myId, int nLanes, int platoonSize);
 
-<<<<<<< HEAD
 	public:
 		PositionHelper() : BasePositionHelper() {
 		}
 
 		/* Modified by Karthikeyan*/
 		int getIdOfDifferentVehicles(std::string externalId);
+        /*
+         * get the name of the vehicle type
+         */
+        std::string getStringIDOfVehicle(int vehicleID);
 		std::vector<int> vehInOrder;
         void stringToVector(std::string word);
         int nTruck;
@@ -119,20 +120,6 @@ class PositionHelper : public BasePositionHelper
 
         std::string vehicleType;
 
-=======
-		//Modified By Karthikeyan
-		static int getIdFromExternalId2(std::string externalId);
-
-	public:
-		PositionHelper() : BasePositionHelper() {
-		}
-		//Modified By Karthikeyan
-		static std::vector<int> vehTypeInOrder;
-		void convertStringToVector(std::string word);
-		int nTrucks;
-		int nBus;
-		std::string vehicleTypeInPlatoon;
->>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 };
 
 #endif

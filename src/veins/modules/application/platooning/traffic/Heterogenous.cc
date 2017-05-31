@@ -127,6 +127,7 @@ void Heterogenous::insertHeterogeneousVehicles(){
             currentCar++;
         }
         delete[] laneOffset;
+
 }
 
 void Heterogenous::convertStringToVector(std::string word){

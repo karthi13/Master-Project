@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-=======
-/*File Modified by Karthikeyan*/
-//Added Vehicle specific functions - length,width,height
-
->>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 #include <stdlib.h>
 
 #include "veins/modules/mobility/traci/TraCIBuffer.h"
@@ -43,7 +37,6 @@ std::pair<uint32_t, std::string> TraCICommandInterface::getVersion() {
 	return std::pair<uint32_t, std::string>(apiVersion, serverVersion);
 }
 
-<<<<<<< HEAD
 //Modified by karthikeyan
 double TraCICommandInterface::Vehicle::getVehicleLength(std::string nodeId){
     return traci->genericGetDouble(CMD_GET_VEHICLE_VARIABLE, nodeId, VAR_LENGTH, RESPONSE_GET_VEHICLE_VARIABLE);
@@ -57,8 +50,6 @@ double TraCICommandInterface::Vehicle::getVehicleHeight(std::string nodeId){
     return traci->genericGetDouble(CMD_GET_VEHICLE_VARIABLE, nodeId, VAR_HEIGHT, RESPONSE_GET_VEHICLE_VARIABLE);
 }
 
-=======
->>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 void TraCICommandInterface::Vehicle::setSpeedMode(int32_t bitset) {
 	uint8_t variableId = VAR_SPEEDSETMODE;
 	uint8_t variableType = TYPE_INTEGER;
@@ -119,22 +110,6 @@ double TraCICommandInterface::Road::getCurrentTravelTime() {
 	return traci->genericGetDouble(CMD_GET_EDGE_VARIABLE, roadId, VAR_CURRENT_TRAVELTIME, RESPONSE_GET_EDGE_VARIABLE);
 }
 
-<<<<<<< HEAD
-=======
-/*Implemented by Karthikeyan*/
-double TraCICommandInterface::Vehicle::getVehicleLength(std::string nodeId){
-    return traci->genericGetDouble(CMD_GET_VEHICLE_VARIABLE, nodeId, VAR_LENGTH, RESPONSE_GET_VEHICLE_VARIABLE);
-}
-/*Implemented by Karthikeyan*/
-double TraCICommandInterface::Vehicle::getVehicleWidth(){
-    return traci->genericGetDouble(CMD_GET_VEHICLE_VARIABLE, nodeId, VAR_WIDTH, RESPONSE_GET_VEHICLE_VARIABLE);
-}
-/*Implemented by Karthikeyan*/
-double TraCICommandInterface::Vehicle::getVehicleHeight(){
-    return traci->genericGetDouble(CMD_GET_VEHICLE_VARIABLE, nodeId, VAR_HEIGHT, RESPONSE_GET_VEHICLE_VARIABLE);
-}
-
->>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 double TraCICommandInterface::Road::getMeanSpeed() {
 	return traci->genericGetDouble(CMD_GET_EDGE_VARIABLE, roadId, LAST_STEP_MEAN_SPEED, RESPONSE_GET_EDGE_VARIABLE);
 }
@@ -143,10 +118,7 @@ std::string TraCICommandInterface::Vehicle::getRoadId() {
 	return traci->genericGetString(CMD_GET_VEHICLE_VARIABLE, nodeId, VAR_ROAD_ID, RESPONSE_GET_VEHICLE_VARIABLE);
 }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> bf58de06e2a6a24815d36343e10982693cf94a7b
 std::string TraCICommandInterface::Vehicle::getCurrentRoadOnRoute() {
 	return traci->genericGetString(CMD_GET_VEHICLE_VARIABLE, nodeId, LANE_EDGE_ID, RESPONSE_GET_VEHICLE_VARIABLE);
 }

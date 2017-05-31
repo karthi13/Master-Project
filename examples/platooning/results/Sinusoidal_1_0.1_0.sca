@@ -1,78 +1,84 @@
 version 2
-run Sinusoidal-2-20170515-10:42:29-2428
+run Sinusoidal-2-20170531-20:06:00-22672
 attr beaconInterval 0.1
+attr busLength 6
+attr carLength 4
 attr configname Sinusoidal
 attr controller 1
-attr datetime 20170515-10:42:29
+attr datetime 20170531-20:06:00
 attr experiment Sinusoidal
 attr headway 0.1
-attr inifile examples/platooning/omnetpp.ini
-attr iterationvars "$nCars=3, $platoonSize=8, $nLanes=1, $nTrucks=3, $nBus=2, $ploegH=0.5, $controller=1, $sController=\"CACC\", $headway=0.1, $leaderHeadway=1.2, $leaderSpeed=100, $beaconInterval=0.1, $priority=2, $packetSize=200, $0=\"1,2,1,3,2,2,1,3\", $1=15, $2=0"
-attr iterationvars2 "$nCars=3, $platoonSize=8, $nLanes=1, $nTrucks=3, $nBus=2, $ploegH=0.5, $controller=1, $sController=\"CACC\", $headway=0.1, $leaderHeadway=1.2, $leaderSpeed=100, $beaconInterval=0.1, $priority=2, $packetSize=200, $0=\"1,2,1,3,2,2,1,3\", $1=15, $2=0, $repetition=0"
+attr inifile omnetpp.ini
+attr iterationvars "$nCars=3, $platoonSize=8, $nLanes=1, $nTruck=3, $nBus=2, $carLength=4, $truckLength=5, $busLength=6, $ploegH=0.5, $controller=1, $sController=\"CACC\", $headway=0.1, $leaderHeadway=1.2, $leaderSpeed=100, $beaconInterval=0.1, $priority=4, $packetSize=200, $0=5, $1=0"
+attr iterationvars2 "$nCars=3, $platoonSize=8, $nLanes=1, $nTruck=3, $nBus=2, $carLength=4, $truckLength=5, $busLength=6, $ploegH=0.5, $controller=1, $sController=\"CACC\", $headway=0.1, $leaderHeadway=1.2, $leaderSpeed=100, $beaconInterval=0.1, $priority=4, $packetSize=200, $0=5, $1=0, $repetition=0"
 attr leaderHeadway 1.2
 attr leaderSpeed 100
-attr measurement "$nCars=3, $platoonSize=8, $nLanes=1, $nTrucks=3, $nBus=2, $ploegH=0.5, $controller=1, $sController=\"CACC\", $headway=0.1, $leaderHeadway=1.2, $leaderSpeed=100, $beaconInterval=0.1, $priority=2, $packetSize=200, $0=\"1,2,1,3,2,2,1,3\", $1=15, $2=0"
+attr measurement "$nCars=3, $platoonSize=8, $nLanes=1, $nTruck=3, $nBus=2, $carLength=4, $truckLength=5, $busLength=6, $ploegH=0.5, $controller=1, $sController=\"CACC\", $headway=0.1, $leaderHeadway=1.2, $leaderSpeed=100, $beaconInterval=0.1, $priority=4, $packetSize=200, $0=5, $1=0"
 attr nBus 2
 attr nCars 3
 attr nLanes 1
-attr nTrucks 3
+attr nTruck 3
 attr network scenario
 attr packetSize 200
 attr platoonSize 8
 attr ploegH 0.5
-attr priority 2
-attr processid 2428
+attr priority 4
+attr processid 22672
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 2
 attr sController "\"CACC\""
 attr seedset 0
+attr truckLength 5
 param **.coreDebug false
 param **.debug false
 param **.headway "${headway = 0.3, 1.2, 0.1, 0.1, 0.1 ! controller}s"
+param **.lengthOfBus "${busLength = 6}"
+param **.lengthOfCar "${carLength = 4}"
+param **.lengthOfTruck "${truckLength = 5}"
 param **.numberOfBus "${nBus = 2}"
 param **.numberOfCars "${nCars = 3}"
 param **.numberOfCarsPerPlatoon "${platoonSize = 8}"
 param **.numberOfLanes "${nLanes = 1}"
-param **.numberOfTrucks "${nTrucks = 3}"
+param **.numberOfTrucks "${nTruck = 3}"
 param **.numericController "${controller = 0, 0, 1, 2, 3}"
 param **.seed ${repetition}
+param **.traffic.busLength ${busLength}
+param **.traffic.carLength ${carLength}
 param **.traffic.nBus ${nBus}
 param **.traffic.nCars ${nCars}
 param **.traffic.nLanes ${nLanes}
-param **.traffic.nTrucks ${nTrucks}
-param **.traffic.platoonInsertDistance "${2, 2, 15, 2, 15 ! controller}m"
+param **.traffic.nTruck ${nTruck}
+param **.traffic.platoonInsertDistance "${2, 2, 5, 2, 15 ! controller}m"
 param **.traffic.platoonInsertHeadway "${0.3, 1.2, 0, 0.5, 0.8 ! controller}s"
 param **.traffic.platoonInsertSpeed ${leaderSpeed}kmph
 param **.traffic.platoonInsertTime "1 s"
 param **.traffic.platoonLeaderHeadway ${leaderHeadway}s
 param **.traffic.platoonSize ${platoonSize}
-param **.traffic.platooningVType "\"vtypeauto\""
-param **.traffic.platooningVTypeBus "\"vtypebus\""
-param **.traffic.platooningVTypeTruck "\"vtypeheter\""
-param **.traffic.vehicleTypeInPlatoon "${\"1,2,1,3,2,2,1,3\"}"
-param **.traffic_type "\"SimpleHeterogenous\""
+param **.traffic.platooningVType "\"vtypeauto1\""
+param **.traffic.platooningVTypeBus "\"vtypeauto3\""
+param **.traffic.platooningVTypeTruck "\"vtypeauto2\""
+param **.traffic.truckLength ${truckLength}
+param **.traffic.vehicleTypeInPlatoon "\"1,1,3,2,2,2,1,3\""
+param **.traffic_type "\"Heterogenous\""
 param *.**.nic.mac1609_4.bitrate 6Mbps
-param *.**.nic.mac1609_4.txPower 100mW
+param *.**.nic.mac1609_4.txPower 20mW
 param *.**.nic.mac1609_4.useServiceChannel false
-param *.**.nic.phy80211p.analogueModels "xmldoc(\"/home/hh-ide/src/plexe-veins/examples/platooning/config.xml\")"
-param *.**.nic.phy80211p.decider "xmldoc(\"/home/hh-ide/src/plexe-veins/examples/platooning/config.xml\")"
-param *.**.nic.phy80211p.maxTXPower 100mW
+param *.**.nic.phy80211p.analogueModels "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.decider "xmldoc(\"config.xml\")"
+param *.**.nic.phy80211p.maxTXPower 20mW
 param *.**.nic.phy80211p.sensitivity -94dBm
 param *.**.nic.phy80211p.thermalNoise -95dBm
 param *.**.nic.phy80211p.usePropagationDelay true
 param *.**.nic.phy80211p.useThermalNoise true
 param *.annotations.draw false
-param *.connectionManager.alpha 2.0
-param *.connectionManager.carrierFrequency "5.890e9 Hz"
-param *.connectionManager.maxInterfDist 0
-param *.connectionManager.pMax 100mW
-param *.connectionManager.sat -94dBm
+param *.connectionManager.drawMaxIntfDist false
+param *.connectionManager.maxInterfDist 2600m
 param *.connectionManager.sendDirect true
 param *.manager.autoShutdown true
 param *.manager.commandLine "\"sumo-gui --remote-port $port --seed $seed --configuration-file $configFile\""
-param *.manager.configFile "\"/home/hh-ide/src/plexe-veins/examples/platooning/sumocfg/freeway.sumo.cfg\""
+param *.manager.configFile "\"./sumocfg/freeway.sumo.cfg\""
 param *.manager.host "\"localhost\""
 param *.manager.margin 25
 param *.manager.moduleDisplayString "\"\""
@@ -84,15 +90,16 @@ param *.node[*].appl_type "\"SimplePlatooningApp\""
 param *.node[*].helper.nBus ${nBus}
 param *.node[*].helper.nCars ${nCars}
 param *.node[*].helper.nLanes ${nLanes}
-param *.node[*].helper.nTrucks ${nTrucks}
+param *.node[*].helper.nTruck ${nTruck}
 param *.node[*].helper.platoonSize ${platoonSize}
+param *.node[*].helper.vehicleType "\"1,1,3,2,2,2,1,3\""
 param *.node[*].helper_type "\"PositionHelper\""
 param *.node[*].mobility.x 0
 param *.node[*].mobility.y 0
 param *.node[*].mobility.z 1.895
 param *.node[*].prot.beaconingInterval "${beaconInterval = 0.1}s"
 param *.node[*].prot.packetSize "${packetSize = 200}"
-param *.node[*].prot.priority "${priority = 2}"
+param *.node[*].prot.priority "${priority = 4}"
 param *.node[*].prot.useControllerAcceleration true
 param *.node[*].protocol_type "\"SimplePlatooningBeaconing\""
 param *.node[*].scenario.accHeadway ${headway}s
@@ -120,6 +127,8 @@ param *.world.use2D false
 param *.world.useTorus false
 
 scalar . 	beaconInterval 	0.1
+scalar . 	busLength 	6
+scalar . 	carLength 	4
 scalar . 	controller 	1
 scalar . 	headway 	0.1
 scalar . 	leaderHeadway 	1.2
@@ -127,8 +136,9 @@ scalar . 	leaderSpeed 	100
 scalar . 	nBus 	2
 scalar . 	nCars 	3
 scalar . 	nLanes 	1
-scalar . 	nTrucks 	3
+scalar . 	nTruck 	3
 scalar . 	packetSize 	200
 scalar . 	platoonSize 	8
 scalar . 	ploegH 	0.5
-scalar . 	priority 	2
+scalar . 	priority 	4
+scalar . 	truckLength 	5
