@@ -27,7 +27,6 @@ class SinusoidalScenario : public BaseScenario
 
 		virtual void initialize(int stage);
 		virtual void finish();
-
 	protected:
 
 		//frequency at which the leader speed is oscillating

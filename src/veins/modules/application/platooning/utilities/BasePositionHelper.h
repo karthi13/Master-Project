@@ -199,6 +199,8 @@ class BasePositionHelper : public BaseApplLayer
 		//lane of this car's platoon
 		int platoonLane;
 
+
+
 	public:
 		BasePositionHelper() {
 			mobility = 0;
@@ -218,7 +220,15 @@ class BasePositionHelper : public BaseApplLayer
 			leader = false;
 			platoonId = INVALID_PLATOON_ID;
 			platoonLane = -1;
+//			vehicleTypeNames.empty();
+//			vehIDInString.empty();
+
+
 		}
+
+        std::string vehicleTypeNames;
+        std::vector<std::string> vehIDInString;
+
 
 };
 

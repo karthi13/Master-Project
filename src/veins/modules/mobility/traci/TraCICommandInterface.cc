@@ -39,14 +39,17 @@ std::pair<uint32_t, std::string> TraCICommandInterface::getVersion() {
 
 //Modified by karthikeyan
 double TraCICommandInterface::Vehicle::getVehicleLength(std::string nodeId){
+    //std::string str_ID = pHelper->getStringIDOfVehicle(nodeId);
     return traci->genericGetDouble(CMD_GET_VEHICLE_VARIABLE, nodeId, VAR_LENGTH, RESPONSE_GET_VEHICLE_VARIABLE);
 }
 //Modified by karthikeyan
 double TraCICommandInterface::Vehicle::getVehicleWidth(std::string nodeId){
+    //std::string str_ID = pHelper->getStringIDOfVehicle(nodeId);
     return traci->genericGetDouble(CMD_GET_VEHICLE_VARIABLE, nodeId, VAR_WIDTH, RESPONSE_GET_VEHICLE_VARIABLE);
 }
 //Modified by karthikeyan
 double TraCICommandInterface::Vehicle::getVehicleHeight(std::string nodeId){
+    //std::string str_ID = pHelper->getStringIDOfVehicle(nodeId);
     return traci->genericGetDouble(CMD_GET_VEHICLE_VARIABLE, nodeId, VAR_HEIGHT, RESPONSE_GET_VEHICLE_VARIABLE);
 }
 

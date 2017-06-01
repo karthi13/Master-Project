@@ -29,7 +29,7 @@ simple PositionHelper like BasePositionHelper
         int nBus;
         
         string vehicleType;
-        
+        string vehicleTypeNames;
         //number of cars per platoon
         int platoonSize;
         //number of lanes

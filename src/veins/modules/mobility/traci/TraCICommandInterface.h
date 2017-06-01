@@ -8,6 +8,11 @@
 #include "veins/modules/mobility/traci/TraCIColor.h"
 #include "veins/base/utils/Coord.h"
 
+/*
+#include "veins/modules/mobility/traci/TraCIMobility.h"
+#include "veins/modules/application/platooning/utilities/PositionHelper.h"
+*/
+
 namespace Veins {
 
 class TraCIConnection;
@@ -16,7 +21,7 @@ class TraCICommandInterface
 {
 	public:
 		TraCICommandInterface(TraCIConnection&);
-
+		/*PositionHelper *pHelper;*/
 		enum DepartDefs {
 			DEPART_NOW = 2,
 			DEPART_LANE_BEST_FREE = 5,
@@ -209,12 +214,12 @@ class TraCICommandInterface
                  * Implemented by Karthikeyan
                  * Returns the heigth of the vehicles in (m)
                  */
-                double getVehicleHeight(std::string nodeId);
+                double getVehicleHeight(std::string  nodeId);
                 /*
                  * Implemented by Karthikeyan
                  * Returns the Length of the vehicles in (m)
                  */
-                double getVehicleLength(std::string nodeId);
+                double getVehicleLength(std::string  nodeId);
 
 
 			protected:

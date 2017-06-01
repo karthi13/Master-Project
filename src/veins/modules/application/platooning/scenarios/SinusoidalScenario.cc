@@ -54,7 +54,7 @@ void SinusoidalScenario::initialize(int stage) {
 			traciVehicle->setCruiseControlDesiredSpeed(leaderSpeed + 2 * oscillationAmplitude);
 		}
 		measure = new cMessage("measure");
-		scheduleAt(SimTime(10), measure);
+		scheduleAt(SimTime(3), measure);
 
 	}
 
@@ -78,10 +78,15 @@ void SinusoidalScenario::handleSelfMsg(cMessage *msg) {
 	}
 	else if(msg == measure){
 	    int veh_ID = positionHelper->getId();
-	    std::string ex_ID = positionHelper->getExternalId();
 
-//	    double w = traciVehicle->getVehicleWidth(ex_ID);
-//	    double h = traciVehicle->getVehicleHeight(ex_ID);
+//	    std::string ex_ID = positionHelper->getExternalId();
+//	    std::string ex_ID = posHelper->getStringIDOfVehicle(veh_ID);
+
+	    std::string dummy = positionHelper->vehicleTypeNames;
+	    std::vector<std::string> dummy_vec = positionHelper->vehIDInString;
+	    std::string type_veh = dummy_vec.at(veh_ID);
+	    double w = traciVehicle->getVehicleWidth(type_veh);
+	    double h = traciVehicle->getVehicleHeight(type_veh);
 
 	    scheduleAt(simTime() + SimTime(1), measure);
 	}

@@ -1,12 +1,12 @@
                                                                 
 version 2
-run Sinusoidal-2-20170601-01:33:02-8221
+run Sinusoidal-2-20170601-15:47:35-11761
 attr beaconInterval 0.1
 attr busLength 6
 attr carLength 4
 attr configname Sinusoidal
 attr controller 1
-attr datetime 20170601-01:33:02
+attr datetime 20170601-15:47:35
 attr experiment Sinusoidal
 attr headway 0.1
 attr inifile omnetpp.ini
@@ -24,7 +24,7 @@ attr packetSize 200
 attr platoonSize 8
 attr ploegH 0.5
 attr priority 4
-attr processid 8221
+attr processid 11761
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -94,6 +94,7 @@ param *.node[*].helper.nLanes ${nLanes}
 param *.node[*].helper.nTruck ${nTruck}
 param *.node[*].helper.platoonSize ${platoonSize}
 param *.node[*].helper.vehicleType "\"1,1,3,2,2,2,1,3\""
+param *.node[*].helper.vehicleTypeNames "\"vtypeauto1.0,vtypeauto1.1,vtypeauto3.0,vtypeauto2.0,vtypeauto2.1,vtypeauto2.2,vtypeauto1.2,vtypeauto3.1\""
 param *.node[*].helper_type "\"PositionHelper\""
 param *.node[*].mobility.x 0
 param *.node[*].mobility.y 0
@@ -171,7 +172,4 @@ vector 110  scenario.node[5].appl  distance  ETV
 vector 111  scenario.node[5].appl  relativeSpeed  ETV
 vector 112  scenario.node[5].appl  nodeId  ETV
 vector 116  scenario.node[5].appl  acceleration  ETV
-vector 117  scenario.node[5].appl  controllerAcceleration  ETV
-vector 113  scenario.node[5].appl  speed  ETV
-vector 114  scenario.node[5].appl  posx  ETV
-vector 115  scenario.nod
+vector 117  scenario.node[

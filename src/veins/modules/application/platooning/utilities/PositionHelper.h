@@ -112,14 +112,17 @@ class PositionHelper : public BasePositionHelper
         /*
          * get the name of the vehicle type
          */
-        std::string getStringIDOfVehicle(int vehicleID);
+		std::string getStringIDOfVehicle(int vehicleID);
 		std::vector<int> vehInOrder;
+
+		void getVehicleID(std::string word);
         void stringToVector(std::string word);
+        void convertStringVehicleID(std::string word);
         int nTruck;
         int nBus;
-
         std::string vehicleType;
 
+        std::string Id_sumo;
 };
 
 #endif

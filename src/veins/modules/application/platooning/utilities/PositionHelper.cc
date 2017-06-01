@@ -29,7 +29,10 @@ void PositionHelper::initialize(int stage) {
 		nBus = par("nBus").longValue();
 
 		vehicleType = par("vehicleType").stdstringValue();
+		vehicleTypeNames = par("vehicleTypeNames").stdstringValue();
 		stringToVector(vehicleType);
+		getVehicleID(vehicleTypeNames);
+		Id_sumo = vehIDInString.at(0);
 		myId = getIdOfDifferentVehicles(getExternalId());
 		leaderId = getPlatoonLeader(myId, nLanes, platoonSize);
 		leader = myId == leaderId;
@@ -197,10 +200,22 @@ void PositionHelper::stringToVector(std::string word){
     }
 }
 
+void PositionHelper::getVehicleID(std::string word){
+    std::stringstream ss;
+    ss << word;
+    std::string val;
+    while(getline(ss,val,',')){
+        vehIDInString.push_back(val);
+    }
+}
+
+
 
 //Implemented by karthikeyan
 std::string PositionHelper::getStringIDOfVehicle(int vehicleID){
 
+    return vehIDInString.at(vehicleID);
+/*    return "blaa";*/
   /*  std::list<std::string> veh = traci->getVehicleTypeIds();
     int type_num = vehInOrder.at(vehicleID);
     std::vector<std::string> v;
@@ -209,6 +224,6 @@ std::string PositionHelper::getStringIDOfVehicle(int vehicleID){
     //std::vector<std::string> v{std::make_move_iterator(std::begin(veh)), std::make_move_iterator(std::end(veh)) };
     std::string typeID = v.at(type_num);*/
 //    return trafficManager->vehicleTypeName.at(vehicleID);
-    std::string val = "blas";
-    return val;
+/*    std::string val = "blas";
+    return val;*/
 }
