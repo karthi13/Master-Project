@@ -32,10 +32,6 @@ class TraCIBaseTrafficManager : public cSimpleModule
 		virtual void finish();
 
 		int findVehicleTypeIndex(std::string vehType);
-        /*Modified by Karthikeyan*/
-/*//        std::vector<std::string> vehicleTypeName;
-        void setVector(std::string veh);
-        std::vector<std::string> getVector();*/
 	public:
 		TraCIBaseTrafficManager() {
 			insertVehiclesTrigger = 0;

@@ -78,8 +78,6 @@ void SinusoidalScenario::handleSelfMsg(cMessage *msg) {
 	}
 	else if(msg == measure){
 	    int veh_ID = positionHelper->getId();
-	    std::string str_ID = traciVehicle->getVType();
-	    std::string str2_ID = traciVehicle->getTypeId();
 	    std::string ex_ID = positionHelper->getExternalId();
 
 //	    double w = traciVehicle->getVehicleWidth(ex_ID);

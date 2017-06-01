@@ -126,6 +126,7 @@ OBJS = \
     $O/veins/modules/mobility/traci/TraCIColor.o \
     $O/veins/modules/mobility/traci/SumoTrafficManager.o \
     $O/veins/modules/mobility/traci/TraCIScenarioManager.o \
+    $O/veins/modules/mobility/traci/TraCIScenarioManagerInet.o \
     $O/veins/modules/mobility/traci/TraCIScreenRecorder.o \
     $O/veins/modules/mobility/traci/TraCIBuffer.o \
     $O/veins/modules/mobility/traci/TraCIBaseTrafficManager.o \
@@ -1963,6 +1964,7 @@ $O/veins/modules/mobility/traci/TraCIScenarioManagerForker.o: veins/modules/mobi
 	veins/modules/obstacle/Obstacle.h \
 	veins/modules/obstacle/ObstacleControl.h \
 	veins/modules/world/annotations/AnnotationManager.h
+$O/veins/modules/mobility/traci/TraCIScenarioManagerInet.o: veins/modules/mobility/traci/TraCIScenarioManagerInet.cc
 $O/veins/modules/mobility/traci/TraCIScenarioManagerLaunchd.o: veins/modules/mobility/traci/TraCIScenarioManagerLaunchd.cc \
 	veins/base/connectionManager/BaseConnectionManager.h \
 	veins/base/connectionManager/NicEntry.h \

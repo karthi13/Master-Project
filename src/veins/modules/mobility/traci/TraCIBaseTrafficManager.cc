@@ -172,13 +172,6 @@ void TraCIBaseTrafficManager::insertVehicles() {
 			std::stringstream veh;
 			veh << type << "." << vehiclesCount[v.id];
 
-/*
-			std::string ss = veh.str();
-			setVector(ss);
-//			vehicleTypeName.push_back(ss);
-			//addVehicleExID(ss);
-*/
-
 			//do we need to put this vehicle on a particular lane, or can we put it on any?
 
 			if (v.lane == -1 && !insertInOrder) {
@@ -229,12 +222,3 @@ void TraCIBaseTrafficManager::addVehicleToQueue(int routeId, struct Vehicle v) {
 	vehicleInsertQueue[routeId].push_back(v);
 }
 
-/*void TraCIBaseTrafficManager::setVector(std::string veh){
-    vehicleTypeName.push_back(veh);
-}*/
-
-/*
-std::vector<std::string> TraCIBaseTrafficManager::getVector(){
-    return vehicleTypeIds;
-}
-*/

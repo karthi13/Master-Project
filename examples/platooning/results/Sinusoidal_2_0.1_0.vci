@@ -1,4 +1,4 @@
-file 24966 1494851610                                           
+file 24966 1496085251                                           
 version 2
 run Sinusoidal-3-20170515-14:29:48-3977
 attr beaconInterval 0.1
@@ -128,180 +128,179 @@ param *.playgroundSizeY 25000m
 param *.playgroundSizeZ 50m
 param *.world.use2D false
 param *.world.useTorus false
-
 vector 0  scenario.node[0].appl  distance  ETV
-vector 1  scenario.node[0].appl  relativeSpeed  ETV
-vector 2  scenario.node[0].appl  nodeId  ETV
-vector 6  scenario.node[0].appl  acceleration  ETV
-vector 7  scenario.node[0].appl  controllerAcceleration  ETV
-vector 3  scenario.node[0].appl  speed  ETV
-vector 4  scenario.node[0].appl  posx  ETV
-vector 5  scenario.node[0].appl  posy  ETV
-vector 22  scenario.node[1].appl  distance  ETV
-vector 23  scenario.node[1].appl  relativeSpeed  ETV
-vector 24  scenario.node[1].appl  nodeId  ETV
-vector 28  scenario.node[1].appl  acceleration  ETV
-vector 29  scenario.node[1].appl  controllerAcceleration  ETV
-vector 25  scenario.node[1].appl  speed  ETV
-vector 26  scenario.node[1].appl  posx  ETV
-vector 27  scenario.node[1].appl  posy  ETV
-vector 44  scenario.node[2].appl  distance  ETV
-vector 45  scenario.node[2].appl  relativeSpeed  ETV
-vector 46  scenario.node[2].appl  nodeId  ETV
-vector 50  scenario.node[2].appl  acceleration  ETV
-vector 51  scenario.node[2].appl  controllerAcceleration  ETV
-vector 47  scenario.node[2].appl  speed  ETV
-vector 48  scenario.node[2].appl  posx  ETV
-vector 49  scenario.node[2].appl  posy  ETV
-vector 66  scenario.node[3].appl  distance  ETV
-vector 67  scenario.node[3].appl  relativeSpeed  ETV
-vector 68  scenario.node[3].appl  nodeId  ETV
-vector 72  scenario.node[3].appl  acceleration  ETV
-vector 73  scenario.node[3].appl  controllerAcceleration  ETV
-vector 69  scenario.node[3].appl  speed  ETV
-vector 70  scenario.node[3].appl  posx  ETV
-vector 71  scenario.node[3].appl  posy  ETV
-vector 88  scenario.node[4].appl  distance  ETV
-vector 89  scenario.node[4].appl  relativeSpeed  ETV
-vector 90  scenario.node[4].appl  nodeId  ETV
-vector 94  scenario.node[4].appl  acceleration  ETV
-vector 95  scenario.node[4].appl  controllerAcceleration  ETV
-vector 91  scenario.node[4].appl  speed  ETV
-vector 92  scenario.node[4].appl  posx  ETV
-vector 93  scenario.node[4].appl  posy  ETV
-vector 110  scenario.node[5].appl  distance  ETV
-vector 111  scenario.node[5].appl  relativeSpeed  ETV
-vector 112  scenario.node[5].appl  nodeId  ETV
-vector 116  scenario.node[5].appl  acceleration  ETV
-vector 117  scenario.node[5].appl  controllerAcceleration  ETV
-vector 113  scenario.node[5].appl  speed  ETV
-vector 114  scenario.node[5].appl  posx  ETV
-vector 115  scenario.node[5].appl  posy  ETV
-vector 132  scenario.node[6].appl  distance  ETV
-vector 133  scenario.node[6].appl  relativeSpeed  ETV
-vector 134  scenario.node[6].appl  nodeId  ETV
-vector 138  scenario.node[6].appl  acceleration  ETV
-vector 139  scenario.node[6].appl  controllerAcceleration  ETV
-vector 135  scenario.node[6].appl  speed  ETV
-vector 136  scenario.node[6].appl  posx  ETV
-vector 137  scenario.node[6].appl  posy  ETV
-vector 154  scenario.node[7].appl  distance  ETV
-vector 155  scenario.node[7].appl  relativeSpeed  ETV
-vector 156  scenario.node[7].appl  nodeId  ETV
-vector 160  scenario.node[7].appl  acceleration  ETV
-vector 161  scenario.node[7].appl  controllerAcceleration  ETV
-vector 157  scenario.node[7].appl  speed  ETV
-vector 158  scenario.node[7].appl  posx  ETV
-vector 159  scenario.node[7].appl  posy  ETV
-vector 8  scenario.node[0].prot  nodeId  ETV
-vector 9  scenario.node[0].prot  busyTime  ETV
-vector 10  scenario.node[0].prot  collisions  ETV
-vector 30  scenario.node[1].prot  nodeId  ETV
-vector 31  scenario.node[1].prot  busyTime  ETV
-vector 32  scenario.node[1].prot  collisions  ETV
-vector 52  scenario.node[2].prot  nodeId  ETV
-vector 53  scenario.node[2].prot  busyTime  ETV
-vector 54  scenario.node[2].prot  collisions  ETV
-vector 74  scenario.node[3].prot  nodeId  ETV
-vector 75  scenario.node[3].prot  busyTime  ETV
-vector 76  scenario.node[3].prot  collisions  ETV
-vector 96  scenario.node[4].prot  nodeId  ETV
-vector 97  scenario.node[4].prot  busyTime  ETV
-vector 98  scenario.node[4].prot  collisions  ETV
-vector 118  scenario.node[5].prot  nodeId  ETV
-vector 119  scenario.node[5].prot  busyTime  ETV
-vector 120  scenario.node[5].prot  collisions  ETV
-vector 140  scenario.node[6].prot  nodeId  ETV
-vector 141  scenario.node[6].prot  busyTime  ETV
-vector 142  scenario.node[6].prot  collisions  ETV
-vector 162  scenario.node[7].prot  nodeId  ETV
-vector 163  scenario.node[7].prot  busyTime  ETV
-vector 164  scenario.node[7].prot  collisions  ETV
 0	10433 273 248 1370 1.11 2.01 10 2.0004875685006 2.5247529279653 21.701507029118 47.395861012692
-1	10706 283 248 1370 1.11 2.01 10 0.019257851671973 1.3435302742935 6.0011629569826 5.5427485299231
+vector 1  scenario.node[0].appl  relativeSpeed  ETV
+1	10706 283 248 1370 1.11 2.01 10 0.019257851671973 1.3435302742935 6.0011629569825 5.5427485299231
+vector 2  scenario.node[0].appl  nodeId  ETV
 2	10989 133 248 1370 1.11 2.01 10 0 0 0 0
-3	11122 273 248 1370 1.11 2.01 10 26.434248351195 27.758520773816 271.7766232979 7388.1946499672
-4	11395 270 248 1370 1.11 2.01 10 48.216768341971 72.666018296993 605.35488420149 37254.833076458
+vector 6  scenario.node[0].appl  acceleration  ETV
+6	11838 284 248 1370 1.11 2.01 10 -1.8043364561457 -0.40610576355107 -14.212857571363 22.292326774083
+vector 7  scenario.node[0].appl  controllerAcceleration  ETV
+7	12122 281 248 1370 1.11 2.01 10 -2.7635535574064 -1.4964640192203 -22.167554283878 50.918927017596
+vector 3  scenario.node[0].appl  speed  ETV
+3	11122 273 248 1370 1.11 2.01 10 26.434248351195 27.758520773816 271.7766232979 7388.1946499671
+vector 4  scenario.node[0].appl  posx  ETV
+4	11395 270 248 1370 1.11 2.01 10 48.216768341971 72.666018296993 605.35488420149 37254.833076457
+vector 5  scenario.node[0].appl  posy  ETV
 5	11665 173 248 1370 1.11 2.01 10 36.55 36.55 365.5 13359.025
-6	11838 284 248 1370 1.11 2.01 10 -1.8043364561457 -0.40610576355107 -14.212857571363 22.292326774082
-7	12122 281 248 1370 1.11 2.01 10 -2.7635535574064 -1.4964640192203 -22.167554283877 50.918927017595
-8	12403 11 1338 1338 2 2 1 0 0 0 0
-9	12414 18 1338 1338 2 2 1 0.004473 0.004473 0.004473 2.0007729e-05
-10	12432 12 1338 1338 2 2 1 0 0 0 0
+vector 22  scenario.node[1].appl  distance  ETV
 22	12444 283 249 1371 1.11 2.01 10 1.4752470720346 1.9995124314995 18.298492970881 33.783804779744
-23	12727 303 249 1371 1.11 2.01 10 -1.3259833207123 -0.015196794036463 -5.8590343812689 5.3407697446291
+vector 23  scenario.node[1].appl  relativeSpeed  ETV
+23	12727 303 249 1371 1.11 2.01 10 -1.3259833207123 -0.015196794036463 -5.859034381269 5.3407697446292
+vector 24  scenario.node[1].appl  nodeId  ETV
 24	13030 143 249 1371 1.11 2.01 10 1 1 10 10
-25	13173 283 249 1371 1.11 2.01 10 27.777778625488 27.777778625488 277.77778625488 7716.0498536663
-26	13456 281 249 1371 1.11 2.01 10 42.217641067505 67.217641830444 547.17641448975 30576.776970313
-27	13737 183 249 1371 1.11 2.01 10 36.55 36.55 365.5 13359.025
+vector 28  scenario.node[1].appl  acceleration  ETV
 28	13920 143 249 1371 1.11 2.01 10 0 0 0 0
+vector 29  scenario.node[1].appl  controllerAcceleration  ETV
 29	14063 143 249 1371 1.11 2.01 10 0 0 0 0
-30	14206 12 1339 1339 2 2 1 1 1 1 1
-31	14218 19 1339 1339 2 2 1 0.004473 0.004473 0.004473 2.0007729e-05
-32	14237 12 1339 1339 2 2 1 0 0 0 0
+vector 25  scenario.node[1].appl  speed  ETV
+25	13173 283 249 1371 1.11 2.01 10 27.777778625488 27.777778625488 277.77778625488 7716.0498536662
+vector 26  scenario.node[1].appl  posx  ETV
+26	13456 281 249 1371 1.11 2.01 10 42.217641067505 67.217641830444 547.17641448975 30576.776970313
+vector 27  scenario.node[1].appl  posy  ETV
+27	13737 183 249 1371 1.11 2.01 10 36.55 36.55 365.5 13359.025
+vector 44  scenario.node[2].appl  distance  ETV
 44	14249 143 250 1372 1.11 2.01 10 2 2 20 40
+vector 45  scenario.node[2].appl  relativeSpeed  ETV
 45	14392 143 250 1372 1.11 2.01 10 0 0 0 0
+vector 46  scenario.node[2].appl  nodeId  ETV
 46	14535 143 250 1372 1.11 2.01 10 2 2 20 40
-47	14678 283 250 1372 1.11 2.01 10 27.777778625488 27.777778625488 277.77778625488 7716.0498536663
-48	14961 281 250 1372 1.11 2.01 10 36.217641067505 61.217641830444 487.17641448975 24370.659996436
-49	15242 183 250 1372 1.11 2.01 10 36.55 36.55 365.5 13359.025
+vector 50  scenario.node[2].appl  acceleration  ETV
 50	15425 143 250 1372 1.11 2.01 10 0 0 0 0
+vector 51  scenario.node[2].appl  controllerAcceleration  ETV
 51	15568 143 250 1372 1.11 2.01 10 0 0 0 0
-52	15711 12 1340 1340 2 2 1 2 2 2 4
-53	15723 19 1340 1340 2 2 1 0.004473 0.004473 0.004473 2.0007729e-05
-54	15742 12 1340 1340 2 2 1 0 0 0 0
+vector 47  scenario.node[2].appl  speed  ETV
+47	14678 283 250 1372 1.11 2.01 10 27.777778625488 27.777778625488 277.77778625488 7716.0498536662
+vector 48  scenario.node[2].appl  posx  ETV
+48	14961 281 250 1372 1.11 2.01 10 36.217641067505 61.217641830444 487.17641448975 24370.659996436
+vector 49  scenario.node[2].appl  posy  ETV
+49	15242 183 250 1372 1.11 2.01 10 36.55 36.55 365.5 13359.025
+vector 66  scenario.node[3].appl  distance  ETV
 66	15754 283 251 1373 1.11 2.01 10 2.0004875683519 2.5247527793614 21.701506536938 47.39585870568
-67	16037 293 251 1373 1.11 2.01 10 0.019257847040986 1.3435299210544 6.0011613136937 5.5427455237529
+vector 67  scenario.node[3].appl  relativeSpeed  ETV
+67	16037 293 251 1373 1.11 2.01 10 0.019257847040986 1.3435299210544 6.0011613136937 5.542745523753
+vector 68  scenario.node[3].appl  nodeId  ETV
 68	16330 143 251 1373 1.11 2.01 10 0 0 0 0
-69	16473 281 251 1373 1.11 2.01 10 26.434248302402 27.75852077381 271.77662316095 7388.1946426568
-70	16754 282 251 1373 1.11 2.01 10 78.216770249319 102.66602019248 905.35490324675 82576.129576581
-71	17036 183 251 1373 1.11 2.01 10 36.55 36.55 365.5 13359.025
+vector 72  scenario.node[3].appl  acceleration  ETV
 72	17219 295 251 1373 1.11 2.01 10 -1.8043365540031 -0.40610576378697 -14.212858131476 22.292328721003
+vector 73  scenario.node[3].appl  controllerAcceleration  ETV
 73	17514 293 251 1373 1.11 2.01 10 -2.7635535612795 -1.4964643225368 -22.167555685833 50.918932383799
-74	17807 12 1341 1341 2 2 1 0 0 0 0
-75	17819 19 1341 1341 2 2 1 0.003976 0.003976 0.003976 1.5808576e-05
-76	17838 12 1341 1341 2 2 1 0 0 0 0
+vector 69  scenario.node[3].appl  speed  ETV
+69	16473 281 251 1373 1.11 2.01 10 26.434248302402 27.75852077381 271.77662316095 7388.1946426568
+vector 70  scenario.node[3].appl  posx  ETV
+70	16754 282 251 1373 1.11 2.01 10 78.216770249319 102.66602019248 905.35490324675 82576.129576581
+vector 71  scenario.node[3].appl  posy  ETV
+71	17036 183 251 1373 1.11 2.01 10 36.55 36.55 365.5 13359.025
+vector 88  scenario.node[4].appl  distance  ETV
 88	17850 171 252 1374 1.11 2.01 10 2 2.0000000000001 20 40.000000000001
+vector 89  scenario.node[4].appl  relativeSpeed  ETV
 89	18021 143 252 1374 1.11 2.01 10 0 0 0 0
+vector 90  scenario.node[4].appl  nodeId  ETV
 90	18164 143 252 1374 1.11 2.01 10 1 1 10 10
-91	18307 283 252 1374 1.11 2.01 10 27.777778625488 27.777778625488 277.77778625488 7716.0498536663
-92	18590 281 252 1374 1.11 2.01 10 63.217642974853 88.217643737793 757.17643356323 57968.189267281
-93	18871 183 252 1374 1.11 2.01 10 36.55 36.55 365.5 13359.025
+vector 94  scenario.node[4].appl  acceleration  ETV
 94	19054 143 252 1374 1.11 2.01 10 0 0 0 0
+vector 95  scenario.node[4].appl  controllerAcceleration  ETV
 95	19197 143 252 1374 1.11 2.01 10 0 0 0 0
-96	19340 12 1342 1342 2 2 1 1 1 1 1
-97	19352 19 1342 1342 2 2 1 0.004473 0.004473 0.004473 2.0007729e-05
-98	19371 12 1342 1342 2 2 1 0 0 0 0
+vector 91  scenario.node[4].appl  speed  ETV
+91	18307 283 252 1374 1.11 2.01 10 27.777778625488 27.777778625488 277.77778625488 7716.0498536662
+vector 92  scenario.node[4].appl  posx  ETV
+92	18590 281 252 1374 1.11 2.01 10 63.217642974853 88.217643737793 757.17643356323 57968.189267281
+vector 93  scenario.node[4].appl  posy  ETV
+93	18871 183 252 1374 1.11 2.01 10 36.55 36.55 365.5 13359.025
+vector 110  scenario.node[5].appl  distance  ETV
 110	19383 163 253 1375 1.11 2.01 10 -1 -1 -10 10
+vector 111  scenario.node[5].appl  relativeSpeed  ETV
 111	19546 153 253 1375 1.11 2.01 10 0 0 0 0
+vector 112  scenario.node[5].appl  nodeId  ETV
 112	19699 153 253 1375 1.11 2.01 10 0 0 0 0
-113	19852 292 253 1375 1.11 2.01 10 27.777778218173 27.777778619612 277.77778443158 7716.0497523715
-114	20144 290 253 1375 1.11 2.01 10 85.217642974587 110.21764357016 977.1764330091 96123.952227399
-115	20434 193 253 1375 1.11 2.01 10 36.55 36.55 365.5 13359.025
+vector 116  scenario.node[5].appl  acceleration  ETV
 116	20627 339 253 1375 1.11 2.01 10 -5.4528506154838e-07 -1.2391545567425e-07 -4.3071164412822e-06 2.0443294283917e-12
+vector 117  scenario.node[5].appl  controllerAcceleration  ETV
 117	20966 339 253 1375 1.11 2.01 10 -8.430731206488e-07 -4.4567811841034e-07 -6.6968689047542e-06 4.6602696904618e-12
-118	21305 13 1343 1343 2 2 1 0 0 0 0
-119	21318 20 1343 1343 2 2 1 0.003976 0.003976 0.003976 1.5808576e-05
-120	21338 13 1343 1343 2 2 1 0 0 0 0
+vector 113  scenario.node[5].appl  speed  ETV
+113	19852 292 253 1375 1.11 2.01 10 27.777778218173 27.777778619612 277.77778443158 7716.0497523715
+vector 114  scenario.node[5].appl  posx  ETV
+114	20144 290 253 1375 1.11 2.01 10 85.217642974587 110.21764357016 977.1764330091 96123.952227399
+vector 115  scenario.node[5].appl  posy  ETV
+115	20434 193 253 1375 1.11 2.01 10 36.55 36.55 365.5 13359.025
+vector 132  scenario.node[6].appl  distance  ETV
 132	21351 293 254 1376 1.11 2.01 10 2.4752470611526 2.9995124314994 28.298492945399 80.380790589065
-133	21644 312 254 1376 1.11 2.01 10 -1.325983367956 -0.015196794040499 -5.859034512615 5.3407700265485
+vector 133  scenario.node[6].appl  relativeSpeed  ETV
+133	21644 312 254 1376 1.11 2.01 10 -1.325983367956 -0.015196794040499 -5.859034512615 5.3407700265484
+vector 134  scenario.node[6].appl  nodeId  ETV
 134	21956 153 254 1376 1.11 2.01 10 1 1 10 10
-135	22109 293 254 1376 1.11 2.01 10 27.777778625488 27.777778625488 277.77778625488 7716.0498536663
-136	22402 291 254 1376 1.11 2.01 10 70.217642974854 95.217643737793 827.17643356323 69058.659337166
-137	22693 193 254 1376 1.11 2.01 10 36.55 36.55 365.5 13359.025
+vector 138  scenario.node[6].appl  acceleration  ETV
 138	22886 153 254 1376 1.11 2.01 10 0 0 0 0
+vector 139  scenario.node[6].appl  controllerAcceleration  ETV
 139	23039 153 254 1376 1.11 2.01 10 0 0 0 0
-140	23192 13 1344 1344 2 2 1 1 1 1 1
-141	23205 20 1344 1344 2 2 1 0.004473 0.004473 0.004473 2.0007729e-05
-142	23225 13 1344 1344 2 2 1 0 0 0 0
-154	23238 293 255 1377 1.11 2.01 10 3.0000019073486 3.0000019073486 30.000019073486 90.000114440951
+vector 135  scenario.node[6].appl  speed  ETV
+135	22109 293 254 1376 1.11 2.01 10 27.777778625488 27.777778625488 277.77778625488 7716.0498536662
+vector 136  scenario.node[6].appl  posx  ETV
+136	22402 291 254 1376 1.11 2.01 10 70.217642974854 95.217643737793 827.17643356323 69058.659337166
+vector 137  scenario.node[6].appl  posy  ETV
+137	22693 193 254 1376 1.11 2.01 10 36.55 36.55 365.5 13359.025
+vector 154  scenario.node[7].appl  distance  ETV
+154	23238 293 255 1377 1.11 2.01 10 3.0000019073486 3.0000019073486 30.000019073486 90.000114440952
+vector 155  scenario.node[7].appl  relativeSpeed  ETV
 155	23531 153 255 1377 1.11 2.01 10 0 0 0 0
+vector 156  scenario.node[7].appl  nodeId  ETV
 156	23684 153 255 1377 1.11 2.01 10 2 2 20 40
-157	23837 293 255 1377 1.11 2.01 10 27.777778625488 27.777778625488 277.77778625488 7716.0498536663
-158	24130 291 255 1377 1.11 2.01 10 55.217641067505 80.217641830444 677.17641448975 46493.363747046
-159	24421 193 255 1377 1.11 2.01 10 36.55 36.55 365.5 13359.025
+vector 160  scenario.node[7].appl  acceleration  ETV
 160	24614 153 255 1377 1.11 2.01 10 0 0 0 0
+vector 161  scenario.node[7].appl  controllerAcceleration  ETV
 161	24767 153 255 1377 1.11 2.01 10 0 0 0 0
+vector 157  scenario.node[7].appl  speed  ETV
+157	23837 293 255 1377 1.11 2.01 10 27.777778625488 27.777778625488 277.77778625488 7716.0498536662
+vector 158  scenario.node[7].appl  posx  ETV
+158	24130 291 255 1377 1.11 2.01 10 55.217641067505 80.217641830444 677.17641448975 46493.363747046
+vector 159  scenario.node[7].appl  posy  ETV
+159	24421 193 255 1377 1.11 2.01 10 36.55 36.55 365.5 13359.025
+vector 8  scenario.node[0].prot  nodeId  ETV
+8	12403 11 1338 1338 2 2 1 0 0 0 0
+vector 9  scenario.node[0].prot  busyTime  ETV
+9	12414 18 1338 1338 2 2 1 0.004473 0.004473 0.004473 2.0007729e-05
+vector 10  scenario.node[0].prot  collisions  ETV
+10	12432 12 1338 1338 2 2 1 0 0 0 0
+vector 30  scenario.node[1].prot  nodeId  ETV
+30	14206 12 1339 1339 2 2 1 1 1 1 1
+vector 31  scenario.node[1].prot  busyTime  ETV
+31	14218 19 1339 1339 2 2 1 0.004473 0.004473 0.004473 2.0007729e-05
+vector 32  scenario.node[1].prot  collisions  ETV
+32	14237 12 1339 1339 2 2 1 0 0 0 0
+vector 52  scenario.node[2].prot  nodeId  ETV
+52	15711 12 1340 1340 2 2 1 2 2 2 4
+vector 53  scenario.node[2].prot  busyTime  ETV
+53	15723 19 1340 1340 2 2 1 0.004473 0.004473 0.004473 2.0007729e-05
+vector 54  scenario.node[2].prot  collisions  ETV
+54	15742 12 1340 1340 2 2 1 0 0 0 0
+vector 74  scenario.node[3].prot  nodeId  ETV
+74	17807 12 1341 1341 2 2 1 0 0 0 0
+vector 75  scenario.node[3].prot  busyTime  ETV
+75	17819 19 1341 1341 2 2 1 0.003976 0.003976 0.003976 1.5808576e-05
+vector 76  scenario.node[3].prot  collisions  ETV
+76	17838 12 1341 1341 2 2 1 0 0 0 0
+vector 96  scenario.node[4].prot  nodeId  ETV
+96	19340 12 1342 1342 2 2 1 1 1 1 1
+vector 97  scenario.node[4].prot  busyTime  ETV
+97	19352 19 1342 1342 2 2 1 0.004473 0.004473 0.004473 2.0007729e-05
+vector 98  scenario.node[4].prot  collisions  ETV
+98	19371 12 1342 1342 2 2 1 0 0 0 0
+vector 118  scenario.node[5].prot  nodeId  ETV
+118	21305 13 1343 1343 2 2 1 0 0 0 0
+vector 119  scenario.node[5].prot  busyTime  ETV
+119	21318 20 1343 1343 2 2 1 0.003976 0.003976 0.003976 1.5808576e-05
+vector 120  scenario.node[5].prot  collisions  ETV
+120	21338 13 1343 1343 2 2 1 0 0 0 0
+vector 140  scenario.node[6].prot  nodeId  ETV
+140	23192 13 1344 1344 2 2 1 1 1 1 1
+vector 141  scenario.node[6].prot  busyTime  ETV
+141	23205 20 1344 1344 2 2 1 0.004473 0.004473 0.004473 2.0007729e-05
+vector 142  scenario.node[6].prot  collisions  ETV
+142	23225 13 1344 1344 2 2 1 0 0 0 0
+vector 162  scenario.node[7].prot  nodeId  ETV
 162	24920 13 1345 1345 2 2 1 2 2 2 4
+vector 163  scenario.node[7].prot  busyTime  ETV
 163	24933 20 1345 1345 2 2 1 0.004473 0.004473 0.004473 2.0007729e-05
+vector 164  scenario.node[7].prot  collisions  ETV
 164	24953 13 1345 1345 2 2 1 0 0 0 0

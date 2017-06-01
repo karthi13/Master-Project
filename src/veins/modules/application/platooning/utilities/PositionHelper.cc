@@ -201,13 +201,13 @@ void PositionHelper::stringToVector(std::string word){
 //Implemented by karthikeyan
 std::string PositionHelper::getStringIDOfVehicle(int vehicleID){
 
-    std::list<std::string> veh = traci->getVehicleTypeIds();
+  /*  std::list<std::string> veh = traci->getVehicleTypeIds();
     int type_num = vehInOrder.at(vehicleID);
     std::vector<std::string> v;
     v.reserve(veh.size());
     std::copy(std::begin(veh), std::end(veh), std::back_inserter(v));
     //std::vector<std::string> v{std::make_move_iterator(std::begin(veh)), std::make_move_iterator(std::end(veh)) };
-    std::string typeID = v.at(type_num);
+    std::string typeID = v.at(type_num);*/
 //    return trafficManager->vehicleTypeName.at(vehicleID);
     std::string val = "blas";
     return val;
